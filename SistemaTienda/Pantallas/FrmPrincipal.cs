@@ -149,9 +149,9 @@ namespace SistemaTienda
         public void Insertar()
         {
             con.Open();
-            string query = "INSERT INTO historial_factura (,nombre_pro, precio_pro, cantidad, nombrecompleto, facturado, total_calculo) values (@nombre_pro, @precio_pro, cantidad, @nombrecompleto, @facturado, @cantidad, @total_calculo)";
+            string query = "INSERT INTO historial_factura (id_historial_factura, nombre_pro, precio_pro, cantidad, nombrecompleto, facturado, total_calculo) values (@id_historial_factura, @nombre_pro, @precio_pro, cantidad, @nombrecompleto, @facturado, @cantidad, @total_calculo)";
             MySqlCommand comando = new MySqlCommand(query, con);
-            comando.Parameters.AddWithValue("@id_historial_factura", dgvFacturacion.Rows[1].Cells["id_historial_factura"].Value);
+            comando.Parameters.AddWithValue("@id_historial_factura", dgvFacturacion.Rows[0].Cells["id_historial_factura"].Value);
             comando.Parameters.AddWithValue("@nombre_pro", dgvFacturacion.Rows[1].Cells["nombre_pro"].Value);
             comando.Parameters.AddWithValue("@precio_pro", dgvFacturacion.Rows[2].Cells["precio_pro"].Value);
             comando.Parameters.AddWithValue("@cantidad", dgvFacturacion.Rows[3].Cells["cantidad"].Value);
