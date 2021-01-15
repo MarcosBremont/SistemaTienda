@@ -149,26 +149,29 @@ namespace SistemaTienda
         }
         public void Insertar()
         {
-            string nombrepro = dgvFacturacion.CurrentRow.Cells["nombre_pro"].Value.ToString();
-            int precio_pro = Convert.ToInt32(dgvFacturacion.CurrentRow.Cells["precio_pro"].Value);
-            string nombrecompleto = dgvFacturacion.CurrentRow.Cells["nombrecompleto"].Value.ToString();
-            string facturado = dgvFacturacion.CurrentRow.Cells["facturado"].Value.ToString();
-            int cantidad = Convert.ToInt32(dgvFacturacion.CurrentRow.Cells["Cantidad"].Value);
-            int total_calculo = Convert.ToInt32(dgvFacturacion.CurrentRow.Cells["total_calculo"].Value);
+            foreach (DataGridViewRow row in dgvFacturacion.Rows)
+            {
+                string nombrepro = row.Cells["nombre_pro"].Value.ToString();
+                int precio_pro = Convert.ToInt32(row.Cells["precio_pro"].Value);
+                string nombrecompleto = row.Cells["nombrecompleto"].Value.ToString();
+                string facturado = row.Cells["facturado"].Value.ToString();
+                int cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+                int total_calculo = Convert.ToInt32(row.Cells["total_calculo"].Value);
 
-            con.Open();
-            string query = "INSERT INTO historial_factura (nombre_pro, precio_pro, nombrecompleto, facturado, Cantidad, total_calculo) VALUES (@nombre_pro, @precio_pro, @nombrecompleto, @facturado, @Cantidad, @total_calculo)";
-            MySqlCommand comando = new MySqlCommand(query, con);
-            comando.Parameters.Add("@nombre_pro", MySqlDbType.String).Value = nombrepro;
-            comando.Parameters.Add("@precio_pro", MySqlDbType.Int32).Value = precio_pro;
-            comando.Parameters.Add("@nombrecompleto", MySqlDbType.String).Value = nombrecompleto;
-            comando.Parameters.Add("@facturado", MySqlDbType.String).Value = facturado;
-            comando.Parameters.Add("@Cantidad", MySqlDbType.Int32).Value = cantidad;
-            comando.Parameters.Add("@total_calculo", MySqlDbType.Int32).Value = total_calculo;
+                con.Open();
+                string query = "INSERT INTO historial_factura (nombre_pro, precio_pro, nombrecompleto, facturado, Cantidad, total_calculo) VALUES (@nombre_pro, @precio_pro, @nombrecompleto, @facturado, @Cantidad, @total_calculo)";
+                MySqlCommand comando = new MySqlCommand(query, con);
+                comando.Parameters.Add("@nombre_pro", MySqlDbType.String).Value = nombrepro;
+                comando.Parameters.Add("@precio_pro", MySqlDbType.Int32).Value = precio_pro;
+                comando.Parameters.Add("@nombrecompleto", MySqlDbType.String).Value = nombrecompleto;
+                comando.Parameters.Add("@facturado", MySqlDbType.String).Value = facturado;
+                comando.Parameters.Add("@Cantidad", MySqlDbType.Int32).Value = cantidad;
+                comando.Parameters.Add("@total_calculo", MySqlDbType.Int32).Value = total_calculo;
 
-            comando.ExecuteNonQuery();
-            MessageBox.Show("Facturación Completa");
-            con.Close();
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Facturación Completa");
+                con.Close();
+            }
             this.txtcantidaddeproductos.Text = this.dgvFacturacion.Rows.Count.ToString("N0");
         }
         private void btnguardar_Click(object sender, EventArgs e)
@@ -221,6 +224,39 @@ namespace SistemaTienda
         {
             FrmAcercaDe FrmAc = new FrmAcercaDe();
             FrmAc.Show();
+        }
+
+
+        public void CargarDgvPrincipal()
+        {
+            //MySqlDataAdapter adaptador = new MySqlDataAdapter("Select * from historial_factura where id_historial_factura = @id_historial_factura", con);
+            //DataTable tabla = new DataTable();
+            //adaptador.Fill(tabla);
+            //dgvStock.DataSource = tabla;
+        }
+
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            DialogResult result = MessageBox.Show("¿Estas seguro que quiere eliminar este producto?.", "ATENCION", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                string query = "DELETE FROM historial_factura Where id_historial_factura = @id_historial_factura";
+                MySqlCommand comando = new MySqlCommand(query, con);
+                comando.Parameters.AddWithValue("@id_historial_factura", txtcodigoeliminar.Text);
+                comando.ExecuteNonQuery();
+            
+                MessageBox.Show("Producto Eliminado");
+                con.Close();
+                //clear();
+            }
+            else
+            {
+
+            }
+            //this.txtcantidaddeproductos.Text = this.dgvStock.Rows.Count.ToString("N0");
         }
     }
 }
