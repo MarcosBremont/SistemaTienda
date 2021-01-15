@@ -29,10 +29,10 @@ namespace SistemaTienda
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BtnColocar = new System.Windows.Forms.Button();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
@@ -51,6 +51,13 @@ namespace SistemaTienda
             this.cmbfacturara = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvFacturacion = new System.Windows.Forms.DataGridView();
+            this.id_historial_factura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombrecompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.facturado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total_calculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GPDetallesdeStock = new System.Windows.Forms.GroupBox();
             this.txtFacturadoPor = new System.Windows.Forms.TextBox();
             this.BtnAgregarCliente = new System.Windows.Forms.Button();
@@ -64,18 +71,24 @@ namespace SistemaTienda
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnguardar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.id_historial_factura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombrecompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.facturado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total_calculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblusuario = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editarCategoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verYEditarProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editarInventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.historialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.GBBuscarPorNombre.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturacion)).BeginInit();
             this.GPDetallesdeStock.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnColocar
@@ -122,7 +135,7 @@ namespace SistemaTienda
             this.groupBox2.Controls.Add(this.BtnBuscarProductos);
             this.groupBox2.Controls.Add(this.txtbuscarproducto);
             this.groupBox2.Controls.Add(this.lblnombreproducto);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Location = new System.Drawing.Point(12, 25);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(369, 63);
             this.groupBox2.TabIndex = 104;
@@ -212,7 +225,7 @@ namespace SistemaTienda
             this.GBBuscarPorNombre.Controls.Add(this.cmbfacturara);
             this.GBBuscarPorNombre.Controls.Add(this.label1);
             this.GBBuscarPorNombre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GBBuscarPorNombre.Location = new System.Drawing.Point(443, 12);
+            this.GBBuscarPorNombre.Location = new System.Drawing.Point(443, 25);
             this.GBBuscarPorNombre.Name = "GBBuscarPorNombre";
             this.GBBuscarPorNombre.Size = new System.Drawing.Size(242, 63);
             this.GBBuscarPorNombre.TabIndex = 103;
@@ -251,14 +264,14 @@ namespace SistemaTienda
             this.dgvFacturacion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvFacturacion.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvFacturacion.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(120)))), ((int)(((byte)(23)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFacturacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(120)))), ((int)(((byte)(23)))));
+            dataGridViewCellStyle37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle37.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFacturacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
             this.dgvFacturacion.ColumnHeadersHeight = 40;
             this.dgvFacturacion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_historial_factura,
@@ -269,14 +282,14 @@ namespace SistemaTienda
             this.facturado,
             this.total_calculo});
             this.dgvFacturacion.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(22)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFacturacion.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle38.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
+            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(22)))), ((int)(((byte)(111)))));
+            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFacturacion.DefaultCellStyle = dataGridViewCellStyle38;
             this.dgvFacturacion.EnableHeadersVisualStyles = false;
             this.dgvFacturacion.GridColor = System.Drawing.SystemColors.Control;
             this.dgvFacturacion.Location = new System.Drawing.Point(13, 118);
@@ -284,26 +297,78 @@ namespace SistemaTienda
             this.dgvFacturacion.Name = "dgvFacturacion";
             this.dgvFacturacion.ReadOnly = true;
             this.dgvFacturacion.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFacturacion.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle39.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFacturacion.RowHeadersDefaultCellStyle = dataGridViewCellStyle39;
             this.dgvFacturacion.RowHeadersVisible = false;
             this.dgvFacturacion.RowHeadersWidth = 10;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Bahnschrift SemiLight", 10F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(22)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvFacturacion.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle40.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("Bahnschrift SemiLight", 10F);
+            dataGridViewCellStyle40.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(22)))), ((int)(((byte)(111)))));
+            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvFacturacion.RowsDefaultCellStyle = dataGridViewCellStyle40;
             this.dgvFacturacion.RowTemplate.Height = 30;
             this.dgvFacturacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFacturacion.Size = new System.Drawing.Size(735, 248);
             this.dgvFacturacion.TabIndex = 102;
+            // 
+            // id_historial_factura
+            // 
+            this.id_historial_factura.DataPropertyName = "id_historial_factura";
+            this.id_historial_factura.FillWeight = 49.55036F;
+            this.id_historial_factura.HeaderText = "Codigo";
+            this.id_historial_factura.Name = "id_historial_factura";
+            this.id_historial_factura.ReadOnly = true;
+            // 
+            // nombre_pro
+            // 
+            this.nombre_pro.DataPropertyName = "nombre_pro";
+            this.nombre_pro.FillWeight = 106.4554F;
+            this.nombre_pro.HeaderText = "Nombre Producto";
+            this.nombre_pro.Name = "nombre_pro";
+            this.nombre_pro.ReadOnly = true;
+            // 
+            // precio_pro
+            // 
+            this.precio_pro.DataPropertyName = "precio_pro";
+            this.precio_pro.HeaderText = "Precio V.";
+            this.precio_pro.Name = "precio_pro";
+            this.precio_pro.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.DataPropertyName = "Cantidad";
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            // 
+            // nombrecompleto
+            // 
+            this.nombrecompleto.DataPropertyName = "nombrecompleto";
+            this.nombrecompleto.FillWeight = 106.4554F;
+            this.nombrecompleto.HeaderText = "Nombre Cliente";
+            this.nombrecompleto.Name = "nombrecompleto";
+            this.nombrecompleto.ReadOnly = true;
+            // 
+            // facturado
+            // 
+            this.facturado.DataPropertyName = "facturado";
+            this.facturado.HeaderText = "Facturado a:";
+            this.facturado.Name = "facturado";
+            this.facturado.ReadOnly = true;
+            // 
+            // total_calculo
+            // 
+            this.total_calculo.DataPropertyName = "total_calculo";
+            this.total_calculo.HeaderText = "Total";
+            this.total_calculo.Name = "total_calculo";
+            this.total_calculo.ReadOnly = true;
             // 
             // GPDetallesdeStock
             // 
@@ -437,63 +502,111 @@ namespace SistemaTienda
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             // 
-            // id_historial_factura
+            // lblusuario
             // 
-            this.id_historial_factura.DataPropertyName = "id_historial_factura";
-            this.id_historial_factura.FillWeight = 49.55036F;
-            this.id_historial_factura.HeaderText = "Codigo";
-            this.id_historial_factura.Name = "id_historial_factura";
-            this.id_historial_factura.ReadOnly = true;
+            this.lblusuario.AutoSize = true;
+            this.lblusuario.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblusuario.Location = new System.Drawing.Point(21, 555);
+            this.lblusuario.Name = "lblusuario";
+            this.lblusuario.Size = new System.Drawing.Size(0, 16);
+            this.lblusuario.TabIndex = 13;
             // 
-            // nombre_pro
+            // menuStrip1
             // 
-            this.nombre_pro.DataPropertyName = "nombre_pro";
-            this.nombre_pro.FillWeight = 106.4554F;
-            this.nombre_pro.HeaderText = "Nombre Producto";
-            this.nombre_pro.Name = "nombre_pro";
-            this.nombre_pro.ReadOnly = true;
+            this.menuStrip1.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.archivoToolStripMenuItem,
+            this.clientesToolStripMenuItem,
+            this.inventarioToolStripMenuItem,
+            this.acercaDeToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(898, 24);
+            this.menuStrip1.TabIndex = 105;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // precio_pro
+            // archivoToolStripMenuItem
             // 
-            this.precio_pro.DataPropertyName = "precio_pro";
-            this.precio_pro.HeaderText = "Precio V.";
-            this.precio_pro.Name = "precio_pro";
-            this.precio_pro.ReadOnly = true;
+            this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editarCategoriasToolStripMenuItem,
+            this.usuariosToolStripMenuItem,
+            this.logoutToolStripMenuItem});
+            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.archivoToolStripMenuItem.Text = "Archivo";
             // 
-            // Cantidad
+            // editarCategoriasToolStripMenuItem
             // 
-            this.Cantidad.DataPropertyName = "Cantidad";
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
+            this.editarCategoriasToolStripMenuItem.Name = "editarCategoriasToolStripMenuItem";
+            this.editarCategoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarCategoriasToolStripMenuItem.Text = "Editar Categorias";
+            this.editarCategoriasToolStripMenuItem.Click += new System.EventHandler(this.editarCategoriasToolStripMenuItem_Click);
             // 
-            // nombrecompleto
+            // usuariosToolStripMenuItem
             // 
-            this.nombrecompleto.DataPropertyName = "nombrecompleto";
-            this.nombrecompleto.FillWeight = 106.4554F;
-            this.nombrecompleto.HeaderText = "Nombre Cliente";
-            this.nombrecompleto.Name = "nombrecompleto";
-            this.nombrecompleto.ReadOnly = true;
+            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuariosToolStripMenuItem.Text = "Usuarios";
+            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
-            // facturado
+            // logoutToolStripMenuItem
             // 
-            this.facturado.DataPropertyName = "facturado";
-            this.facturado.HeaderText = "Facturado a:";
-            this.facturado.Name = "facturado";
-            this.facturado.ReadOnly = true;
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
-            // total_calculo
+            // clientesToolStripMenuItem
             // 
-            this.total_calculo.DataPropertyName = "total_calculo";
-            this.total_calculo.HeaderText = "Total";
-            this.total_calculo.Name = "total_calculo";
-            this.total_calculo.ReadOnly = true;
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.clientesToolStripMenuItem.Text = "Clientes";
+            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
+            // 
+            // inventarioToolStripMenuItem
+            // 
+            this.inventarioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verYEditarProductosToolStripMenuItem,
+            this.editarInventarioToolStripMenuItem,
+            this.historialToolStripMenuItem});
+            this.inventarioToolStripMenuItem.Name = "inventarioToolStripMenuItem";
+            this.inventarioToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.inventarioToolStripMenuItem.Text = "Inventario";
+            // 
+            // verYEditarProductosToolStripMenuItem
+            // 
+            this.verYEditarProductosToolStripMenuItem.Name = "verYEditarProductosToolStripMenuItem";
+            this.verYEditarProductosToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.verYEditarProductosToolStripMenuItem.Text = "Ver Inventario";
+            // 
+            // editarInventarioToolStripMenuItem
+            // 
+            this.editarInventarioToolStripMenuItem.Name = "editarInventarioToolStripMenuItem";
+            this.editarInventarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarInventarioToolStripMenuItem.Text = "Editar Inventario";
+            this.editarInventarioToolStripMenuItem.Click += new System.EventHandler(this.editarInventarioToolStripMenuItem_Click);
+            // 
+            // historialToolStripMenuItem
+            // 
+            this.historialToolStripMenuItem.Name = "historialToolStripMenuItem";
+            this.historialToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.historialToolStripMenuItem.Text = "Historial";
+            this.historialToolStripMenuItem.Click += new System.EventHandler(this.historialToolStripMenuItem_Click);
+            // 
+            // acercaDeToolStripMenuItem
+            // 
+            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
+            this.acercaDeToolStripMenuItem.Text = "Acerca de";
+            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(898, 574);
+            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.lblusuario);
             this.Controls.Add(this.BtnColocar);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.txtPrecio);
@@ -521,6 +634,8 @@ namespace SistemaTienda
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturacion)).EndInit();
             this.GPDetallesdeStock.ResumeLayout(false);
             this.GPDetallesdeStock.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -566,6 +681,18 @@ namespace SistemaTienda
         private System.Windows.Forms.DataGridViewTextBoxColumn nombrecompleto;
         private System.Windows.Forms.DataGridViewTextBoxColumn facturado;
         private System.Windows.Forms.DataGridViewTextBoxColumn total_calculo;
+        public System.Windows.Forms.Label lblusuario;
+        public System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editarCategoriasToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inventarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verYEditarProductosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editarInventarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem historialToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
     }
 }
 

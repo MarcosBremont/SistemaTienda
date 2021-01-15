@@ -63,6 +63,7 @@ namespace SistemaTienda.Pantallas
             this.btnActualizar.TabIndex = 3;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnEliminar
             // 
@@ -72,6 +73,7 @@ namespace SistemaTienda.Pantallas
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnGuardar
             // 
@@ -81,6 +83,7 @@ namespace SistemaTienda.Pantallas
             this.btnGuardar.TabIndex = 1;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnNuevo
             // 
@@ -90,6 +93,7 @@ namespace SistemaTienda.Pantallas
             this.btnNuevo.TabIndex = 0;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // groupBox1
             // 
@@ -122,6 +126,7 @@ namespace SistemaTienda.Pantallas
             this.CMBCategorias.Name = "CMBCategorias";
             this.CMBCategorias.Size = new System.Drawing.Size(314, 24);
             this.CMBCategorias.TabIndex = 1;
+            this.CMBCategorias.SelectedIndexChanged += new System.EventHandler(this.CMBCategorias_SelectedIndexChanged);
             // 
             // txtCategoria
             // 
@@ -139,6 +144,7 @@ namespace SistemaTienda.Pantallas
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmCategoria";
             this.Text = "FrmCategoria";
+            this.Load += new System.EventHandler(this.FrmCategoria_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

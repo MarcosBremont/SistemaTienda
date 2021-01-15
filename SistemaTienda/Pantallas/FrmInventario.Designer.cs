@@ -36,18 +36,18 @@ namespace SistemaTienda.Pantallas
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.btneditar = new System.Windows.Forms.Button();
             this.dgvInventario = new System.Windows.Forms.DataGridView();
-            this.GBBuscarPorCodigo = new System.Windows.Forms.GroupBox();
-            this.txtbuscarporcodigo = new System.Windows.Forms.TextBox();
-            this.GBBuscarPorCategoria = new System.Windows.Forms.GroupBox();
-            this.txtbuscarporcategoria = new System.Windows.Forms.TextBox();
-            this.GBBuscarPorNombre = new System.Windows.Forms.GroupBox();
-            this.txtbuscarpornombredelproducto = new System.Windows.Forms.TextBox();
             this.id_producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoria_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precio_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.compra_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidad_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GBBuscarPorCodigo = new System.Windows.Forms.GroupBox();
+            this.txtbuscarporcodigo = new System.Windows.Forms.TextBox();
+            this.GBBuscarPorCategoria = new System.Windows.Forms.GroupBox();
+            this.txtbuscarporcategoria = new System.Windows.Forms.TextBox();
+            this.GBBuscarPorNombre = new System.Windows.Forms.GroupBox();
+            this.txtbuscarpornombredelproducto = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventario)).BeginInit();
             this.GBBuscarPorCodigo.SuspendLayout();
             this.GBBuscarPorCategoria.SuspendLayout();
@@ -74,6 +74,7 @@ namespace SistemaTienda.Pantallas
             this.btneditar.TabIndex = 81;
             this.btneditar.Text = "Editar";
             this.btneditar.UseVisualStyleBackColor = true;
+            this.btneditar.Click += new System.EventHandler(this.btneditar_Click);
             // 
             // dgvInventario
             // 
@@ -141,6 +142,50 @@ namespace SistemaTienda.Pantallas
             this.dgvInventario.Size = new System.Drawing.Size(1063, 330);
             this.dgvInventario.TabIndex = 84;
             // 
+            // id_producto
+            // 
+            this.id_producto.DataPropertyName = "id_producto";
+            this.id_producto.FillWeight = 76.14214F;
+            this.id_producto.HeaderText = "Codigo";
+            this.id_producto.Name = "id_producto";
+            this.id_producto.ReadOnly = true;
+            // 
+            // nombre_pro
+            // 
+            this.nombre_pro.DataPropertyName = "nombre_pro";
+            this.nombre_pro.FillWeight = 111.9289F;
+            this.nombre_pro.HeaderText = "Nombre del Producto";
+            this.nombre_pro.Name = "nombre_pro";
+            this.nombre_pro.ReadOnly = true;
+            // 
+            // categoria_pro
+            // 
+            this.categoria_pro.DataPropertyName = "categoria_pro";
+            this.categoria_pro.HeaderText = "Categoria del Producto";
+            this.categoria_pro.Name = "categoria_pro";
+            this.categoria_pro.ReadOnly = true;
+            // 
+            // precio_pro
+            // 
+            this.precio_pro.DataPropertyName = "precio_pro";
+            this.precio_pro.HeaderText = "Precio";
+            this.precio_pro.Name = "precio_pro";
+            this.precio_pro.ReadOnly = true;
+            // 
+            // compra_pro
+            // 
+            this.compra_pro.DataPropertyName = "compra_pro";
+            this.compra_pro.HeaderText = "Precio C";
+            this.compra_pro.Name = "compra_pro";
+            this.compra_pro.ReadOnly = true;
+            // 
+            // cantidad_pro
+            // 
+            this.cantidad_pro.DataPropertyName = "cantidad_pro";
+            this.cantidad_pro.HeaderText = "Cantidad existente";
+            this.cantidad_pro.Name = "cantidad_pro";
+            this.cantidad_pro.ReadOnly = true;
+            // 
             // GBBuscarPorCodigo
             // 
             this.GBBuscarPorCodigo.Controls.Add(this.txtbuscarporcodigo);
@@ -196,50 +241,6 @@ namespace SistemaTienda.Pantallas
             this.txtbuscarpornombredelproducto.Size = new System.Drawing.Size(184, 20);
             this.txtbuscarpornombredelproducto.TabIndex = 0;
             this.txtbuscarpornombredelproducto.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtbuscarpornombredelproducto_KeyUp);
-            // 
-            // id_producto
-            // 
-            this.id_producto.DataPropertyName = "id_producto";
-            this.id_producto.FillWeight = 76.14214F;
-            this.id_producto.HeaderText = "Codigo";
-            this.id_producto.Name = "id_producto";
-            this.id_producto.ReadOnly = true;
-            // 
-            // nombre_pro
-            // 
-            this.nombre_pro.DataPropertyName = "nombre_pro";
-            this.nombre_pro.FillWeight = 111.9289F;
-            this.nombre_pro.HeaderText = "Nombre del Producto";
-            this.nombre_pro.Name = "nombre_pro";
-            this.nombre_pro.ReadOnly = true;
-            // 
-            // categoria_pro
-            // 
-            this.categoria_pro.DataPropertyName = "categoria_pro";
-            this.categoria_pro.HeaderText = "Categoria del Producto";
-            this.categoria_pro.Name = "categoria_pro";
-            this.categoria_pro.ReadOnly = true;
-            // 
-            // precio_pro
-            // 
-            this.precio_pro.DataPropertyName = "precio_pro";
-            this.precio_pro.HeaderText = "Precio";
-            this.precio_pro.Name = "precio_pro";
-            this.precio_pro.ReadOnly = true;
-            // 
-            // compra_pro
-            // 
-            this.compra_pro.DataPropertyName = "compra_pro";
-            this.compra_pro.HeaderText = "Precio C";
-            this.compra_pro.Name = "compra_pro";
-            this.compra_pro.ReadOnly = true;
-            // 
-            // cantidad_pro
-            // 
-            this.cantidad_pro.DataPropertyName = "cantidad_pro";
-            this.cantidad_pro.HeaderText = "Cantidad existente";
-            this.cantidad_pro.Name = "cantidad_pro";
-            this.cantidad_pro.ReadOnly = true;
             // 
             // FrmInventario
             // 

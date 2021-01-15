@@ -104,5 +104,12 @@ namespace SistemaTienda.Pantallas
                 Close();
             }
         }
+
+        private void btneditar_Click(object sender, EventArgs e)
+        {
+            FrmEditarProductos frme = new FrmEditarProductos();
+            frme.Show();
+            this.Close();
+        }
     }
 }

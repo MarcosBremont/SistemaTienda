@@ -20,6 +20,7 @@ namespace SistemaTienda
             InitializeComponent();
         }
 
+        
         private void BtnBuscarProductos_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtbuscarproducto.Text))
@@ -148,16 +149,23 @@ namespace SistemaTienda
         }
         public void Insertar()
         {
+            string nombrepro = dgvFacturacion.CurrentRow.Cells["nombre_pro"].Value.ToString();
+            int precio_pro = Convert.ToInt32(dgvFacturacion.CurrentRow.Cells["precio_pro"].Value);
+            string nombrecompleto = dgvFacturacion.CurrentRow.Cells["nombrecompleto"].Value.ToString();
+            string facturado = dgvFacturacion.CurrentRow.Cells["facturado"].Value.ToString();
+            int cantidad = Convert.ToInt32(dgvFacturacion.CurrentRow.Cells["Cantidad"].Value);
+            int total_calculo = Convert.ToInt32(dgvFacturacion.CurrentRow.Cells["total_calculo"].Value);
+
             con.Open();
-            string query = "INSERT INTO historial_factura (id_historial_factura, nombre_pro, precio_pro, cantidad, nombrecompleto, facturado, total_calculo) values (@id_historial_factura, @nombre_pro, @precio_pro, cantidad, @nombrecompleto, @facturado, @cantidad, @total_calculo)";
+            string query = "INSERT INTO historial_factura (nombre_pro, precio_pro, nombrecompleto, facturado, Cantidad, total_calculo) VALUES (@nombre_pro, @precio_pro, @nombrecompleto, @facturado, @Cantidad, @total_calculo)";
             MySqlCommand comando = new MySqlCommand(query, con);
-            comando.Parameters.AddWithValue("@id_historial_factura", dgvFacturacion.Rows[0].Cells["id_historial_factura"].Value);
-            comando.Parameters.AddWithValue("@nombre_pro", dgvFacturacion.Rows[1].Cells["nombre_pro"].Value);
-            comando.Parameters.AddWithValue("@precio_pro", dgvFacturacion.Rows[2].Cells["precio_pro"].Value);
-            comando.Parameters.AddWithValue("@cantidad", dgvFacturacion.Rows[3].Cells["cantidad"].Value);
-            comando.Parameters.AddWithValue("@nombrecompleto", dgvFacturacion.Rows[4].Cells["nombrecompleto"].Value);
-            comando.Parameters.AddWithValue("@facturado", dgvFacturacion.Rows[5].Cells["facturado"].Value);
-            comando.Parameters.AddWithValue("@total_calculo", dgvFacturacion.Rows[6].Cells["total_calculo"].Value);
+            comando.Parameters.Add("@nombre_pro", MySqlDbType.String).Value = nombrepro;
+            comando.Parameters.Add("@precio_pro", MySqlDbType.Int32).Value = precio_pro;
+            comando.Parameters.Add("@nombrecompleto", MySqlDbType.String).Value = nombrecompleto;
+            comando.Parameters.Add("@facturado", MySqlDbType.String).Value = facturado;
+            comando.Parameters.Add("@Cantidad", MySqlDbType.Int32).Value = cantidad;
+            comando.Parameters.Add("@total_calculo", MySqlDbType.Int32).Value = total_calculo;
+
             comando.ExecuteNonQuery();
             MessageBox.Show("Facturación Completa");
             con.Close();
@@ -171,6 +179,48 @@ namespace SistemaTienda
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void editarCategoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCategoria FrmC = new FrmCategoria();
+            FrmC.Show();
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmRegistroUsuario FrmR = new FrmRegistroUsuario();
+            FrmR.Show();
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmLogin Frml = new FrmLogin();
+            Frml.Show();
+            this.Close();
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCliente FrmC = new FrmCliente();
+            FrmC.Show();
+        }
+
+        private void editarInventarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmEditarProductos FrmEd = new FrmEditarProductos();
+            FrmEd.Show();
+        }
+
+        private void historialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAcercaDe FrmAc = new FrmAcercaDe();
+            FrmAc.Show();
         }
     }
 }
