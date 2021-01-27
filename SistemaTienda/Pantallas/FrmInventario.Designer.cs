@@ -141,6 +141,7 @@ namespace SistemaTienda.Pantallas
             this.dgvInventario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInventario.Size = new System.Drawing.Size(1063, 330);
             this.dgvInventario.TabIndex = 84;
+            this.dgvInventario.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventario_CellDoubleClick);
             // 
             // id_producto
             // 

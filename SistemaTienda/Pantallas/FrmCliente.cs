@@ -132,5 +132,23 @@ namespace SistemaTienda.Pantallas
         {
             Clear();
         }
+
+        private void dgvCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvCliente_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvCliente.Rows.Count == 0)
+            {
+                return;
+            }
+            else
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+        }
     }
 }

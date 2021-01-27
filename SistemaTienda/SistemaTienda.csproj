@@ -202,5 +202,8 @@
   <ItemGroup>
     <None Include="Resources\anadir.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LaCasaDelVaporLogo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -64,7 +64,7 @@ namespace SistemaTienda.Pantallas
 
                 MySqlCommand myCommand = default(MySqlCommand);
 
-                myCommand = new MySqlCommand("SELECT Role, Usuario,Contrasena FROM RegistroUsuario WHERE Role = @Role AND Usuario = @Usuario AND Contrasena = @Contrasena", myConnection);
+                myCommand = new MySqlCommand("SELECT Role, Usuario,Contrasena FROM usuario WHERE Role = @Role AND Usuario = @Usuario AND Contrasena = @Contrasena", myConnection);
                 MySqlParameter uRole = new MySqlParameter("@Role", MySqlDbType.VarChar);
                 MySqlParameter uName = new MySqlParameter("@Usuario", MySqlDbType.VarChar);
                 MySqlParameter uPassword = new MySqlParameter("@Contrasena", MySqlDbType.VarChar);

@@ -102,6 +102,8 @@ namespace SistemaTienda.Pantallas
             {
                 DialogResult = DialogResult.OK;
                 Close();
+                FrmCliente frmc = new FrmCliente();
+                frmc.Show();
             }
         }
 
@@ -110,6 +112,19 @@ namespace SistemaTienda.Pantallas
             FrmEditarProductos frme = new FrmEditarProductos();
             frme.Show();
             this.Close();
+        }
+
+        private void dgvInventario_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvInventario.Rows.Count == 0)
+            {
+                return;
+            }
+            else
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+            }
         }
     }
 }

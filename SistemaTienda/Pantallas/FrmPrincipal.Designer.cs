@@ -109,6 +109,7 @@ namespace SistemaTienda
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(182, 20);
             this.txtCantidad.TabIndex = 92;
+            this.txtCantidad.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCantidad_KeyDown);
             // 
             // txtPrecio
             // 

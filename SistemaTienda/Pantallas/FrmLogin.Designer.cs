@@ -29,6 +29,7 @@ namespace SistemaTienda.Pantallas
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.ProgressBar1 = new System.Windows.Forms.ProgressBar();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.cbRol = new System.Windows.Forms.ComboBox();
@@ -185,9 +186,10 @@ namespace SistemaTienda.Pantallas
             // 
             // pictureBoxLogoTic
             // 
-            this.pictureBoxLogoTic.Location = new System.Drawing.Point(5, 110);
+            this.pictureBoxLogoTic.Image = global::SistemaTienda.Properties.Resources.LaCasaDelVaporLogo;
+            this.pictureBoxLogoTic.Location = new System.Drawing.Point(-245, -83);
             this.pictureBoxLogoTic.Name = "pictureBoxLogoTic";
-            this.pictureBoxLogoTic.Size = new System.Drawing.Size(237, 130);
+            this.pictureBoxLogoTic.Size = new System.Drawing.Size(750, 529);
             this.pictureBoxLogoTic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxLogoTic.TabIndex = 1;
             this.pictureBoxLogoTic.TabStop = false;
@@ -210,8 +212,9 @@ namespace SistemaTienda.Pantallas
             this.Controls.Add(this.txtContraseña);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.panelLogoTic);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmLogin";
-            this.Text = "FrmLogin";
+            this.Text = "Login";
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.panelLogoTic.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoTic)).EndInit();
