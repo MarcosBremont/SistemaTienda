@@ -145,7 +145,7 @@ namespace SistemaTienda
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-
+            txtbuscarproducto.TabIndex = 0;
         }
 
         private void editarCategoriasToolStripMenuItem_Click(object sender, EventArgs e)

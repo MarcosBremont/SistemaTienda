@@ -68,7 +68,7 @@ namespace SistemaTienda.Pantallas
             this.BtnSeleccionar.Location = new System.Drawing.Point(12, 187);
             this.BtnSeleccionar.Name = "BtnSeleccionar";
             this.BtnSeleccionar.Size = new System.Drawing.Size(87, 29);
-            this.BtnSeleccionar.TabIndex = 126;
+            this.BtnSeleccionar.TabIndex = 1;
             this.BtnSeleccionar.Text = "Seleccionar";
             this.BtnSeleccionar.UseVisualStyleBackColor = true;
             this.BtnSeleccionar.Click += new System.EventHandler(this.BtnSeleccionar_Click);
@@ -167,10 +167,11 @@ namespace SistemaTienda.Pantallas
             this.dgvCliente.RowTemplate.Height = 30;
             this.dgvCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCliente.Size = new System.Drawing.Size(899, 248);
-            this.dgvCliente.TabIndex = 140;
+            this.dgvCliente.TabIndex = 0;
             this.dgvCliente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCliente_CellClick);
             this.dgvCliente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCliente_CellContentClick);
             this.dgvCliente.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCliente_CellDoubleClick);
+            this.dgvCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvCliente_KeyPress);
             // 
             // IDCliente
             // 

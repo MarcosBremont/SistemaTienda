@@ -29,15 +29,11 @@ namespace SistemaTienda
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BtnColocar = new System.Windows.Forms.Button();
-            this.txtCantidad = new System.Windows.Forms.TextBox();
-            this.txtPrecio = new System.Windows.Forms.TextBox();
-            this.txtDescrip = new System.Windows.Forms.TextBox();
-            this.txtCodigoPro = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BtnBuscarProductos = new System.Windows.Forms.Button();
             this.txtbuscarproducto = new System.Windows.Forms.TextBox();
@@ -84,6 +80,10 @@ namespace SistemaTienda
             this.historialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtcodigoeliminar = new System.Windows.Forms.TextBox();
+            this.txtCodigoPro = new System.Windows.Forms.TextBox();
+            this.txtDescrip = new System.Windows.Forms.TextBox();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.GBBuscarPorNombre.SuspendLayout();
@@ -98,39 +98,10 @@ namespace SistemaTienda
             this.BtnColocar.Location = new System.Drawing.Point(596, 94);
             this.BtnColocar.Name = "BtnColocar";
             this.BtnColocar.Size = new System.Drawing.Size(153, 22);
-            this.BtnColocar.TabIndex = 91;
+            this.BtnColocar.TabIndex = 6;
             this.BtnColocar.Text = "Colocar";
             this.BtnColocar.UseVisualStyleBackColor = true;
             this.BtnColocar.Click += new System.EventHandler(this.BtnColocar_Click);
-            // 
-            // txtCantidad
-            // 
-            this.txtCantidad.Location = new System.Drawing.Point(413, 95);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(182, 20);
-            this.txtCantidad.TabIndex = 92;
-            this.txtCantidad.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCantidad_KeyDown);
-            // 
-            // txtPrecio
-            // 
-            this.txtPrecio.Location = new System.Drawing.Point(250, 95);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(162, 20);
-            this.txtPrecio.TabIndex = 90;
-            // 
-            // txtDescrip
-            // 
-            this.txtDescrip.Location = new System.Drawing.Point(88, 95);
-            this.txtDescrip.Name = "txtDescrip";
-            this.txtDescrip.Size = new System.Drawing.Size(160, 20);
-            this.txtDescrip.TabIndex = 89;
-            // 
-            // txtCodigoPro
-            // 
-            this.txtCodigoPro.Location = new System.Drawing.Point(13, 95);
-            this.txtCodigoPro.Name = "txtCodigoPro";
-            this.txtCodigoPro.Size = new System.Drawing.Size(73, 20);
-            this.txtCodigoPro.TabIndex = 88;
             // 
             // groupBox2
             // 
@@ -140,7 +111,7 @@ namespace SistemaTienda
             this.groupBox2.Location = new System.Drawing.Point(12, 25);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(369, 63);
-            this.groupBox2.TabIndex = 104;
+            this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             // 
             // BtnBuscarProductos
@@ -152,7 +123,7 @@ namespace SistemaTienda
             this.BtnBuscarProductos.Location = new System.Drawing.Point(290, 12);
             this.BtnBuscarProductos.Name = "BtnBuscarProductos";
             this.BtnBuscarProductos.Size = new System.Drawing.Size(73, 43);
-            this.BtnBuscarProductos.TabIndex = 1;
+            this.BtnBuscarProductos.TabIndex = 2;
             this.BtnBuscarProductos.UseVisualStyleBackColor = true;
             this.BtnBuscarProductos.Click += new System.EventHandler(this.BtnBuscarProductos_Click);
             // 
@@ -161,7 +132,7 @@ namespace SistemaTienda
             this.txtbuscarproducto.Location = new System.Drawing.Point(130, 24);
             this.txtbuscarproducto.Name = "txtbuscarproducto";
             this.txtbuscarproducto.Size = new System.Drawing.Size(151, 20);
-            this.txtbuscarproducto.TabIndex = 0;
+            this.txtbuscarproducto.TabIndex = 1;
             // 
             // lblnombreproducto
             // 
@@ -170,7 +141,7 @@ namespace SistemaTienda
             this.lblnombreproducto.Location = new System.Drawing.Point(9, 25);
             this.lblnombreproducto.Name = "lblnombreproducto";
             this.lblnombreproducto.Size = new System.Drawing.Size(104, 16);
-            this.lblnombreproducto.TabIndex = 14;
+            this.lblnombreproducto.TabIndex = 1;
             this.lblnombreproducto.Text = "Buscar Producto";
             // 
             // groupBox1
@@ -200,7 +171,7 @@ namespace SistemaTienda
             this.txtcantidaddeproductos.Name = "txtcantidaddeproductos";
             this.txtcantidaddeproductos.ReadOnly = true;
             this.txtcantidaddeproductos.Size = new System.Drawing.Size(108, 20);
-            this.txtcantidaddeproductos.TabIndex = 0;
+            this.txtcantidaddeproductos.TabIndex = 99;
             // 
             // label8
             // 
@@ -230,7 +201,7 @@ namespace SistemaTienda
             this.GBBuscarPorNombre.Location = new System.Drawing.Point(443, 25);
             this.GBBuscarPorNombre.Name = "GBBuscarPorNombre";
             this.GBBuscarPorNombre.Size = new System.Drawing.Size(242, 63);
-            this.GBBuscarPorNombre.TabIndex = 103;
+            this.GBBuscarPorNombre.TabIndex = 4;
             this.GBBuscarPorNombre.TabStop = false;
             // 
             // cmbfacturara
@@ -242,7 +213,7 @@ namespace SistemaTienda
             this.cmbfacturara.Location = new System.Drawing.Point(88, 22);
             this.cmbfacturara.Name = "cmbfacturara";
             this.cmbfacturara.Size = new System.Drawing.Size(121, 21);
-            this.cmbfacturara.TabIndex = 17;
+            this.cmbfacturara.TabIndex = 1;
             // 
             // label1
             // 
@@ -251,7 +222,7 @@ namespace SistemaTienda
             this.label1.Location = new System.Drawing.Point(11, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 16);
-            this.label1.TabIndex = 16;
+            this.label1.TabIndex = 22;
             this.label1.Text = "Facturar a:";
             // 
             // dgvFacturacion
@@ -266,14 +237,14 @@ namespace SistemaTienda
             this.dgvFacturacion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvFacturacion.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvFacturacion.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(120)))), ((int)(((byte)(23)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFacturacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(71)))));
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle33.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFacturacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle33;
             this.dgvFacturacion.ColumnHeadersHeight = 40;
             this.dgvFacturacion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_historial_factura,
@@ -284,14 +255,14 @@ namespace SistemaTienda
             this.facturado,
             this.total_calculo});
             this.dgvFacturacion.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(22)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFacturacion.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(22)))), ((int)(((byte)(111)))));
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFacturacion.DefaultCellStyle = dataGridViewCellStyle34;
             this.dgvFacturacion.EnableHeadersVisualStyles = false;
             this.dgvFacturacion.GridColor = System.Drawing.SystemColors.Control;
             this.dgvFacturacion.Location = new System.Drawing.Point(13, 118);
@@ -299,26 +270,26 @@ namespace SistemaTienda
             this.dgvFacturacion.Name = "dgvFacturacion";
             this.dgvFacturacion.ReadOnly = true;
             this.dgvFacturacion.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFacturacion.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle35.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFacturacion.RowHeadersDefaultCellStyle = dataGridViewCellStyle35;
             this.dgvFacturacion.RowHeadersVisible = false;
             this.dgvFacturacion.RowHeadersWidth = 10;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Bahnschrift SemiLight", 10F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(22)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvFacturacion.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("Bahnschrift SemiLight", 10F);
+            dataGridViewCellStyle36.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(22)))), ((int)(((byte)(111)))));
+            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvFacturacion.RowsDefaultCellStyle = dataGridViewCellStyle36;
             this.dgvFacturacion.RowTemplate.Height = 30;
             this.dgvFacturacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFacturacion.Size = new System.Drawing.Size(735, 248);
-            this.dgvFacturacion.TabIndex = 102;
+            this.dgvFacturacion.TabIndex = 3;
             // 
             // id_historial_factura
             // 
@@ -385,7 +356,7 @@ namespace SistemaTienda
             this.GPDetallesdeStock.Location = new System.Drawing.Point(13, 384);
             this.GPDetallesdeStock.Name = "GPDetallesdeStock";
             this.GPDetallesdeStock.Size = new System.Drawing.Size(362, 168);
-            this.GPDetallesdeStock.TabIndex = 100;
+            this.GPDetallesdeStock.TabIndex = 5;
             this.GPDetallesdeStock.TabStop = false;
             // 
             // txtFacturadoPor
@@ -394,7 +365,7 @@ namespace SistemaTienda
             this.txtFacturadoPor.Name = "txtFacturadoPor";
             this.txtFacturadoPor.ReadOnly = true;
             this.txtFacturadoPor.Size = new System.Drawing.Size(130, 20);
-            this.txtFacturadoPor.TabIndex = 0;
+            this.txtFacturadoPor.TabIndex = 104;
             // 
             // BtnAgregarCliente
             // 
@@ -405,7 +376,7 @@ namespace SistemaTienda
             this.BtnAgregarCliente.Location = new System.Drawing.Point(284, 65);
             this.BtnAgregarCliente.Name = "BtnAgregarCliente";
             this.BtnAgregarCliente.Size = new System.Drawing.Size(28, 30);
-            this.BtnAgregarCliente.TabIndex = 5;
+            this.BtnAgregarCliente.TabIndex = 1;
             this.BtnAgregarCliente.UseVisualStyleBackColor = true;
             this.BtnAgregarCliente.Click += new System.EventHandler(this.BtnAgregarCliente_Click);
             // 
@@ -456,7 +427,7 @@ namespace SistemaTienda
             // BtnNueva
             // 
             this.BtnNueva.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
-            this.BtnNueva.Location = new System.Drawing.Point(758, 175);
+            this.BtnNueva.Location = new System.Drawing.Point(755, 118);
             this.BtnNueva.Name = "BtnNueva";
             this.BtnNueva.Size = new System.Drawing.Size(132, 33);
             this.BtnNueva.TabIndex = 93;
@@ -466,7 +437,7 @@ namespace SistemaTienda
             // btnsalir
             // 
             this.btnsalir.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
-            this.btnsalir.Location = new System.Drawing.Point(758, 384);
+            this.btnsalir.Location = new System.Drawing.Point(755, 304);
             this.btnsalir.Name = "btnsalir";
             this.btnsalir.Size = new System.Drawing.Size(132, 33);
             this.btnsalir.TabIndex = 97;
@@ -476,7 +447,7 @@ namespace SistemaTienda
             // btnImprimir
             // 
             this.btnImprimir.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
-            this.btnImprimir.Location = new System.Drawing.Point(758, 332);
+            this.btnImprimir.Location = new System.Drawing.Point(755, 245);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(132, 33);
             this.btnImprimir.TabIndex = 96;
@@ -486,10 +457,10 @@ namespace SistemaTienda
             // btnguardar
             // 
             this.btnguardar.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
-            this.btnguardar.Location = new System.Drawing.Point(758, 280);
+            this.btnguardar.Location = new System.Drawing.Point(755, 196);
             this.btnguardar.Name = "btnguardar";
             this.btnguardar.Size = new System.Drawing.Size(132, 33);
-            this.btnguardar.TabIndex = 95;
+            this.btnguardar.TabIndex = 4;
             this.btnguardar.Text = "Guardar";
             this.btnguardar.UseVisualStyleBackColor = true;
             this.btnguardar.Click += new System.EventHandler(this.btnguardar_Click);
@@ -497,7 +468,7 @@ namespace SistemaTienda
             // btnEliminar
             // 
             this.btnEliminar.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
-            this.btnEliminar.Location = new System.Drawing.Point(758, 228);
+            this.btnEliminar.Location = new System.Drawing.Point(755, 157);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(132, 33);
             this.btnEliminar.TabIndex = 94;
@@ -610,19 +581,47 @@ namespace SistemaTienda
             this.txtcodigoeliminar.Size = new System.Drawing.Size(73, 20);
             this.txtcodigoeliminar.TabIndex = 106;
             // 
+            // txtCodigoPro
+            // 
+            this.txtCodigoPro.Location = new System.Drawing.Point(13, 95);
+            this.txtCodigoPro.Name = "txtCodigoPro";
+            this.txtCodigoPro.Size = new System.Drawing.Size(73, 20);
+            this.txtCodigoPro.TabIndex = 2;
+            // 
+            // txtDescrip
+            // 
+            this.txtDescrip.Location = new System.Drawing.Point(92, 94);
+            this.txtDescrip.Name = "txtDescrip";
+            this.txtDescrip.Size = new System.Drawing.Size(152, 20);
+            this.txtDescrip.TabIndex = 12;
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Location = new System.Drawing.Point(250, 94);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(152, 20);
+            this.txtPrecio.TabIndex = 8;
+            // 
+            // txtCantidad
+            // 
+            this.txtCantidad.Location = new System.Drawing.Point(408, 94);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(182, 20);
+            this.txtCantidad.TabIndex = 5;
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(898, 574);
-            this.Controls.Add(this.txtcodigoeliminar);
-            this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.lblusuario);
-            this.Controls.Add(this.BtnColocar);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.txtDescrip);
             this.Controls.Add(this.txtCodigoPro);
+            this.Controls.Add(this.txtcodigoeliminar);
+            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.lblusuario);
+            this.Controls.Add(this.BtnColocar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.GBBuscarPorNombre);
@@ -655,10 +654,6 @@ namespace SistemaTienda
         #endregion
 
         private System.Windows.Forms.Button BtnColocar;
-        private System.Windows.Forms.TextBox txtCantidad;
-        private System.Windows.Forms.TextBox txtPrecio;
-        private System.Windows.Forms.TextBox txtDescrip;
-        private System.Windows.Forms.TextBox txtCodigoPro;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button BtnBuscarProductos;
         private System.Windows.Forms.TextBox txtbuscarproducto;
@@ -705,6 +700,10 @@ namespace SistemaTienda
         private System.Windows.Forms.ToolStripMenuItem historialToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
         private System.Windows.Forms.TextBox txtcodigoeliminar;
+        private System.Windows.Forms.TextBox txtCodigoPro;
+        private System.Windows.Forms.TextBox txtDescrip;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.TextBox txtCantidad;
     }
 }
 

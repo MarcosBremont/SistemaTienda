@@ -67,6 +67,7 @@ namespace SistemaTienda.Pantallas
             this.linkLabel3.TabIndex = 67;
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "Recuperar Contraseña";
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
             // 
             // cbRol
             // 
@@ -103,6 +104,7 @@ namespace SistemaTienda.Pantallas
             this.linkLabel1.TabIndex = 65;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Cambiar Contraseña";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // btnIniciar
             // 

@@ -98,6 +98,12 @@
     <Compile Include="Pantallas\FrmAcercaDe.Designer.cs">
       <DependentUpon>FrmAcercaDe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\FrmCambiarContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\FrmCambiarContraseña.Designer.cs">
+      <DependentUpon>FrmCambiarContraseña.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\FrmCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,12 @@
     <Compile Include="Pantallas\FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\FrmRecuperarContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\FrmRecuperarContraseña.Designer.cs">
+      <DependentUpon>FrmRecuperarContraseña.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\FrmRegistroUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +156,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Pantallas\FrmAcercaDe.resx">
       <DependentUpon>FrmAcercaDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\FrmCambiarContraseña.resx">
+      <DependentUpon>FrmCambiarContraseña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\FrmCategoria.resx">
       <DependentUpon>FrmCategoria.cs</DependentUpon>
@@ -162,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\FrmRecuperarContraseña.resx">
+      <DependentUpon>FrmRecuperarContraseña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\FrmRegistroUsuario.resx">
       <DependentUpon>FrmRegistroUsuario.cs</DependentUpon>

@@ -187,5 +187,20 @@ namespace SistemaTienda.Pantallas
                 Ingresar();
             }
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            FrmCambiarContraseña frm = new FrmCambiarContraseña();
+            frm.Show();
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            FrmRecuperarContraseña frm = new FrmRecuperarContraseña();
+            frm.txtEmail.Focus();
+            frm.Show();
+        }
     }
 }

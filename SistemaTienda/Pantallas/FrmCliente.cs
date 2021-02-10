@@ -150,5 +150,10 @@ namespace SistemaTienda.Pantallas
                 Close();
             }
         }
+
+        private void dgvCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
+        }
     }
 }
