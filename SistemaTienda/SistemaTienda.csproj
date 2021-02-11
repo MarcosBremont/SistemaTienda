@@ -122,6 +122,12 @@
     <Compile Include="Pantallas\FrmEditarProductos.Designer.cs">
       <DependentUpon>FrmEditarProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\FrmHistorialFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\FrmHistorialFacturas.Designer.cs">
+      <DependentUpon>FrmHistorialFacturas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\FrmInventario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\FrmEditarProductos.resx">
       <DependentUpon>FrmEditarProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\FrmHistorialFacturas.resx">
+      <DependentUpon>FrmHistorialFacturas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\FrmInventario.resx">
       <DependentUpon>FrmInventario.cs</DependentUpon>
@@ -222,6 +231,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LaCasaDelVaporLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

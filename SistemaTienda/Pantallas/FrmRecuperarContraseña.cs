@@ -35,7 +35,7 @@ namespace SistemaTienda.Pantallas
                 DataSet ds = new DataSet();
                 MySqlConnection con = new MySqlConnection(cs);
                 con.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT Contrasena FROM RegistroUsuario Where Email = '" + txtEmail.Text + "'", con);
+                MySqlCommand cmd = new MySqlCommand("SELECT Contrasena FROM usuario Where Email = '" + txtEmail.Text + "'", con);
 
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 da.Fill(ds);

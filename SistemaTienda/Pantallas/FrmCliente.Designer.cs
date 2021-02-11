@@ -47,7 +47,6 @@ namespace SistemaTienda.Pantallas
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.txtNotas = new System.Windows.Forms.TextBox();
             this.Label23 = new System.Windows.Forms.Label();
@@ -58,6 +57,7 @@ namespace SistemaTienda.Pantallas
             this.txtNombreCompleto = new System.Windows.Forms.TextBox();
             this.txtIDCliente = new System.Windows.Forms.TextBox();
             this.Label4 = new System.Windows.Forms.Label();
+            this.btnGuardar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).BeginInit();
             this.GroupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -253,17 +253,6 @@ namespace SistemaTienda.Pantallas
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
-            this.btnGuardar.Location = new System.Drawing.Point(16, 54);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(87, 29);
-            this.btnGuardar.TabIndex = 1;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
             // btnNuevo
             // 
             this.btnNuevo.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
@@ -356,6 +345,17 @@ namespace SistemaTienda.Pantallas
             this.Label4.TabIndex = 129;
             this.Label4.Text = "ID Cliente";
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
+            this.btnGuardar.Location = new System.Drawing.Point(16, 54);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(87, 29);
+            this.btnGuardar.TabIndex = 1;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -398,7 +398,6 @@ namespace SistemaTienda.Pantallas
         internal System.Windows.Forms.GroupBox GroupBox2;
         internal System.Windows.Forms.Button btnEliminar;
         internal System.Windows.Forms.Button btnActualizar;
-        internal System.Windows.Forms.Button btnGuardar;
         internal System.Windows.Forms.Button btnNuevo;
         internal System.Windows.Forms.TextBox txtNotas;
         internal System.Windows.Forms.Label Label23;
@@ -414,5 +413,6 @@ namespace SistemaTienda.Pantallas
         private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn TELEFONO;
         private System.Windows.Forms.DataGridViewTextBoxColumn Notas;
+        internal System.Windows.Forms.Button btnGuardar;
     }
 }

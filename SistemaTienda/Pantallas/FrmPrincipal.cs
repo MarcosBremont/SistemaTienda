@@ -63,7 +63,10 @@ namespace SistemaTienda
         public static double total;
         private void BtnColocar_Click(object sender, EventArgs e)
         {
+            int cambio = 0;
             ColocarEnGrid();
+            cambio = int.Parse(txtDineroRecibido.Text) - int.Parse(txtTotal.Text);
+            txtCambio.Text = cambio.ToString();
         }
 
 
@@ -122,8 +125,9 @@ namespace SistemaTienda
                 string facturado = row.Cells["facturado"].Value.ToString();
                 int cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
                 int total_calculo = Convert.ToInt32(row.Cells["total_calculo"].Value);
+                DateTime fechaFactura = Convert.ToDateTime(row.Cells["fechaFactura"].Value);
 
-                string query = "INSERT INTO historial_factura (nombre_pro, precio_pro, nombrecompleto, facturado, Cantidad, total_calculo) VALUES (@nombre_pro, @precio_pro, @nombrecompleto, @facturado, @Cantidad, @total_calculo)";
+                string query = "INSERT INTO historial_factura (nombre_pro, precio_pro, nombrecompleto, facturado, Cantidad, total_calculo, fechaFactura) VALUES (@nombre_pro, @precio_pro, @nombrecompleto, @facturado, @Cantidad, @total_calculo, @fechaFactura)";
                 MySqlCommand comando = new MySqlCommand(query, con);
                 comando.Parameters.Add("@nombre_pro", MySqlDbType.String).Value = nombrepro;
                 comando.Parameters.Add("@precio_pro", MySqlDbType.Int32).Value = precio_pro;
@@ -131,6 +135,7 @@ namespace SistemaTienda
                 comando.Parameters.Add("@facturado", MySqlDbType.String).Value = facturado;
                 comando.Parameters.Add("@Cantidad", MySqlDbType.Int32).Value = cantidad;
                 comando.Parameters.Add("@total_calculo", MySqlDbType.Int32).Value = total_calculo;
+                comando.Parameters.Add("@fechaFactura", MySqlDbType.Datetime).Value = fechaFactura;
 
                 comando.ExecuteNonQuery();
             }
@@ -140,12 +145,37 @@ namespace SistemaTienda
         }
         private void btnguardar_Click(object sender, EventArgs e)
         {
+            validacionColocarProducto();
             Insertar();
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             txtbuscarproducto.TabIndex = 0;
+            btnguardar.Enabled = false;
+            validacionColocarProducto();
+        }
+
+        public void validacionColocarProducto()
+        {
+            if (txtCantidad.Text == "")
+            {
+                BtnColocar.Enabled = false;
+
+            }
+            else if (txtSeleccionarCLiente.Text == "")
+            {
+                BtnColocar.Enabled = false;
+            }
+            else if (cmbfacturara.Text == "")
+            {
+                BtnColocar.Enabled = false;
+            }
+            else
+            {
+                BtnColocar.Enabled = true;
+            }
+
         }
 
         private void editarCategoriasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -265,59 +295,62 @@ namespace SistemaTienda
                 else
                 {
 
-                if (string.IsNullOrEmpty(cmbfacturara.Text))
-                {
-                    MessageBox.Show("Debe seleccionar una forma de facturar");
-                    cmbfacturara.Focus();
+                    if (string.IsNullOrEmpty(cmbfacturara.Text))
+                    {
+                        MessageBox.Show("Debe seleccionar una forma de facturar");
+                        cmbfacturara.Focus();
 
-                    return;
-                }
-                if (cont_fila >= 0)
-                {
-                    dgvFacturacion.Rows.Add(txtCodigoPro.Text, txtDescrip.Text, txtPrecio.Text, txtCantidad.Text);
-                    double importe = Convert.ToDouble(dgvFacturacion.Rows[cont_fila].Cells[2].Value) * Convert.ToDouble(dgvFacturacion.Rows[cont_fila].Cells[3].Value);
-                    dgvFacturacion.Rows[cont_fila].Cells[6].Value = importe;
-                    dgvFacturacion.Rows[cont_fila].Cells[4].Value = txtSeleccionarCLiente.Text;
-                    dgvFacturacion.Rows[cont_fila].Cells[5].Value = cmbfacturara.Text;
-                    cont_fila++;
-                }
-                else
-                {
-                    foreach (DataGridViewRow Fila in dgvFacturacion.Rows)
-                    {
-                        if (Fila.Cells[0].Value.ToString() == txtCodigoPro.Text)
-                        {
-                            existe = true;
-                            num_fila = Fila.Index;
-                        }
+                        return;
                     }
-                    if (existe == true)
-                    {
-                        dgvFacturacion.Rows[num_fila].Cells[3].Value = (Convert.ToDouble(txtCantidad.Text) + Convert.ToDouble(dgvFacturacion.Rows[num_fila].Cells[3].Value)).ToString();
-                        double importe = Convert.ToDouble(dgvFacturacion.Rows[num_fila].Cells[2].Value) * Convert.ToDouble(dgvFacturacion.Rows[num_fila].Cells[3].Value);
-                        dgvFacturacion.Rows[num_fila].Cells[6].Value = importe;
-                    }
-                    else
+                    if (cont_fila >= 0)
                     {
                         dgvFacturacion.Rows.Add(txtCodigoPro.Text, txtDescrip.Text, txtPrecio.Text, txtCantidad.Text);
                         double importe = Convert.ToDouble(dgvFacturacion.Rows[cont_fila].Cells[2].Value) * Convert.ToDouble(dgvFacturacion.Rows[cont_fila].Cells[3].Value);
                         dgvFacturacion.Rows[cont_fila].Cells[6].Value = importe;
+                        dgvFacturacion.Rows[cont_fila].Cells[4].Value = txtSeleccionarCLiente.Text;
+                        dgvFacturacion.Rows[cont_fila].Cells[5].Value = cmbfacturara.Text;
+                        dgvFacturacion.Rows[cont_fila].Cells[7].Value = dateTimePicker1.Text;
                         cont_fila++;
                     }
-                }
+                    else
+                    {
+                        foreach (DataGridViewRow Fila in dgvFacturacion.Rows)
+                        {
+                            if (Fila.Cells[0].Value.ToString() == txtCodigoPro.Text)
+                            {
+                                existe = true;
+                                num_fila = Fila.Index;
+                            }
+                        }
+                        if (existe == true)
+                        {
+                            dgvFacturacion.Rows[num_fila].Cells[3].Value = (Convert.ToDouble(txtCantidad.Text) + Convert.ToDouble(dgvFacturacion.Rows[num_fila].Cells[3].Value)).ToString();
+                            double importe = Convert.ToDouble(dgvFacturacion.Rows[num_fila].Cells[2].Value) * Convert.ToDouble(dgvFacturacion.Rows[num_fila].Cells[3].Value);
+                            dgvFacturacion.Rows[num_fila].Cells[6].Value = importe;
+                        }
+                        else
+                        {
+                            dgvFacturacion.Rows.Add(txtCodigoPro.Text, txtDescrip.Text, txtPrecio.Text, txtCantidad.Text);
+                            double importe = Convert.ToDouble(dgvFacturacion.Rows[cont_fila].Cells[2].Value) * Convert.ToDouble(dgvFacturacion.Rows[cont_fila].Cells[3].Value);
+                            dgvFacturacion.Rows[cont_fila].Cells[6].Value = importe;
+                            cont_fila++;
+                        }
+                    }
 
-                total = 0;
-                foreach (DataGridViewRow Fila in dgvFacturacion.Rows)
-                {
-                    total += Convert.ToDouble(Fila.Cells[6].Value);
-                }
-                txtTotal.Text = "RD$" + total.ToString();
-                txtSeleccionarCLiente.Focus();
-                this.txtcantidaddeproductos.Text = this.dgvFacturacion.Rows.Count.ToString("N0");
-                Limpiar();
+                    total = 0;
+                    foreach (DataGridViewRow Fila in dgvFacturacion.Rows)
+                    {
+                        total += Convert.ToDouble(Fila.Cells[6].Value);
+                    }
+                    txtTotal.Text = total.ToString();
+                    txtSeleccionarCLiente.Focus();
+                    this.txtcantidaddeproductos.Text = this.dgvFacturacion.Rows.Count.ToString("N0");
+                    Limpiar();
                 }
 
             }
+            btnguardar.Enabled = true;
+            txtbuscarproducto.Focus();
         }
 
         private void txtCantidad_KeyDown(object sender, KeyEventArgs e)
@@ -327,6 +360,77 @@ namespace SistemaTienda
                 e.SuppressKeyPress = false;
                 ColocarEnGrid();
             }
+        }
+
+        private void txtbuscarproducto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = false;
+
+                if (string.IsNullOrEmpty(txtbuscarproducto.Text))
+                {
+                    FrmInventario FrmI = new FrmInventario();
+                    FrmI.ShowDialog();
+
+                    if (FrmI.DialogResult == DialogResult.OK)
+                    {
+                        txtCodigoPro.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[0].Value.ToString();
+                        txtDescrip.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[1].Value.ToString();
+                        txtPrecio.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[4].Value.ToString();
+                        txtCantidad.Focus();
+                        con.Close();
+                    }
+                    this.txtcantidaddeproductos.Text = this.dgvFacturacion.Rows.Count.ToString("N0");
+
+                }
+
+                else
+                {
+                    MySqlCommand cmd = new MySqlCommand(" SELECT * FROM producto where id_producto = @id_producto", con);
+                    cmd.Parameters.AddWithValue("id_producto", txtbuscarproducto.Text);
+
+                    con.Open();
+                    MySqlDataReader registro = cmd.ExecuteReader();
+                    if (registro.Read())
+                    {
+                        txtCodigoPro.Text = registro["id_producto"].ToString();
+                        txtDescrip.Text = registro["nombre_pro"].ToString();
+                        txtPrecio.Text = registro["precio_pro"].ToString();
+                        txtCantidad.Focus();
+
+                    }
+                    con.Close();
+
+                }
+            }
+        }
+
+        private void txtbuscarproducto_TextChanged(object sender, EventArgs e)
+        {
+            validacionColocarProducto();
+        }
+
+        private void txtSeleccionarCLiente_TextChanged(object sender, EventArgs e)
+        {
+            validacionColocarProducto();
+        }
+
+        private void cmbfacturara_SelectedValueChanged(object sender, EventArgs e)
+        {
+            validacionColocarProducto();
+        }
+
+        private void BtnNueva_Click(object sender, EventArgs e)
+        {
+            dgvFacturacion.Rows.Clear();
+            txtbuscarproducto.Focus();
+        }
+
+        private void historialDeFacturasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmHistorialFacturas FrmHF = new FrmHistorialFacturas();
+            FrmHF.Show();
         }
     }
 }

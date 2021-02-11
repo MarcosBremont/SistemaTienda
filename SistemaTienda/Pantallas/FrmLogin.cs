@@ -45,13 +45,13 @@ namespace SistemaTienda.Pantallas
 
             if (txtUsuario.Text == "")
             {
-                MessageBox.Show("Please enter user name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor introduzca su nombre de usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtUsuario.Focus();
                 return;
             }
             if (txtContraseña.Text == "")
             {
-                MessageBox.Show("Please enter password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor introduzca su contraseña", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtContraseña.Focus();
                 return;
             }
