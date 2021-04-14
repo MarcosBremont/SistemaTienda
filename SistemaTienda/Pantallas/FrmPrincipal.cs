@@ -172,6 +172,10 @@ namespace SistemaTienda
             {
                 BtnColocar.Enabled = false;
             }
+            else if (txtDineroRecibido.Text == "")
+            {
+                BtnColocar.Enabled = false;
+            }
             else
             {
                 BtnColocar.Enabled = true;
@@ -479,9 +483,13 @@ namespace SistemaTienda
             format.Alignment = StringAlignment.Near;
             DateTime fecha =  DateTime.Parse(dateTimePicker1.Text.ToString());
             int ancho = 250; 
+            int anchoPhoto = 10; 
             int y = 20;
+            //string logo = "";
+            Image photo = Image.FromFile("c:/earth.png");
+            
 
-
+            e.Graphics.DrawImage(photo, new RectangleF(0, y += 20, ancho, 250));
             e.Graphics.DrawString("           " + fecha.ToString("MM/dd/yyyy"), font,  Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
             e.Graphics.DrawString("    --- Compañia X ---", font,  Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
             //e.Graphics.DrawString("--- Factura # ---" + txtCantidad.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
