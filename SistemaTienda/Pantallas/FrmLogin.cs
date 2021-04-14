@@ -202,5 +202,10 @@ namespace SistemaTienda.Pantallas
             frm.txtEmail.Focus();
             frm.Show();
         }
+
+        private void pictureBoxLogoTic_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

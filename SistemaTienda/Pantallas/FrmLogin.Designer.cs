@@ -43,6 +43,7 @@ namespace SistemaTienda.Pantallas
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.panelLogoTic = new System.Windows.Forms.Panel();
             this.pictureBoxLogoTic = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelLogoTic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoTic)).BeginInit();
             this.SuspendLayout();
@@ -180,6 +181,7 @@ namespace SistemaTienda.Pantallas
             // panelLogoTic
             // 
             this.panelLogoTic.BackColor = System.Drawing.Color.White;
+            this.panelLogoTic.Controls.Add(this.label1);
             this.panelLogoTic.Controls.Add(this.pictureBoxLogoTic);
             this.panelLogoTic.Location = new System.Drawing.Point(0, 0);
             this.panelLogoTic.Name = "panelLogoTic";
@@ -188,13 +190,26 @@ namespace SistemaTienda.Pantallas
             // 
             // pictureBoxLogoTic
             // 
-            this.pictureBoxLogoTic.Image = global::SistemaTienda.Properties.Resources.LaCasaDelVaporLogo;
-            this.pictureBoxLogoTic.Location = new System.Drawing.Point(-245, -83);
+            this.pictureBoxLogoTic.Image = global::SistemaTienda.Properties.Resources.rompecabezas;
+            this.pictureBoxLogoTic.Location = new System.Drawing.Point(36, 115);
             this.pictureBoxLogoTic.Name = "pictureBoxLogoTic";
-            this.pictureBoxLogoTic.Size = new System.Drawing.Size(750, 529);
-            this.pictureBoxLogoTic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxLogoTic.Size = new System.Drawing.Size(143, 141);
+            this.pictureBoxLogoTic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxLogoTic.TabIndex = 1;
             this.pictureBoxLogoTic.TabStop = false;
+            this.pictureBoxLogoTic.Click += new System.EventHandler(this.pictureBoxLogoTic_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(44, 259);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 25);
+            this.label1.TabIndex = 73;
+            this.label1.Text = "Compañia X";
             // 
             // FrmLogin
             // 
@@ -219,6 +234,7 @@ namespace SistemaTienda.Pantallas
             this.Text = "Login";
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.panelLogoTic.ResumeLayout(false);
+            this.panelLogoTic.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoTic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -240,5 +256,6 @@ namespace SistemaTienda.Pantallas
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Panel panelLogoTic;
         private System.Windows.Forms.PictureBox pictureBoxLogoTic;
+        private System.Windows.Forms.Label label1;
     }
 }

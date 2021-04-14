@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -108,10 +109,10 @@ namespace SistemaTienda
             txtCodigoPro.Text = "";
             txtPrecio.Text = "";
             txtCantidad.Text = "";
-            txtSeleccionarCLiente.Text = "";
-            txtclienteTemporal.Text = "";
+          
+           
             txtFacturadoPor.Text = "";
-            cmbfacturara.Text = "";
+          
 
         }
         public void Insertar()
@@ -135,7 +136,7 @@ namespace SistemaTienda
                 comando.Parameters.Add("@facturado", MySqlDbType.String).Value = facturado;
                 comando.Parameters.Add("@Cantidad", MySqlDbType.Int32).Value = cantidad;
                 comando.Parameters.Add("@total_calculo", MySqlDbType.Int32).Value = total_calculo;
-                comando.Parameters.Add("@fechaFactura", MySqlDbType.Datetime).Value = fechaFactura;
+                comando.Parameters.Add("@fechaFactura", MySqlDbType.DateTime).Value = fechaFactura;
 
                 comando.ExecuteNonQuery();
             }
@@ -251,6 +252,31 @@ namespace SistemaTienda
 
             }
             //this.txtcantidaddeproductos.Text = this.dgvStock.Rows.Count.ToString("N0");
+        }
+
+        public void Facturar()
+        {
+            DataTable dt = new DataTable();
+            dgvFacturacion.DataSource = dt;
+
+            Factura fact = new Factura();
+            List<Factura> listaFact = new List<Factura>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                //fact.Codigo = row["Codigo"].ToString();
+                fact.Nombre_pro = row["precio_pro"].ToString();
+                fact.Nombrecompleto = row["nombrecompleto"].ToString();
+                fact.Facturado = row["facturado"].ToString();
+                //fact.Cantidad = row["cantidad"].ToString();
+                //fact.Total_calculo = row["total_calculo"].ToString();
+                //fact.FechaFactura = row["fechaFactura"].ToString();
+
+                listaFact.Add(fact);
+
+                MessageBox.Show(listaFact.Count().ToString());
+            }
+
         }
 
         public void ColocarEnGrid()
@@ -431,6 +457,58 @@ namespace SistemaTienda
         {
             FrmHistorialFacturas FrmHF = new FrmHistorialFacturas();
             FrmHF.Show();
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            //Facturar();
+
+            printDocument1 = new PrintDocument();
+            PrinterSettings ps = new PrinterSettings();
+            printDocument1.PrinterSettings = ps;
+            printDocument1.PrintPage += Imprimir;
+            printDocument1.Print();
+        }
+
+        private void Imprimir(object sender, PrintPageEventArgs e)
+        {
+            Font font = new Font("Times New Roman", 14, FontStyle.Bold);
+            Font fontSinBold = new Font("Times New Roman", 14);
+            StringFormat format = new StringFormat();
+            format.LineAlignment = StringAlignment.Near;
+            format.Alignment = StringAlignment.Near;
+            DateTime fecha =  DateTime.Parse(dateTimePicker1.Text.ToString());
+            int ancho = 250; 
+            int y = 20;
+
+
+            e.Graphics.DrawString("           " + fecha.ToString("MM/dd/yyyy"), font,  Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+            e.Graphics.DrawString("    --- Compañia X ---", font,  Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+            //e.Graphics.DrawString("--- Factura # ---" + txtCantidad.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
+            e.Graphics.DrawString("Cliente: " + txtSeleccionarCLiente.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+            e.Graphics.DrawString("    --- Productos ---", font, Brushes.Black, new RectangleF(0, y += 40, ancho, 20), format);
+            DataTable dt = new DataTable();
+
+            foreach (DataGridViewRow row in dgvFacturacion.Rows)
+            {
+                //MessageBox.Show(row.Cells["cod_prod"].Value.ToString());
+                int cantidad = int.Parse(row.Cells["Cantidad"].Value.ToString());
+                string nombreProducto = row.Cells["nombre_pro"].Value.ToString();
+                float precio = float.Parse(row.Cells["precio_pro"].Value.ToString());
+                string nombreCliente = row.Cells["nombrecompleto"].Value.ToString();
+                string total = txtTotal.Text.ToString();
+
+                e.Graphics.DrawString(cantidad + " " + nombreProducto + " " + precio, fontSinBold, Brushes.Black,  new RectangleF(0, y += 20, ancho, 20), format);
+            }
+
+                e.Graphics.DrawString(" ------------------------------- ", fontSinBold, Brushes.Black, new RectangleF(0, y += 40, ancho, 20), format);
+                e.Graphics.DrawString("Total: " + total, fontSinBold, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+                e.Graphics.DrawString("--- Gracias por Visitarnos ---", fontSinBold, Brushes.Black, new RectangleF(0, y += 30, ancho, 20), format);
+            //foreach (DataRow row in dgvFacturacion.Rows)
+            //{
+            //    e.Graphics.DrawString(nombrecompleto + " " +
+            //        row["PRODUCTO"].ToString(), font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
+            //}
         }
     }
 }
