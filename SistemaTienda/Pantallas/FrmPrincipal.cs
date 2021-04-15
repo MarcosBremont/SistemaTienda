@@ -65,15 +65,30 @@ namespace SistemaTienda
         public static double total;
         private void BtnColocar_Click(object sender, EventArgs e)
         {
-            int cambio = 0;
             ColocarEnGrid();
-            cambio = int.Parse(txtDineroRecibido.Text) - int.Parse(txtTotal.Text);
-            txtCambio.Text = cambio.ToString();
         }
 
 
 
         private void BtnAgregarCliente_Click(object sender, EventArgs e)
+        {
+            AgregarCliente();
+        }
+        public void Limpiar()
+        {
+            txtCodigoPro.Text = "";
+            txtDescrip.Text = "";
+            txtCodigoPro.Text = "";
+            txtPrecio.Text = "";
+            txtCantidad.Text = "";
+          
+           
+            txtFacturadoPor.Text = "";
+          
+
+        } 
+        
+        public void AgregarCliente()
         {
             if (string.IsNullOrEmpty(txtSeleccionarCLiente.Text))
             {
@@ -83,7 +98,8 @@ namespace SistemaTienda
 
                 if (FrmC.DialogResult == DialogResult.OK)
                 {
-                    txtSeleccionarCLiente.Text = FrmC.dgvCliente.Rows[FrmC.dgvCliente.CurrentRow.Index].Cells[1].Value.ToString();
+                    //txtSeleccionarCLiente.Text = FrmC.dgvCliente.Rows[FrmC.dgvCliente.CurrentRow.Cells].Cells[1].Value.ToString();
+                    txtSeleccionarCLiente.Text = FrmC.dgvCliente.CurrentRow.Cells[1].Value.ToString();
                     con.Close();
                 }
             }
@@ -102,18 +118,7 @@ namespace SistemaTienda
                 }
                 con.Close();
             }
-        }
-        public void Limpiar()
-        {
-            txtCodigoPro.Text = "";
-            txtDescrip.Text = "";
-            txtCodigoPro.Text = "";
-            txtPrecio.Text = "";
-            txtCantidad.Text = "";
-          
-           
-            txtFacturadoPor.Text = "";
-          
+
 
         }
         public void Insertar()
@@ -149,12 +154,14 @@ namespace SistemaTienda
         {
             validacionColocarProducto();
             Insertar();
+            btnImprimir.Focus();
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             txtbuscarproducto.TabIndex = 0;
             btnguardar.Enabled = false;
+            btnImprimir.Enabled = false;
             validacionColocarProducto();
         }
 
@@ -289,6 +296,8 @@ namespace SistemaTienda
             bool existe = false;
             int num_fila = 0;
 
+           
+
             if (string.IsNullOrEmpty(txtCantidad.Text))
             {
                 MessageBox.Show("Debe introducir una cantidad del producto seleccionado");
@@ -376,12 +385,17 @@ namespace SistemaTienda
                     txtTotal.Text = total.ToString();
                     txtSeleccionarCLiente.Focus();
                     this.txtcantidaddeproductos.Text = this.dgvFacturacion.Rows.Count.ToString("N0");
+
                     Limpiar();
                 }
 
             }
             btnguardar.Enabled = true;
+            btnImprimir.Enabled = true;
             txtbuscarproducto.Focus();
+            int cambio = 0;
+            cambio = int.Parse(txtDineroRecibido.Text) - int.Parse(txtTotal.Text);
+            txtCambio.Text = cambio.ToString();
         }
 
         private void txtCantidad_KeyDown(object sender, KeyEventArgs e)
@@ -507,13 +521,14 @@ namespace SistemaTienda
             //string logo = "";
             Image photo = Image.FromFile("c:/earth.png");
 
-            Bitmap image = new Bitmap("c:/earth.png");
+            Bitmap image = new Bitmap("c:/rompecabezas.png");
             Graphics x = this.CreateGraphics();
 
-            e.Graphics.DrawImage(image, new Rectangle(90, 5, 100, image.Height));
+            e.Graphics.DrawImage(image, new Rectangle(80, 5, 50, 50));
             e.Graphics.DrawImage(newImage, destPara1, srcRect, units);
-            e.Graphics.DrawString("           " + fecha.ToString("MM/dd/yyyy"), font,  Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+            e.Graphics.DrawString("           ", font,  Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
             e.Graphics.DrawString("    --- Compañia X ---", font,  Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+            e.Graphics.DrawString("          " + fecha.ToString("MM/dd/yyyy"), font,  Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
             //e.Graphics.DrawString("--- Factura # ---" + txtCantidad.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
             e.Graphics.DrawString("Cliente: " + txtSeleccionarCLiente.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
             e.Graphics.DrawString("    --- Productos ---", font, Brushes.Black, new RectangleF(0, y += 40, ancho, 20), format);
@@ -539,6 +554,35 @@ namespace SistemaTienda
             //    e.Graphics.DrawString(nombrecompleto + " " +
             //        row["PRODUCTO"].ToString(), font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
             //}
+        }
+
+        private void txtCantidad_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = false;
+                AgregarCliente();
+                txtDineroRecibido.Focus();
+            }
+        }
+
+        private void txtDineroRecibido_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = false;
+                cmbfacturara.Focus();
+            }
+        }
+
+        private void cmbfacturara_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = false;
+                ColocarEnGrid();
+                btnguardar.Focus();
+            }
         }
     }
 }

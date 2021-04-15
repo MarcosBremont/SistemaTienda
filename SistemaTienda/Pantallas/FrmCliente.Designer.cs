@@ -47,6 +47,7 @@ namespace SistemaTienda.Pantallas
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.txtNotas = new System.Windows.Forms.TextBox();
             this.Label23 = new System.Windows.Forms.Label();
@@ -57,7 +58,6 @@ namespace SistemaTienda.Pantallas
             this.txtNombreCompleto = new System.Windows.Forms.TextBox();
             this.txtIDCliente = new System.Windows.Forms.TextBox();
             this.Label4 = new System.Windows.Forms.Label();
-            this.btnGuardar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).BeginInit();
             this.GroupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -169,8 +169,9 @@ namespace SistemaTienda.Pantallas
             this.dgvCliente.Size = new System.Drawing.Size(899, 248);
             this.dgvCliente.TabIndex = 0;
             this.dgvCliente.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCliente_CellClick);
-            this.dgvCliente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCliente_CellContentClick);
+            this.dgvCliente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCliente_CellDoubleClick);
             this.dgvCliente.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCliente_CellDoubleClick);
+            this.dgvCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvCliente_KeyDown);
             this.dgvCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvCliente_KeyPress);
             // 
             // IDCliente
@@ -252,6 +253,17 @@ namespace SistemaTienda.Pantallas
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
+            this.btnGuardar.Location = new System.Drawing.Point(16, 54);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(87, 29);
+            this.btnGuardar.TabIndex = 1;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnNuevo
             // 
@@ -344,17 +356,6 @@ namespace SistemaTienda.Pantallas
             this.Label4.Size = new System.Drawing.Size(64, 16);
             this.Label4.TabIndex = 129;
             this.Label4.Text = "ID Cliente";
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
-            this.btnGuardar.Location = new System.Drawing.Point(16, 54);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(87, 29);
-            this.btnGuardar.TabIndex = 1;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // FrmCliente
             // 

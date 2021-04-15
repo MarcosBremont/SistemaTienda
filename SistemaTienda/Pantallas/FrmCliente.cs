@@ -32,6 +32,7 @@ namespace SistemaTienda.Pantallas
             DataTable tabla = new DataTable();
             adaptador.Fill(tabla);
             dgvCliente.DataSource = tabla;
+            dgvCliente.CurrentRow.Cells[1].Selected = true;
         }
 
         private void dgvCliente_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -133,11 +134,6 @@ namespace SistemaTienda.Pantallas
             Clear();
         }
 
-        private void dgvCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dgvCliente_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvCliente.Rows.Count == 0)
@@ -154,6 +150,24 @@ namespace SistemaTienda.Pantallas
         private void dgvCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
            
+        }
+
+        private void dgvCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = false;
+
+                if (dgvCliente.Rows.Count == 0)
+                {
+                    return;
+                }
+                else
+                {
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+            }
         }
     }
 }

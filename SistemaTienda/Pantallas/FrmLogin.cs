@@ -120,11 +120,11 @@ namespace SistemaTienda.Pantallas
 
                     MessageBox.Show("El inicio de sesion fallo, por favor verifique los datos correctamente!", "Inicio de sesion fallido", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    txtUsuario.Clear();
-                    txtContraseña.Clear();
+                    //txtUsuario.Clear();
+                    //txtContraseña.Clear();
 
                     cbRol.Enabled = true;
-                    cbRol.Focus();
+                    txtUsuario.Focus();
 
                 }
                 if (myConnection.State == ConnectionState.Open)

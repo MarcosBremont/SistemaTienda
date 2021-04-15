@@ -102,8 +102,6 @@ namespace SistemaTienda.Pantallas
             {
                 DialogResult = DialogResult.OK;
                 Close();
-                FrmCliente frmc = new FrmCliente();
-                frmc.Show();
             }
         }
 
