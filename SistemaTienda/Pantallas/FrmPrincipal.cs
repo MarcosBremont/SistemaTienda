@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
@@ -476,6 +477,24 @@ namespace SistemaTienda
 
         private void Imprimir(object sender, PrintPageEventArgs e)
         {
+            // Create image.
+            Image newImage = Image.FromFile("c:/earth.png");
+
+            // Create parallelogram for drawing image.
+            Point ulCorner1 = new Point(100, 100);
+            Point urCorner1 = new Point(325, 100);
+            Point llCorner1 = new Point(150, 250);
+            Point[] destPara1 = { ulCorner1, urCorner1, llCorner1 };
+
+            // Create rectangle for source image.
+            Rectangle srcRect = new Rectangle(50, 50, 150, 150);
+            GraphicsUnit units = GraphicsUnit.Pixel;
+
+
+
+            
+
+
             Font font = new Font("Times New Roman", 14, FontStyle.Bold);
             Font fontSinBold = new Font("Times New Roman", 14);
             StringFormat format = new StringFormat();
@@ -487,9 +506,12 @@ namespace SistemaTienda
             int y = 20;
             //string logo = "";
             Image photo = Image.FromFile("c:/earth.png");
-            
 
-            e.Graphics.DrawImage(photo, new RectangleF(0, y += 20, ancho, 250));
+            Bitmap image = new Bitmap("c:/earth.png");
+            Graphics x = this.CreateGraphics();
+
+            e.Graphics.DrawImage(image, new Rectangle(90, 5, 100, image.Height));
+            e.Graphics.DrawImage(newImage, destPara1, srcRect, units);
             e.Graphics.DrawString("           " + fecha.ToString("MM/dd/yyyy"), font,  Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
             e.Graphics.DrawString("    --- Compañia X ---", font,  Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
             //e.Graphics.DrawString("--- Factura # ---" + txtCantidad.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
