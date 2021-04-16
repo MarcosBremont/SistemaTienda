@@ -21,7 +21,7 @@ namespace SistemaTienda.Pantallas
 
         private void FrmCliente_Load(object sender, EventArgs e)
         {
-           
+
             CargarDgvCliente();
             this.txtcantidaddeproductos.Text = this.dgvCliente.Rows.Count.ToString("N0");
         }
@@ -149,15 +149,15 @@ namespace SistemaTienda.Pantallas
 
         private void dgvCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
+
         }
 
         private void dgvCliente_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = false;
 
+                e.SuppressKeyPress = true;
                 if (dgvCliente.Rows.Count == 0)
                 {
                     return;

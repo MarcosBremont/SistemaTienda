@@ -42,8 +42,8 @@ namespace SistemaTienda.Pantallas
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.panelLogoTic = new System.Windows.Forms.Panel();
-            this.pictureBoxLogoTic = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBoxLogoTic = new System.Windows.Forms.PictureBox();
             this.panelLogoTic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoTic)).BeginInit();
             this.SuspendLayout();
@@ -188,17 +188,6 @@ namespace SistemaTienda.Pantallas
             this.panelLogoTic.Size = new System.Drawing.Size(249, 413);
             this.panelLogoTic.TabIndex = 66;
             // 
-            // pictureBoxLogoTic
-            // 
-            this.pictureBoxLogoTic.Image = global::SistemaTienda.Properties.Resources.rompecabezas;
-            this.pictureBoxLogoTic.Location = new System.Drawing.Point(36, 115);
-            this.pictureBoxLogoTic.Name = "pictureBoxLogoTic";
-            this.pictureBoxLogoTic.Size = new System.Drawing.Size(143, 141);
-            this.pictureBoxLogoTic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxLogoTic.TabIndex = 1;
-            this.pictureBoxLogoTic.TabStop = false;
-            this.pictureBoxLogoTic.Click += new System.EventHandler(this.pictureBoxLogoTic_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -210,6 +199,17 @@ namespace SistemaTienda.Pantallas
             this.label1.Size = new System.Drawing.Size(122, 25);
             this.label1.TabIndex = 73;
             this.label1.Text = "Compañia X";
+            // 
+            // pictureBoxLogoTic
+            // 
+            this.pictureBoxLogoTic.Image = global::SistemaTienda.Properties.Resources.rompecabezas;
+            this.pictureBoxLogoTic.Location = new System.Drawing.Point(36, 115);
+            this.pictureBoxLogoTic.Name = "pictureBoxLogoTic";
+            this.pictureBoxLogoTic.Size = new System.Drawing.Size(143, 141);
+            this.pictureBoxLogoTic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxLogoTic.TabIndex = 1;
+            this.pictureBoxLogoTic.TabStop = false;
+            this.pictureBoxLogoTic.Click += new System.EventHandler(this.pictureBoxLogoTic_Click);
             // 
             // FrmLogin
             // 
