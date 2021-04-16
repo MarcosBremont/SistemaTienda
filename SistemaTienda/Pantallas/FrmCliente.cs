@@ -21,18 +21,21 @@ namespace SistemaTienda.Pantallas
 
         private void FrmCliente_Load(object sender, EventArgs e)
         {
-
             CargarDgvCliente();
             this.txtcantidaddeproductos.Text = this.dgvCliente.Rows.Count.ToString("N0");
         }
 
         public void CargarDgvCliente()
         {
-            MySqlDataAdapter adaptador = new MySqlDataAdapter("Select * from cliente", con);
-            DataTable tabla = new DataTable();
-            adaptador.Fill(tabla);
-            dgvCliente.DataSource = tabla;
-            dgvCliente.CurrentRow.Cells[1].Selected = true;
+            DataTable dt = new DataTable();
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand("SCliente", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            da.Fill(dt);
+            dgvCliente.DataSource = dt;
+            //dgvCliente.DataBind();
+
         }
 
         private void dgvCliente_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -42,6 +45,7 @@ namespace SistemaTienda.Pantallas
             txtDireccion.Text = dgvCliente.CurrentRow.Cells[2].Value.ToString();
             txtTelefono.Text = dgvCliente.CurrentRow.Cells[3].Value.ToString();
             txtNotas.Text = dgvCliente.CurrentRow.Cells[4].Value.ToString();
+            CmbEstado.Text = dgvCliente.CurrentRow.Cells[5].Value.ToString();
         }
         public void Clear()
         {
@@ -55,18 +59,18 @@ namespace SistemaTienda.Pantallas
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             con.Open();
-            DialogResult result = MessageBox.Show("¿Estas seguro que quiere eliminar este Cliente?", "ATENCION", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("¿Estas seguro que quiere deshabilitar este Cliente?", "ATENCIÓN", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
             {
-                string query = "DELETE FROM cliente Where IDCliente = @IDCliente";
-                MySqlCommand comando = new MySqlCommand(query, con);
-                comando.Parameters.AddWithValue("@IDCliente", txtIDCliente.Text);
-                comando.ExecuteNonQuery();
-                CargarDgvCliente();
-                MessageBox.Show("Cliente Eliminado");
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("DCliente", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("prm_IDCliente", MySqlDbType.Text).Value = txtIDCliente.Text;
+                cmd.Parameters.Add("prm_EstadoCliente", MySqlDbType.Text).Value = CmbEstado.Text;
+                cmd.ExecuteReader();
+                MessageBox.Show("Cliente Deshabilitado");
                 con.Close();
-                Clear();
             }
             else
             {
@@ -79,13 +83,14 @@ namespace SistemaTienda.Pantallas
         public void Insertar()
         {
             con.Open();
-            string query = "INSERT INTO Cliente (NombreCompleto, Direccion, TELEFONO, Notas) values (@NombreCompleto, @Direccion, @TELEFONO, @Notas)";
-            MySqlCommand comando = new MySqlCommand(query, con);
-            comando.Parameters.AddWithValue("@NombreCompleto", txtNombreCompleto.Text);
-            comando.Parameters.AddWithValue("@Direccion", txtDireccion.Text);
-            comando.Parameters.AddWithValue("@TELEFONO", txtTelefono.Text);
-            comando.Parameters.AddWithValue("@Notas", txtNotas.Text);
-            comando.ExecuteNonQuery();
+            MySqlCommand cmd = new MySqlCommand("ICliente", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("prm_NombreCompleto", MySqlDbType.Text).Value = txtNombreCompleto.Text;
+            cmd.Parameters.Add("prm_Direccion", MySqlDbType.Text).Value = txtDireccion.Text;
+            cmd.Parameters.Add("prm_TELEFONO", MySqlDbType.Text).Value = txtTelefono.Text;
+            cmd.Parameters.Add("prm_Notas", MySqlDbType.Text).Value = txtNotas.Text;
+            cmd.Parameters.Add("prm_EstadoCliente", MySqlDbType.Text).Value = CmbEstado.Text;
+            cmd.ExecuteReader();
             MessageBox.Show("Cliente Agregado");
             con.Close();
             this.txtcantidaddeproductos.Text = this.dgvCliente.Rows.Count.ToString("N0");
@@ -101,15 +106,16 @@ namespace SistemaTienda.Pantallas
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
+
             con.Open();
-            string query = "UPDATE cliente SET NombreCompleto = @NombreCompleto, Direccion = @Direccion, TELEFONO = @TELEFONO, Notas = @Notas  where IDCliente=@IDCliente";
-            MySqlCommand comando = new MySqlCommand(query, con);
-            comando.Parameters.AddWithValue("@IDCliente", txtIDCliente.Text);
-            comando.Parameters.AddWithValue("@NombreCompleto", txtNombreCompleto.Text);
-            comando.Parameters.AddWithValue("@Direccion", txtDireccion.Text);
-            comando.Parameters.AddWithValue("@TELEFONO", txtTelefono.Text);
-            comando.Parameters.AddWithValue("@Notas", txtNotas.Text);
-            comando.ExecuteNonQuery();
+            MySqlCommand cmd = new MySqlCommand("UCliente", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("@IDCliente", MySqlDbType.Text).Value = txtIDCliente.Text;
+            cmd.Parameters.Add("@NombreCompleto", MySqlDbType.Text).Value = txtNombreCompleto.Text;
+            cmd.Parameters.Add("@Direccion", MySqlDbType.Text).Value = txtDireccion.Text;
+            cmd.Parameters.Add("@TELEFONO", MySqlDbType.Text).Value = txtTelefono.Text;
+            cmd.Parameters.Add("@Notas", MySqlDbType.Text).Value = txtNotas.Text;
+            cmd.ExecuteNonQuery();
             MessageBox.Show("Cliente Actualizado");
             CargarDgvCliente();
             con.Close();

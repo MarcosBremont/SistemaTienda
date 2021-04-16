@@ -58,6 +58,10 @@ namespace SistemaTienda.Pantallas
             this.txtNombreCompleto = new System.Windows.Forms.TextBox();
             this.txtIDCliente = new System.Windows.Forms.TextBox();
             this.Label4 = new System.Windows.Forms.Label();
+            this.lblestadocliente = new System.Windows.Forms.Label();
+            this.CmbEstado = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).BeginInit();
             this.GroupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -357,11 +361,57 @@ namespace SistemaTienda.Pantallas
             this.Label4.TabIndex = 129;
             this.Label4.Text = "ID Cliente";
             // 
+            // lblestadocliente
+            // 
+            this.lblestadocliente.AutoSize = true;
+            this.lblestadocliente.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
+            this.lblestadocliente.Location = new System.Drawing.Point(26, 161);
+            this.lblestadocliente.Name = "lblestadocliente";
+            this.lblestadocliente.Size = new System.Drawing.Size(48, 16);
+            this.lblestadocliente.TabIndex = 144;
+            this.lblestadocliente.Text = "Estado";
+            // 
+            // CmbEstado
+            // 
+            this.CmbEstado.FormattingEnabled = true;
+            this.CmbEstado.Items.AddRange(new object[] {
+            "A",
+            "I"});
+            this.CmbEstado.Location = new System.Drawing.Point(149, 156);
+            this.CmbEstado.Name = "CmbEstado";
+            this.CmbEstado.Size = new System.Drawing.Size(43, 21);
+            this.CmbEstado.TabIndex = 145;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "A",
+            "I"});
+            this.comboBox1.Location = new System.Drawing.Point(240, 195);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(43, 21);
+            this.comboBox1.TabIndex = 147;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
+            this.label6.Location = new System.Drawing.Point(105, 200);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(129, 16);
+            this.label6.TabIndex = 146;
+            this.label6.Text = "Seleccionar Clientes:";
+            // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(933, 524);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.CmbEstado);
+            this.Controls.Add(this.lblestadocliente);
             this.Controls.Add(this.BtnSeleccionar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
@@ -415,5 +465,9 @@ namespace SistemaTienda.Pantallas
         private System.Windows.Forms.DataGridViewTextBoxColumn TELEFONO;
         private System.Windows.Forms.DataGridViewTextBoxColumn Notas;
         internal System.Windows.Forms.Button btnGuardar;
+        internal System.Windows.Forms.Label lblestadocliente;
+        private System.Windows.Forms.ComboBox CmbEstado;
+        private System.Windows.Forms.ComboBox comboBox1;
+        internal System.Windows.Forms.Label label6;
     }
 }
