@@ -30,29 +30,12 @@ namespace SistemaTienda.Pantallas
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.BtnVolverAtras = new System.Windows.Forms.Button();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnEnviar = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.BtnVolverAtras = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // BtnVolverAtras
-            // 
-            this.BtnVolverAtras.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.BtnVolverAtras.FlatAppearance.BorderSize = 2;
-            this.BtnVolverAtras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnVolverAtras.Font = new System.Drawing.Font("Bahnschrift", 12F);
-            this.BtnVolverAtras.ForeColor = System.Drawing.Color.White;
-            this.BtnVolverAtras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnVolverAtras.Location = new System.Drawing.Point(179, 120);
-            this.BtnVolverAtras.Name = "BtnVolverAtras";
-            this.BtnVolverAtras.Size = new System.Drawing.Size(152, 33);
-            this.BtnVolverAtras.TabIndex = 22;
-            this.BtnVolverAtras.Text = "Volver Atras";
-            this.BtnVolverAtras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnVolverAtras.UseVisualStyleBackColor = true;
-            this.BtnVolverAtras.Click += new System.EventHandler(this.BtnVolverAtras_Click);
             // 
             // txtEmail
             // 
@@ -62,6 +45,7 @@ namespace SistemaTienda.Pantallas
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(336, 24);
             this.txtEmail.TabIndex = 19;
+            this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmail_KeyDown);
             // 
             // label1
             // 
@@ -71,9 +55,9 @@ namespace SistemaTienda.Pantallas
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(43, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(171, 16);
+            this.label1.Size = new System.Drawing.Size(188, 16);
             this.label1.TabIndex = 21;
-            this.label1.Text = "Ingresa Correo Electrónico :";
+            this.label1.Text = "Ingrese su Correo Electrónico :";
             // 
             // BtnEnviar
             // 
@@ -90,6 +74,24 @@ namespace SistemaTienda.Pantallas
             this.BtnEnviar.UseVisualStyleBackColor = true;
             this.BtnEnviar.Click += new System.EventHandler(this.BtnEnviar_Click);
             // 
+            // BtnVolverAtras
+            // 
+            this.BtnVolverAtras.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnVolverAtras.FlatAppearance.BorderSize = 2;
+            this.BtnVolverAtras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnVolverAtras.Font = new System.Drawing.Font("Bahnschrift", 12F);
+            this.BtnVolverAtras.ForeColor = System.Drawing.Color.White;
+            this.BtnVolverAtras.Image = global::SistemaTienda.Properties.Resources.BackIcon;
+            this.BtnVolverAtras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnVolverAtras.Location = new System.Drawing.Point(179, 120);
+            this.BtnVolverAtras.Name = "BtnVolverAtras";
+            this.BtnVolverAtras.Size = new System.Drawing.Size(152, 33);
+            this.BtnVolverAtras.TabIndex = 22;
+            this.BtnVolverAtras.Text = "Volver Atras";
+            this.BtnVolverAtras.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnVolverAtras.UseVisualStyleBackColor = true;
+            this.BtnVolverAtras.Click += new System.EventHandler(this.BtnVolverAtras_Click);
+            // 
             // FrmRecuperarContraseña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -101,7 +103,7 @@ namespace SistemaTienda.Pantallas
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnEnviar);
             this.Name = "FrmRecuperarContraseña";
-            this.Text = "FrmRecuperarContraseña";
+            this.Text = "Recuperar Contraseña";
             this.ResumeLayout(false);
             this.PerformLayout();
 

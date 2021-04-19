@@ -168,5 +168,26 @@ namespace SistemaTienda.Pantallas
             }
 
         }
+
+        private void dgvUsuariosRegistrados_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 4 && e.Value != null)
+            {
+                e.Value = new String('*', e.Value.ToString().Length);
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                txtContrasena.PasswordChar = default(char);
+            }
+
+            else
+            {
+                txtContrasena.PasswordChar = char.Parse("*");
+            }
+        }
     }
 }

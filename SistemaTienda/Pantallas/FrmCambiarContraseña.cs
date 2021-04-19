@@ -25,7 +25,7 @@ namespace SistemaTienda.Pantallas
 
         private void FrmCambiarContraseña_Load(object sender, EventArgs e)
         {
-
+            lblUsuario.Visible = true;
         }
 
         private void btnCambiarContrasena_Click(object sender, EventArgs e)
@@ -134,11 +134,6 @@ namespace SistemaTienda.Pantallas
 
         private void txtUsuario_Leave(object sender, EventArgs e)
         {
-            if (txtUsuario.Text == "")
-            {
-                txtUsuario.Text = "Usuario";
-                txtUsuario.ForeColor = Color.White;
-            }
         }
 
         private void txtViejaContraseña_Enter(object sender, EventArgs e)
@@ -200,6 +195,20 @@ namespace SistemaTienda.Pantallas
             FrmLogin frml = new FrmLogin();
             frml.Show();
             this.Hide();
+        }
+
+        private void txtUsuario_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void txtViejaContraseña_Click(object sender, EventArgs e)
+        {
+            lblcontrasenaactual.Visible = true;
+        }
+
+        private void txtViejaContraseña_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

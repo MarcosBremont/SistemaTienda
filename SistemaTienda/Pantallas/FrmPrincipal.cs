@@ -63,6 +63,7 @@ namespace SistemaTienda
         }
         public static int cont_fila = 0;
         public static double total;
+        public static double cambio;
         private void BtnColocar_Click(object sender, EventArgs e)
         {
             ColocarEnGrid();
@@ -81,13 +82,13 @@ namespace SistemaTienda
             txtCodigoPro.Text = "";
             txtPrecio.Text = "";
             txtCantidad.Text = "";
-          
-           
-            txtFacturadoPor.Text = "";
-          
 
-        } 
-        
+
+            txtFacturadoPor.Text = "";
+
+
+        }
+
         public void AgregarCliente()
         {
             if (string.IsNullOrEmpty(txtSeleccionarCLiente.Text))
@@ -123,31 +124,32 @@ namespace SistemaTienda
         }
         public void Insertar()
         {
-            con.Open();
             foreach (DataGridViewRow row in dgvFacturacion.Rows)
             {
-                string nombrepro = row.Cells["nombre_pro"].Value.ToString();
+                con.Open();
+                string nombrepro1 = row.Cells["nombre_pro"].Value.ToString();
                 int precio_pro = Convert.ToInt32(row.Cells["precio_pro"].Value);
                 string nombrecompleto = row.Cells["nombrecompleto"].Value.ToString();
                 string facturado = row.Cells["facturado"].Value.ToString();
                 int cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
                 int total_calculo = Convert.ToInt32(row.Cells["total_calculo"].Value);
                 DateTime fechaFactura = Convert.ToDateTime(row.Cells["fechaFactura"].Value);
+                int codigoproducto = Convert.ToInt32(row.Cells["id_historial_factura"].Value);
 
-                string query = "INSERT INTO historial_factura (nombre_pro, precio_pro, nombrecompleto, facturado, Cantidad, total_calculo, fechaFactura) VALUES (@nombre_pro, @precio_pro, @nombrecompleto, @facturado, @Cantidad, @total_calculo, @fechaFactura)";
-                MySqlCommand comando = new MySqlCommand(query, con);
-                comando.Parameters.Add("@nombre_pro", MySqlDbType.String).Value = nombrepro;
-                comando.Parameters.Add("@precio_pro", MySqlDbType.Int32).Value = precio_pro;
-                comando.Parameters.Add("@nombrecompleto", MySqlDbType.String).Value = nombrecompleto;
-                comando.Parameters.Add("@facturado", MySqlDbType.String).Value = facturado;
-                comando.Parameters.Add("@Cantidad", MySqlDbType.Int32).Value = cantidad;
-                comando.Parameters.Add("@total_calculo", MySqlDbType.Int32).Value = total_calculo;
-                comando.Parameters.Add("@fechaFactura", MySqlDbType.DateTime).Value = fechaFactura;
-
-                comando.ExecuteNonQuery();
+                MySqlCommand cmd = new MySqlCommand("IHistorial_Factura", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("prm_nombre_pro", MySqlDbType.Text).Value = nombrepro1;
+                cmd.Parameters.Add("prm_precio_pro", MySqlDbType.Double).Value = precio_pro;
+                cmd.Parameters.Add("prm_nombrecompleto", MySqlDbType.Text).Value = nombrecompleto;
+                cmd.Parameters.Add("prm_facturado", MySqlDbType.Text).Value = facturado;
+                cmd.Parameters.Add("prm_Cantidad", MySqlDbType.Int32).Value = cantidad;
+                cmd.Parameters.Add("prm_total_calculo", MySqlDbType.Double).Value = total_calculo;
+                cmd.Parameters.Add("prm_fechaFactura", MySqlDbType.DateTime).Value = fechaFactura;
+                cmd.Parameters.Add("prm_idproducto", MySqlDbType.Int32).Value = codigoproducto;
+                cmd.ExecuteReader();
+                con.Close();
             }
             MessageBox.Show("Facturación Completa");
-            con.Close();
             this.txtcantidaddeproductos.Text = this.dgvFacturacion.Rows.Count.ToString("N0");
         }
         private void btnguardar_Click(object sender, EventArgs e)
@@ -163,6 +165,7 @@ namespace SistemaTienda
             btnguardar.Enabled = false;
             btnImprimir.Enabled = false;
             validacionColocarProducto();
+
         }
 
         public void validacionColocarProducto()
@@ -296,7 +299,7 @@ namespace SistemaTienda
             bool existe = false;
             int num_fila = 0;
 
-           
+
 
             if (string.IsNullOrEmpty(txtCantidad.Text))
             {
@@ -491,44 +494,29 @@ namespace SistemaTienda
 
         private void Imprimir(object sender, PrintPageEventArgs e)
         {
-            // Create image.
-            Image newImage = Image.FromFile("c:/earth.png");
-
-            // Create parallelogram for drawing image.
             Point ulCorner1 = new Point(100, 100);
             Point urCorner1 = new Point(325, 100);
             Point llCorner1 = new Point(150, 250);
             Point[] destPara1 = { ulCorner1, urCorner1, llCorner1 };
 
-            // Create rectangle for source image.
             Rectangle srcRect = new Rectangle(50, 50, 150, 150);
             GraphicsUnit units = GraphicsUnit.Pixel;
-
-
-
-            
-
 
             Font font = new Font("Times New Roman", 14, FontStyle.Bold);
             Font fontSinBold = new Font("Times New Roman", 14);
             StringFormat format = new StringFormat();
             format.LineAlignment = StringAlignment.Near;
             format.Alignment = StringAlignment.Near;
-            DateTime fecha =  DateTime.Parse(dateTimePicker1.Text.ToString());
-            int ancho = 250; 
-            int anchoPhoto = 10; 
+            DateTime fecha = DateTime.Parse(dateTimePicker1.Text.ToString());
+            int ancho = 250;
             int y = 20;
-            //string logo = "";
-            Image photo = Image.FromFile("c:/earth.png");
 
             Bitmap image = new Bitmap("c:/rompecabezas.png");
-            Graphics x = this.CreateGraphics();
 
             e.Graphics.DrawImage(image, new Rectangle(80, 5, 50, 50));
-            e.Graphics.DrawImage(newImage, destPara1, srcRect, units);
-            e.Graphics.DrawString("           ", font,  Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
-            e.Graphics.DrawString("    --- Compañia X ---", font,  Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
-            e.Graphics.DrawString("          " + fecha.ToString("MM/dd/yyyy"), font,  Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+            e.Graphics.DrawString("           ", font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+            e.Graphics.DrawString("    --- Compañia X ---", font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+            e.Graphics.DrawString("          " + fecha.ToString("MM/dd/yyyy"), font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
             //e.Graphics.DrawString("--- Factura # ---" + txtCantidad.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
             e.Graphics.DrawString("Cliente: " + txtSeleccionarCLiente.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
             e.Graphics.DrawString("    --- Productos ---", font, Brushes.Black, new RectangleF(0, y += 40, ancho, 20), format);
@@ -542,18 +530,15 @@ namespace SistemaTienda
                 float precio = float.Parse(row.Cells["precio_pro"].Value.ToString());
                 string nombreCliente = row.Cells["nombrecompleto"].Value.ToString();
                 string total = txtTotal.Text.ToString();
+                cambio = double.Parse(txtCambio.Text.ToString());
 
-                e.Graphics.DrawString(cantidad + " " + nombreProducto + " " + precio, fontSinBold, Brushes.Black,  new RectangleF(0, y += 20, ancho, 20), format);
+                e.Graphics.DrawString(cantidad + " " + nombreProducto + " " + precio, fontSinBold, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
             }
 
-                e.Graphics.DrawString(" ------------------------------- ", fontSinBold, Brushes.Black, new RectangleF(0, y += 40, ancho, 20), format);
-                e.Graphics.DrawString("Total: " + total, fontSinBold, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
-                e.Graphics.DrawString("--- Gracias por Visitarnos ---", fontSinBold, Brushes.Black, new RectangleF(0, y += 30, ancho, 20), format);
-            //foreach (DataRow row in dgvFacturacion.Rows)
-            //{
-            //    e.Graphics.DrawString(nombrecompleto + " " +
-            //        row["PRODUCTO"].ToString(), font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
-            //}
+            e.Graphics.DrawString(" ------------------------------- ", fontSinBold, Brushes.Black, new RectangleF(0, y += 40, ancho, 20), format);
+            e.Graphics.DrawString("Total: " + total, fontSinBold, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+            e.Graphics.DrawString("Devuelta: " + cambio, fontSinBold, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+            e.Graphics.DrawString("--- Gracias por Visitarnos ---", fontSinBold, Brushes.Black, new RectangleF(0, y += 30, ancho, 20), format);
         }
 
         private void txtCantidad_KeyDown_1(object sender, KeyEventArgs e)
@@ -583,6 +568,33 @@ namespace SistemaTienda
                 ColocarEnGrid();
                 btnguardar.Focus();
             }
+        }
+
+        private void FrmPrincipal_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.U && e.Modifiers == Keys.Alt)
+            {
+                FrmRegistroUsuario frmRegistroUsuario = new FrmRegistroUsuario();
+                frmRegistroUsuario.Show();
+                //Do stuff...
+            }
+            else if (e.KeyCode == Keys.C && e.Modifiers == Keys.Alt)
+            {
+                FrmCliente frmCliente = new FrmCliente();
+                frmCliente.Show();
+            }
+            else if (e.KeyCode == Keys.I && e.Modifiers == Keys.Alt)
+            {
+                FrmInventario frmInventario = new FrmInventario();
+                frmInventario.Show();
+            }
+
+        }
+
+        private void historialDeudasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmClientesConDeudas frmClientesConDeudas = new FrmClientesConDeudas();
+            frmClientesConDeudas.Show();
         }
     }
 }

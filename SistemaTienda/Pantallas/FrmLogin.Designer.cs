@@ -72,6 +72,7 @@ namespace SistemaTienda.Pantallas
             // 
             // cbRol
             // 
+            this.cbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRol.FormattingEnabled = true;
             this.cbRol.Items.AddRange(new object[] {
             "Admin",
@@ -80,7 +81,6 @@ namespace SistemaTienda.Pantallas
             this.cbRol.Name = "cbRol";
             this.cbRol.Size = new System.Drawing.Size(167, 21);
             this.cbRol.TabIndex = 61;
-            this.cbRol.Text = "Seleccione un rol";
             // 
             // label2
             // 

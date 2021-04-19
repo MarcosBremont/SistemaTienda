@@ -22,6 +22,11 @@ namespace SistemaTienda.Pantallas
         String cs = ("Server=localhost; database=SistemaTienda; user=root; password=1234");
         private void BtnEnviar_Click(object sender, EventArgs e)
         {
+
+        }
+
+        public void EnviarCorreo()
+        {
             if (txtEmail.Text == "")
             {
                 MessageBox.Show("Introduzca su Email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -47,8 +52,8 @@ namespace SistemaTienda.Pantallas
                     Msg.From = new MailAddress("LofiSoftware00@gmail.com");
                     // Recipient e-mail address.
                     Msg.To.Add(txtEmail.Text);
-                    Msg.Subject = "Your Password Details";
-                    Msg.Body = "Su Contraseña es: " + Convert.ToString(ds.Tables[0].Rows[0]["Contrasena"]) + "";
+                    Msg.Subject = "Detalles de tu cuenta";
+                    Msg.Body = "Hola, tú Contraseña es: (" + Convert.ToString(ds.Tables[0].Rows[0]["Contrasena"]) + "), Por favor guarda bien tu contraseña y no la compartas con mas nadie.";
                     Msg.IsBodyHtml = true;
                     // your remote SMTP server IP.
                     SmtpClient smtp = new SmtpClient();
@@ -72,6 +77,15 @@ namespace SistemaTienda.Pantallas
             this.Close();
             FrmLogin frml = new FrmLogin();
             frml.Show();
+        }
+
+        private void txtEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = false;
+                EnviarCorreo();
+            }
         }
     }
 }

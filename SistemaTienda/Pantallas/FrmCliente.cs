@@ -13,7 +13,7 @@ namespace SistemaTienda.Pantallas
 {
     public partial class FrmCliente : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost; database=SistemaTienda; user=root; password=1234");
+        MySqlConnection con = new MySqlConnection("Server=localhost; database=sistematienda; user=root; password=1234");
         public FrmCliente()
         {
             InitializeComponent();
@@ -27,13 +27,16 @@ namespace SistemaTienda.Pantallas
 
         public void CargarDgvCliente()
         {
-            DataTable dt = new DataTable();
             con.Open();
+            DataTable dt = new DataTable();
             MySqlCommand cmd = new MySqlCommand("SCliente", con);
+            cmd.Parameters.Add("prm_EstadoCliente", MySqlDbType.Text).Value = "A";
             cmd.CommandType = CommandType.StoredProcedure;
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             da.Fill(dt);
             dgvCliente.DataSource = dt;
+            con.Close();
+
             //dgvCliente.DataBind();
 
         }
