@@ -20,12 +20,14 @@ namespace SistemaTienda.Pantallas
         public FrmLogin()
         {
             InitializeComponent();
+
         }
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
             cbRol.Focus();
             cbRol.Text = "Seleccione un rol";
+           
         }
 
         private void btnIniciar_Click(object sender, EventArgs e)

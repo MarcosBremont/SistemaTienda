@@ -44,13 +44,14 @@ namespace SistemaTienda.Pantallas
             this.panelLogoTic = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBoxLogoTic = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelLogoTic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoTic)).BeginInit();
             this.SuspendLayout();
             // 
             // ProgressBar1
             // 
-            this.ProgressBar1.Location = new System.Drawing.Point(363, 258);
+            this.ProgressBar1.Location = new System.Drawing.Point(363, 227);
             this.ProgressBar1.Name = "ProgressBar1";
             this.ProgressBar1.Size = new System.Drawing.Size(247, 10);
             this.ProgressBar1.TabIndex = 72;
@@ -62,7 +63,7 @@ namespace SistemaTienda.Pantallas
             this.linkLabel3.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel3.Font = new System.Drawing.Font("Bahnschrift", 9.75F);
             this.linkLabel3.LinkColor = System.Drawing.Color.White;
-            this.linkLabel3.Location = new System.Drawing.Point(493, 345);
+            this.linkLabel3.Location = new System.Drawing.Point(493, 377);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(139, 16);
             this.linkLabel3.TabIndex = 67;
@@ -77,7 +78,7 @@ namespace SistemaTienda.Pantallas
             this.cbRol.Items.AddRange(new object[] {
             "Admin",
             "Empleado"});
-            this.cbRol.Location = new System.Drawing.Point(465, 87);
+            this.cbRol.Location = new System.Drawing.Point(465, 64);
             this.cbRol.Name = "cbRol";
             this.cbRol.Size = new System.Drawing.Size(167, 21);
             this.cbRol.TabIndex = 61;
@@ -86,7 +87,7 @@ namespace SistemaTienda.Pantallas
             // 
             this.label2.Font = new System.Drawing.Font("Bahnschrift", 9.75F);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(343, 87);
+            this.label2.Location = new System.Drawing.Point(343, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(115, 23);
             this.label2.TabIndex = 71;
@@ -99,7 +100,7 @@ namespace SistemaTienda.Pantallas
             this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel1.Font = new System.Drawing.Font("Bahnschrift", 9.75F);
             this.linkLabel1.LinkColor = System.Drawing.Color.White;
-            this.linkLabel1.Location = new System.Drawing.Point(343, 345);
+            this.linkLabel1.Location = new System.Drawing.Point(343, 377);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(127, 16);
             this.linkLabel1.TabIndex = 65;
@@ -116,7 +117,7 @@ namespace SistemaTienda.Pantallas
             this.btnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIniciar.Font = new System.Drawing.Font("Bahnschrift", 12F);
             this.btnIniciar.ForeColor = System.Drawing.Color.White;
-            this.btnIniciar.Location = new System.Drawing.Point(345, 282);
+            this.btnIniciar.Location = new System.Drawing.Point(345, 259);
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(287, 42);
             this.btnIniciar.TabIndex = 64;
@@ -127,7 +128,7 @@ namespace SistemaTienda.Pantallas
             // panelContrasena
             // 
             this.panelContrasena.BackColor = System.Drawing.Color.White;
-            this.panelContrasena.Location = new System.Drawing.Point(343, 224);
+            this.panelContrasena.Location = new System.Drawing.Point(343, 201);
             this.panelContrasena.Name = "panelContrasena";
             this.panelContrasena.Size = new System.Drawing.Size(287, 4);
             this.panelContrasena.TabIndex = 70;
@@ -135,7 +136,7 @@ namespace SistemaTienda.Pantallas
             // panelUsuario
             // 
             this.panelUsuario.BackColor = System.Drawing.Color.White;
-            this.panelUsuario.Location = new System.Drawing.Point(343, 158);
+            this.panelUsuario.Location = new System.Drawing.Point(343, 135);
             this.panelUsuario.Name = "panelUsuario";
             this.panelUsuario.Size = new System.Drawing.Size(287, 4);
             this.panelUsuario.TabIndex = 69;
@@ -156,7 +157,7 @@ namespace SistemaTienda.Pantallas
             this.txtContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(71)))));
             this.txtContraseña.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtContraseña.ForeColor = System.Drawing.Color.White;
-            this.txtContraseña.Location = new System.Drawing.Point(343, 205);
+            this.txtContraseña.Location = new System.Drawing.Point(343, 182);
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.Size = new System.Drawing.Size(282, 13);
             this.txtContraseña.TabIndex = 63;
@@ -170,7 +171,7 @@ namespace SistemaTienda.Pantallas
             this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(71)))));
             this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUsuario.ForeColor = System.Drawing.Color.White;
-            this.txtUsuario.Location = new System.Drawing.Point(343, 136);
+            this.txtUsuario.Location = new System.Drawing.Point(343, 113);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(282, 13);
             this.txtUsuario.TabIndex = 62;
@@ -211,12 +212,29 @@ namespace SistemaTienda.Pantallas
             this.pictureBoxLogoTic.TabStop = false;
             this.pictureBoxLogoTic.Click += new System.EventHandler(this.pictureBoxLogoTic_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(71)))));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderSize = 2;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(50)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Bahnschrift", 12F);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(345, 315);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(287, 42);
+            this.button1.TabIndex = 73;
+            this.button1.Text = "Salir";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(71)))));
             this.ClientSize = new System.Drawing.Size(694, 410);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.ProgressBar1);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.cbRol);
@@ -229,6 +247,7 @@ namespace SistemaTienda.Pantallas
             this.Controls.Add(this.txtContraseña);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.panelLogoTic);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmLogin";
             this.Text = "Login";
@@ -257,5 +276,6 @@ namespace SistemaTienda.Pantallas
         private System.Windows.Forms.Panel panelLogoTic;
         private System.Windows.Forms.PictureBox pictureBoxLogoTic;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }
