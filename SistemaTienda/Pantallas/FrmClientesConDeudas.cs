@@ -29,7 +29,6 @@ namespace SistemaTienda.Pantallas
             con.Open();
             DataTable dt = new DataTable();
             MySqlCommand cmd = new MySqlCommand("SClientesConDeuda", con);
-            cmd.Parameters.Add("prm_facturadoa", MySqlDbType.Text).Value = "Credito";
             cmd.CommandType = CommandType.StoredProcedure;
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             da.Fill(dt);
@@ -42,7 +41,6 @@ namespace SistemaTienda.Pantallas
 
         private void dgvHistorialFactura_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtIDhistorialfactura.Text = dgv_clientes_con_deudas.CurrentRow.Cells["cod_prod"].Value.ToString();
             txtNombreproducto.Text = dgv_clientes_con_deudas.CurrentRow.Cells["nombre_pro"].Value.ToString();
             txtprecioproducto.Text = dgv_clientes_con_deudas.CurrentRow.Cells["precio_pro"].Value.ToString();
             txtnombrecompleto.Text = dgv_clientes_con_deudas.CurrentRow.Cells["nombrecompleto"].Value.ToString();

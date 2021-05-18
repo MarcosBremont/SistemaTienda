@@ -43,8 +43,8 @@ namespace SistemaTienda.Pantallas
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.panelLogoTic = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBoxLogoTic = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.pictureBoxLogoTic = new System.Windows.Forms.PictureBox();
             this.panelLogoTic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoTic)).BeginInit();
             this.SuspendLayout();
@@ -197,20 +197,9 @@ namespace SistemaTienda.Pantallas
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(44, 259);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 25);
+            this.label1.Size = new System.Drawing.Size(148, 25);
             this.label1.TabIndex = 73;
-            this.label1.Text = "Compañia X";
-            // 
-            // pictureBoxLogoTic
-            // 
-            this.pictureBoxLogoTic.Image = global::SistemaTienda.Properties.Resources.rompecabezas;
-            this.pictureBoxLogoTic.Location = new System.Drawing.Point(36, 115);
-            this.pictureBoxLogoTic.Name = "pictureBoxLogoTic";
-            this.pictureBoxLogoTic.Size = new System.Drawing.Size(143, 141);
-            this.pictureBoxLogoTic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxLogoTic.TabIndex = 1;
-            this.pictureBoxLogoTic.TabStop = false;
-            this.pictureBoxLogoTic.Click += new System.EventHandler(this.pictureBoxLogoTic_Click);
+            this.label1.Text = "Lucas Fashion";
             // 
             // button1
             // 
@@ -227,6 +216,18 @@ namespace SistemaTienda.Pantallas
             this.button1.TabIndex = 73;
             this.button1.Text = "Salir";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // pictureBoxLogoTic
+            // 
+            this.pictureBoxLogoTic.Image = global::SistemaTienda.Properties.Resources.boutique;
+            this.pictureBoxLogoTic.Location = new System.Drawing.Point(49, 96);
+            this.pictureBoxLogoTic.Name = "pictureBoxLogoTic";
+            this.pictureBoxLogoTic.Size = new System.Drawing.Size(143, 141);
+            this.pictureBoxLogoTic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxLogoTic.TabIndex = 1;
+            this.pictureBoxLogoTic.TabStop = false;
+            this.pictureBoxLogoTic.Click += new System.EventHandler(this.pictureBoxLogoTic_Click);
             // 
             // FrmLogin
             // 

@@ -29,13 +29,12 @@ namespace SistemaTienda
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BtnColocar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.BtnBuscarProductos = new System.Windows.Forms.Button();
             this.txtbuscarproducto = new System.Windows.Forms.TextBox();
             this.lblnombreproducto = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -63,7 +62,6 @@ namespace SistemaTienda
             this.fechaFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GPDetallesdeStock = new System.Windows.Forms.GroupBox();
             this.txtFacturadoPor = new System.Windows.Forms.TextBox();
-            this.BtnAgregarCliente = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.lblprecio = new System.Windows.Forms.Label();
             this.lblcantidad = new System.Windows.Forms.Label();
@@ -87,6 +85,7 @@ namespace SistemaTienda
             this.historialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historialToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.historialDeFacturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.historialDeudasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtcodigoeliminar = new System.Windows.Forms.TextBox();
             this.txtCodigoPro = new System.Windows.Forms.TextBox();
@@ -98,7 +97,8 @@ namespace SistemaTienda
             this.lblnombreprod = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.historialDeudasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BtnBuscarProductos = new System.Windows.Forms.Button();
+            this.BtnAgregarCliente = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.GBBuscarPorNombre.SuspendLayout();
@@ -128,19 +128,6 @@ namespace SistemaTienda
             this.groupBox2.Size = new System.Drawing.Size(369, 63);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
-            // 
-            // BtnBuscarProductos
-            // 
-            this.BtnBuscarProductos.FlatAppearance.BorderSize = 0;
-            this.BtnBuscarProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnBuscarProductos.Image = global::SistemaTienda.Properties.Resources.lupa__2_;
-            this.BtnBuscarProductos.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnBuscarProductos.Location = new System.Drawing.Point(290, 12);
-            this.BtnBuscarProductos.Name = "BtnBuscarProductos";
-            this.BtnBuscarProductos.Size = new System.Drawing.Size(73, 43);
-            this.BtnBuscarProductos.TabIndex = 2;
-            this.BtnBuscarProductos.UseVisualStyleBackColor = true;
-            this.BtnBuscarProductos.Click += new System.EventHandler(this.BtnBuscarProductos_Click);
             // 
             // txtbuscarproducto
             // 
@@ -316,14 +303,14 @@ namespace SistemaTienda
             this.dgvFacturacion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvFacturacion.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvFacturacion.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(71)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFacturacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(71)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFacturacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvFacturacion.ColumnHeadersHeight = 40;
             this.dgvFacturacion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_historial_factura,
@@ -335,14 +322,14 @@ namespace SistemaTienda
             this.total_calculo,
             this.fechaFactura});
             this.dgvFacturacion.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(22)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFacturacion.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(22)))), ((int)(((byte)(111)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFacturacion.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvFacturacion.EnableHeadersVisualStyles = false;
             this.dgvFacturacion.GridColor = System.Drawing.SystemColors.Control;
             this.dgvFacturacion.Location = new System.Drawing.Point(12, 153);
@@ -350,22 +337,22 @@ namespace SistemaTienda
             this.dgvFacturacion.Name = "dgvFacturacion";
             this.dgvFacturacion.ReadOnly = true;
             this.dgvFacturacion.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFacturacion.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFacturacion.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvFacturacion.RowHeadersVisible = false;
             this.dgvFacturacion.RowHeadersWidth = 10;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Bahnschrift SemiLight", 10F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(22)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvFacturacion.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Bahnschrift SemiLight", 10F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(22)))), ((int)(((byte)(111)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvFacturacion.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvFacturacion.RowTemplate.Height = 30;
             this.dgvFacturacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFacturacion.Size = new System.Drawing.Size(735, 262);
@@ -454,19 +441,6 @@ namespace SistemaTienda
             this.txtFacturadoPor.Size = new System.Drawing.Size(130, 20);
             this.txtFacturadoPor.TabIndex = 104;
             // 
-            // BtnAgregarCliente
-            // 
-            this.BtnAgregarCliente.FlatAppearance.BorderSize = 0;
-            this.BtnAgregarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAgregarCliente.Image = global::SistemaTienda.Properties.Resources.anadir;
-            this.BtnAgregarCliente.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnAgregarCliente.Location = new System.Drawing.Point(284, 65);
-            this.BtnAgregarCliente.Name = "BtnAgregarCliente";
-            this.BtnAgregarCliente.Size = new System.Drawing.Size(28, 30);
-            this.BtnAgregarCliente.TabIndex = 1;
-            this.BtnAgregarCliente.UseVisualStyleBackColor = true;
-            this.BtnAgregarCliente.Click += new System.EventHandler(this.BtnAgregarCliente_Click);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -511,6 +485,7 @@ namespace SistemaTienda
             this.txtclienteTemporal.Name = "txtclienteTemporal";
             this.txtclienteTemporal.Size = new System.Drawing.Size(130, 20);
             this.txtclienteTemporal.TabIndex = 6;
+            this.txtclienteTemporal.TextChanged += new System.EventHandler(this.txtclienteTemporal_TextChanged);
             // 
             // BtnNueva
             // 
@@ -674,6 +649,13 @@ namespace SistemaTienda
             this.historialDeFacturasToolStripMenuItem.Text = "Historial de facturas";
             this.historialDeFacturasToolStripMenuItem.Click += new System.EventHandler(this.historialDeFacturasToolStripMenuItem_Click);
             // 
+            // historialDeudasToolStripMenuItem
+            // 
+            this.historialDeudasToolStripMenuItem.Name = "historialDeudasToolStripMenuItem";
+            this.historialDeudasToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.historialDeudasToolStripMenuItem.Text = "Historial Deudas";
+            this.historialDeudasToolStripMenuItem.Click += new System.EventHandler(this.historialDeudasToolStripMenuItem_Click);
+            // 
             // acercaDeToolStripMenuItem
             // 
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
@@ -761,12 +743,31 @@ namespace SistemaTienda
             this.label4.TabIndex = 107;
             this.label4.Text = "Cantidad";
             // 
-            // historialDeudasToolStripMenuItem
+            // BtnBuscarProductos
             // 
-            this.historialDeudasToolStripMenuItem.Name = "historialDeudasToolStripMenuItem";
-            this.historialDeudasToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.historialDeudasToolStripMenuItem.Text = "Historial Deudas";
-            this.historialDeudasToolStripMenuItem.Click += new System.EventHandler(this.historialDeudasToolStripMenuItem_Click);
+            this.BtnBuscarProductos.FlatAppearance.BorderSize = 0;
+            this.BtnBuscarProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnBuscarProductos.Image = global::SistemaTienda.Properties.Resources.lupa__2_;
+            this.BtnBuscarProductos.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnBuscarProductos.Location = new System.Drawing.Point(290, 12);
+            this.BtnBuscarProductos.Name = "BtnBuscarProductos";
+            this.BtnBuscarProductos.Size = new System.Drawing.Size(73, 43);
+            this.BtnBuscarProductos.TabIndex = 2;
+            this.BtnBuscarProductos.UseVisualStyleBackColor = true;
+            this.BtnBuscarProductos.Click += new System.EventHandler(this.BtnBuscarProductos_Click);
+            // 
+            // BtnAgregarCliente
+            // 
+            this.BtnAgregarCliente.FlatAppearance.BorderSize = 0;
+            this.BtnAgregarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAgregarCliente.Image = global::SistemaTienda.Properties.Resources.anadir;
+            this.BtnAgregarCliente.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnAgregarCliente.Location = new System.Drawing.Point(284, 65);
+            this.BtnAgregarCliente.Name = "BtnAgregarCliente";
+            this.BtnAgregarCliente.Size = new System.Drawing.Size(28, 30);
+            this.BtnAgregarCliente.TabIndex = 1;
+            this.BtnAgregarCliente.UseVisualStyleBackColor = true;
+            this.BtnAgregarCliente.Click += new System.EventHandler(this.BtnAgregarCliente_Click);
             // 
             // FrmPrincipal
             // 

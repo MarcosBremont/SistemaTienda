@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -175,10 +176,6 @@ namespace SistemaTienda
                 BtnColocar.Enabled = false;
 
             }
-            else if (txtSeleccionarCLiente.Text == "")
-            {
-                BtnColocar.Enabled = false;
-            }
             else if (cmbfacturara.Text == "")
             {
                 BtnColocar.Enabled = false;
@@ -298,6 +295,17 @@ namespace SistemaTienda
         {
             bool existe = false;
             int num_fila = 0;
+            string UnCliente = "";
+
+            if (string.IsNullOrEmpty(txtSeleccionarCLiente.Text))
+            {
+                UnCliente = txtclienteTemporal.Text;
+
+            }
+            else
+            {
+                UnCliente = txtSeleccionarCLiente.Text;
+            }
 
 
 
@@ -305,12 +313,6 @@ namespace SistemaTienda
             {
                 MessageBox.Show("Debe introducir una cantidad del producto seleccionado");
                 txtCantidad.Focus();
-                return;
-            }
-            if (string.IsNullOrEmpty(txtSeleccionarCLiente.Text))
-            {
-                MessageBox.Show("Debe introducir un cliente");
-                txtSeleccionarCLiente.Focus();
                 return;
             }
             if (string.IsNullOrEmpty(cmbfacturara.Text))
@@ -329,12 +331,6 @@ namespace SistemaTienda
                     txtCantidad.Focus();
                     return;
                 }
-                if (string.IsNullOrEmpty(txtSeleccionarCLiente.Text))
-                {
-                    MessageBox.Show("Debe introducir un cliente");
-                    txtSeleccionarCLiente.Focus();
-                    return;
-                }
                 else
                 {
 
@@ -350,7 +346,7 @@ namespace SistemaTienda
                         dgvFacturacion.Rows.Add(txtCodigoPro.Text, txtDescrip.Text, txtPrecio.Text, txtCantidad.Text);
                         double importe = Convert.ToDouble(dgvFacturacion.Rows[cont_fila].Cells[2].Value) * Convert.ToDouble(dgvFacturacion.Rows[cont_fila].Cells[3].Value);
                         dgvFacturacion.Rows[cont_fila].Cells[6].Value = importe;
-                        dgvFacturacion.Rows[cont_fila].Cells[4].Value = txtSeleccionarCLiente.Text;
+                        dgvFacturacion.Rows[cont_fila].Cells[4].Value = UnCliente;
                         dgvFacturacion.Rows[cont_fila].Cells[5].Value = cmbfacturara.Text;
                         dgvFacturacion.Rows[cont_fila].Cells[7].Value = dateTimePicker1.Text;
                         cont_fila++;
@@ -462,6 +458,13 @@ namespace SistemaTienda
         private void txtSeleccionarCLiente_TextChanged(object sender, EventArgs e)
         {
             validacionColocarProducto();
+            if (txtSeleccionarCLiente.TextLength>0)
+            {
+                txtclienteTemporal.Enabled = false;
+            }
+            else
+                txtclienteTemporal.Enabled = true;
+
         }
 
         private void cmbfacturara_SelectedValueChanged(object sender, EventArgs e)
@@ -483,12 +486,30 @@ namespace SistemaTienda
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
+            PrintDialog printDialog = new PrintDialog();
+            DialogResult userResp = printDialog.ShowDialog();
+            printDocument1 = new PrintDocument();
+            if (printDialog.PrinterSettings.PrinterName == "Microsoft Print to PDF")
+            {   // force a reasonable filename
+                string basename = Path.GetFileNameWithoutExtension((Path.GetTempFileName()));
+                string directory = Path.GetDirectoryName("c:/");
+                printDocument1.PrinterSettings.PrintToFile = true;
+                // confirm the user wants to use that name
+                SaveFileDialog pdfSaveDialog = new SaveFileDialog();
+                pdfSaveDialog.InitialDirectory = directory;
+                pdfSaveDialog.FileName = basename + ".pdf";
+                pdfSaveDialog.Filter = "PDF File|*.pdf";
+                userResp = pdfSaveDialog.ShowDialog();
+                if (userResp != DialogResult.Cancel)
+                    printDocument1.PrinterSettings.PrintFileName = pdfSaveDialog.FileName;
+            }
             //Facturar();
 
-            printDocument1 = new PrintDocument();
-            PrinterSettings ps = new PrinterSettings();
-            printDocument1.PrinterSettings = ps;
+            //printDocument1 = new PrintDocument();
+            //PrinterSettings ps = new PrinterSettings();
+            //printDocument1.PrinterSettings = ps;
             printDocument1.PrintPage += Imprimir;
+            //printDocument1.DocumentName = "Factura";
             printDocument1.Print();
         }
 
@@ -511,34 +532,54 @@ namespace SistemaTienda
             int ancho = 250;
             int y = 20;
 
-            Bitmap image = new Bitmap("c:/rompecabezas.png");
+            string unCliente = "";
 
-            e.Graphics.DrawImage(image, new Rectangle(80, 5, 50, 50));
-            e.Graphics.DrawString("           ", font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
-            e.Graphics.DrawString("    --- Compañia X ---", font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
-            e.Graphics.DrawString("          " + fecha.ToString("MM/dd/yyyy"), font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
-            //e.Graphics.DrawString("--- Factura # ---" + txtCantidad.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
-            e.Graphics.DrawString("Cliente: " + txtSeleccionarCLiente.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
-            e.Graphics.DrawString("    --- Productos ---", font, Brushes.Black, new RectangleF(0, y += 40, ancho, 20), format);
-            DataTable dt = new DataTable();
 
-            foreach (DataGridViewRow row in dgvFacturacion.Rows)
+            if (string.IsNullOrEmpty(txtSeleccionarCLiente.Text))
             {
-                //MessageBox.Show(row.Cells["cod_prod"].Value.ToString());
-                int cantidad = int.Parse(row.Cells["Cantidad"].Value.ToString());
-                string nombreProducto = row.Cells["nombre_pro"].Value.ToString();
-                float precio = float.Parse(row.Cells["precio_pro"].Value.ToString());
-                string nombreCliente = row.Cells["nombrecompleto"].Value.ToString();
-                string total = txtTotal.Text.ToString();
-                cambio = double.Parse(txtCambio.Text.ToString());
+                 unCliente = txtclienteTemporal.Text;
 
-                e.Graphics.DrawString(cantidad + " " + nombreProducto + " " + precio, fontSinBold, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+            }
+            else
+            {
+                unCliente = txtSeleccionarCLiente.Text;
             }
 
-            e.Graphics.DrawString(" ------------------------------- ", fontSinBold, Brushes.Black, new RectangleF(0, y += 40, ancho, 20), format);
-            e.Graphics.DrawString("Total: " + total, fontSinBold, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
-            e.Graphics.DrawString("Devuelta: " + cambio, fontSinBold, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
-            e.Graphics.DrawString("--- Gracias por Visitarnos ---", fontSinBold, Brushes.Black, new RectangleF(0, y += 30, ancho, 20), format);
+            try
+            {
+                Bitmap image = new Bitmap("c:/boutique.png");
+
+                e.Graphics.DrawImage(image, new Rectangle(80, 5, 50, 50));
+                e.Graphics.DrawString("           ", font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+                e.Graphics.DrawString("    --- Compañia X ---", font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+                e.Graphics.DrawString("          " + fecha.ToString("MM/dd/yyyy"), font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+                //e.Graphics.DrawString("--- Factura # ---" + txtCantidad.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
+                e.Graphics.DrawString("Cliente: " + unCliente, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+                e.Graphics.DrawString("    --- Productos ---", font, Brushes.Black, new RectangleF(0, y += 40, ancho, 20), format);
+                DataTable dt = new DataTable();
+
+                foreach (DataGridViewRow row in dgvFacturacion.Rows)
+                {
+                    //MessageBox.Show(row.Cells["cod_prod"].Value.ToString());
+                    int cantidad = int.Parse(row.Cells["Cantidad"].Value.ToString());
+                    string nombreProducto = row.Cells["nombre_pro"].Value.ToString();
+                    float precio = float.Parse(row.Cells["precio_pro"].Value.ToString());
+                    string nombreCliente = row.Cells["nombrecompleto"].Value.ToString();
+                    string total = txtTotal.Text.ToString();
+                    cambio = double.Parse(txtCambio.Text.ToString());
+
+                    e.Graphics.DrawString(cantidad + " " + nombreProducto + " " + precio, fontSinBold, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+                }
+
+                e.Graphics.DrawString(" ------------------------------- ", fontSinBold, Brushes.Black, new RectangleF(0, y += 40, ancho, 20), format);
+                e.Graphics.DrawString("Total: " + total, fontSinBold, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+                e.Graphics.DrawString("Devuelta: " + cambio, fontSinBold, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+                e.Graphics.DrawString("--- Gracias por Visitarnos ---", fontSinBold, Brushes.Black, new RectangleF(0, y += 30, ancho, 20), format);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error a la hora de imprimir, Por favor comuniquese con soporte");
+            }
         }
 
         private void txtCantidad_KeyDown_1(object sender, KeyEventArgs e)
@@ -595,6 +636,16 @@ namespace SistemaTienda
         {
             FrmClientesConDeudas frmClientesConDeudas = new FrmClientesConDeudas();
             frmClientesConDeudas.Show();
+        }
+
+        private void txtclienteTemporal_TextChanged(object sender, EventArgs e)
+        {
+            if (txtclienteTemporal.TextLength > 0)
+            {
+                txtSeleccionarCLiente.Enabled = false;
+            }
+            else
+                txtSeleccionarCLiente.Enabled = true;
         }
     }
 }
