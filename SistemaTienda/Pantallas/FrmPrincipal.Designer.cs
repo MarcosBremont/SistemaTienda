@@ -29,13 +29,12 @@ namespace SistemaTienda
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BtnColocar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.BtnBuscarProductos = new System.Windows.Forms.Button();
             this.txtbuscarproducto = new System.Windows.Forms.TextBox();
             this.lblnombreproducto = new System.Windows.Forms.Label();
             this.txtCambio = new System.Windows.Forms.TextBox();
@@ -62,7 +61,6 @@ namespace SistemaTienda
             this.fechaFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GPDetallesdeStock = new System.Windows.Forms.GroupBox();
             this.txtFacturadoPor = new System.Windows.Forms.TextBox();
-            this.BtnAgregarCliente = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.lblprecio = new System.Windows.Forms.Label();
             this.lblcantidad = new System.Windows.Forms.Label();
@@ -87,9 +85,8 @@ namespace SistemaTienda
             this.historialDeFacturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historialDeudasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtcodigoeliminar = new System.Windows.Forms.TextBox();
             this.txtCodigoPro = new System.Windows.Forms.TextBox();
-            this.txtDescrip = new System.Windows.Forms.TextBox();
+            this.txtnombre = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
@@ -99,6 +96,8 @@ namespace SistemaTienda
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtnBuscarProductos = new System.Windows.Forms.Button();
+            this.BtnAgregarCliente = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.GBBuscarPorNombre.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturacion)).BeginInit();
@@ -132,19 +131,6 @@ namespace SistemaTienda
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             // 
-            // BtnBuscarProductos
-            // 
-            this.BtnBuscarProductos.FlatAppearance.BorderSize = 0;
-            this.BtnBuscarProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnBuscarProductos.Image = global::SistemaTienda.Properties.Resources.lupa__2_;
-            this.BtnBuscarProductos.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnBuscarProductos.Location = new System.Drawing.Point(290, 12);
-            this.BtnBuscarProductos.Name = "BtnBuscarProductos";
-            this.BtnBuscarProductos.Size = new System.Drawing.Size(73, 43);
-            this.BtnBuscarProductos.TabIndex = 2;
-            this.BtnBuscarProductos.UseVisualStyleBackColor = true;
-            this.BtnBuscarProductos.Click += new System.EventHandler(this.BtnBuscarProductos_Click);
-            // 
             // txtbuscarproducto
             // 
             this.txtbuscarproducto.Location = new System.Drawing.Point(130, 24);
@@ -166,7 +152,8 @@ namespace SistemaTienda
             // 
             // txtCambio
             // 
-            this.txtCambio.Location = new System.Drawing.Point(340, 45);
+            this.txtCambio.Enabled = false;
+            this.txtCambio.Location = new System.Drawing.Point(340, 47);
             this.txtCambio.Name = "txtCambio";
             this.txtCambio.Size = new System.Drawing.Size(130, 20);
             this.txtCambio.TabIndex = 103;
@@ -175,7 +162,7 @@ namespace SistemaTienda
             // 
             this.lblcambio.AutoSize = true;
             this.lblcambio.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcambio.Location = new System.Drawing.Point(283, 46);
+            this.lblcambio.Location = new System.Drawing.Point(283, 48);
             this.lblcambio.Name = "lblcambio";
             this.lblcambio.Size = new System.Drawing.Size(51, 16);
             this.lblcambio.TabIndex = 102;
@@ -191,6 +178,7 @@ namespace SistemaTienda
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Enabled = false;
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(843, 144);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -199,6 +187,7 @@ namespace SistemaTienda
             // 
             // txtTotal
             // 
+            this.txtTotal.Enabled = false;
             this.txtTotal.Location = new System.Drawing.Point(340, 19);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
@@ -207,7 +196,8 @@ namespace SistemaTienda
             // 
             // txtcantidaddeproductos
             // 
-            this.txtcantidaddeproductos.Location = new System.Drawing.Point(147, 42);
+            this.txtcantidaddeproductos.Enabled = false;
+            this.txtcantidaddeproductos.Location = new System.Drawing.Point(147, 48);
             this.txtcantidaddeproductos.Name = "txtcantidaddeproductos";
             this.txtcantidaddeproductos.ReadOnly = true;
             this.txtcantidaddeproductos.Size = new System.Drawing.Size(130, 20);
@@ -227,7 +217,7 @@ namespace SistemaTienda
             // 
             this.lblproductosfacturados.AutoSize = true;
             this.lblproductosfacturados.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblproductosfacturados.Location = new System.Drawing.Point(13, 42);
+            this.lblproductosfacturados.Location = new System.Drawing.Point(13, 48);
             this.lblproductosfacturados.Name = "lblproductosfacturados";
             this.lblproductosfacturados.Size = new System.Drawing.Size(135, 16);
             this.lblproductosfacturados.TabIndex = 12;
@@ -300,14 +290,14 @@ namespace SistemaTienda
             this.dgvFacturacion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvFacturacion.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvFacturacion.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(57)))), ((int)(((byte)(121)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFacturacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(57)))), ((int)(((byte)(121)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFacturacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFacturacion.ColumnHeadersHeight = 40;
             this.dgvFacturacion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_historial_factura,
@@ -319,14 +309,14 @@ namespace SistemaTienda
             this.total_calculo,
             this.fechaFactura});
             this.dgvFacturacion.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(121)))), ((int)(((byte)(236)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFacturacion.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(121)))), ((int)(((byte)(236)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFacturacion.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFacturacion.EnableHeadersVisualStyles = false;
             this.dgvFacturacion.GridColor = System.Drawing.SystemColors.Control;
             this.dgvFacturacion.Location = new System.Drawing.Point(12, 167);
@@ -334,26 +324,28 @@ namespace SistemaTienda
             this.dgvFacturacion.Name = "dgvFacturacion";
             this.dgvFacturacion.ReadOnly = true;
             this.dgvFacturacion.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFacturacion.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFacturacion.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvFacturacion.RowHeadersVisible = false;
             this.dgvFacturacion.RowHeadersWidth = 10;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Bahnschrift SemiLight", 10F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(121)))), ((int)(((byte)(236)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvFacturacion.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Bahnschrift SemiLight", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(121)))), ((int)(((byte)(236)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvFacturacion.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvFacturacion.RowTemplate.Height = 30;
             this.dgvFacturacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFacturacion.Size = new System.Drawing.Size(947, 262);
             this.dgvFacturacion.TabIndex = 3;
+            this.dgvFacturacion.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacturacion_CellClick);
+            this.dgvFacturacion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacturacion_CellContentClick);
             // 
             // id_historial_factura
             // 
@@ -424,7 +416,7 @@ namespace SistemaTienda
             this.GPDetallesdeStock.Controls.Add(this.txtSeleccionarCLiente);
             this.GPDetallesdeStock.Controls.Add(this.txtclienteTemporal);
             this.GPDetallesdeStock.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GPDetallesdeStock.Location = new System.Drawing.Point(92, 435);
+            this.GPDetallesdeStock.Location = new System.Drawing.Point(12, 434);
             this.GPDetallesdeStock.Name = "GPDetallesdeStock";
             this.GPDetallesdeStock.Size = new System.Drawing.Size(331, 127);
             this.GPDetallesdeStock.TabIndex = 5;
@@ -432,24 +424,12 @@ namespace SistemaTienda
             // 
             // txtFacturadoPor
             // 
+            this.txtFacturadoPor.Enabled = false;
             this.txtFacturadoPor.Location = new System.Drawing.Point(150, 22);
             this.txtFacturadoPor.Name = "txtFacturadoPor";
             this.txtFacturadoPor.ReadOnly = true;
             this.txtFacturadoPor.Size = new System.Drawing.Size(130, 20);
             this.txtFacturadoPor.TabIndex = 104;
-            // 
-            // BtnAgregarCliente
-            // 
-            this.BtnAgregarCliente.FlatAppearance.BorderSize = 0;
-            this.BtnAgregarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAgregarCliente.Image = global::SistemaTienda.Properties.Resources.anadir;
-            this.BtnAgregarCliente.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnAgregarCliente.Location = new System.Drawing.Point(284, 52);
-            this.BtnAgregarCliente.Name = "BtnAgregarCliente";
-            this.BtnAgregarCliente.Size = new System.Drawing.Size(28, 30);
-            this.BtnAgregarCliente.TabIndex = 1;
-            this.BtnAgregarCliente.UseVisualStyleBackColor = true;
-            this.BtnAgregarCliente.Click += new System.EventHandler(this.BtnAgregarCliente_Click);
             // 
             // label5
             // 
@@ -605,21 +585,21 @@ namespace SistemaTienda
             // editarCategoriasToolStripMenuItem
             // 
             this.editarCategoriasToolStripMenuItem.Name = "editarCategoriasToolStripMenuItem";
-            this.editarCategoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarCategoriasToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.editarCategoriasToolStripMenuItem.Text = "Editar Categorias";
             this.editarCategoriasToolStripMenuItem.Click += new System.EventHandler(this.editarCategoriasToolStripMenuItem_Click);
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
@@ -645,14 +625,14 @@ namespace SistemaTienda
             // editarInventarioToolStripMenuItem
             // 
             this.editarInventarioToolStripMenuItem.Name = "editarInventarioToolStripMenuItem";
-            this.editarInventarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarInventarioToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.editarInventarioToolStripMenuItem.Text = "Editar Inventario";
             this.editarInventarioToolStripMenuItem.Click += new System.EventHandler(this.editarInventarioToolStripMenuItem_Click);
             // 
             // historialToolStripMenuItem
             // 
             this.historialToolStripMenuItem.Name = "historialToolStripMenuItem";
-            this.historialToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.historialToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.historialToolStripMenuItem.Text = "Historial";
             this.historialToolStripMenuItem.Click += new System.EventHandler(this.historialToolStripMenuItem_Click);
             // 
@@ -688,13 +668,6 @@ namespace SistemaTienda
             this.acercaDeToolStripMenuItem.Text = "Acerca de";
             this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
             // 
-            // txtcodigoeliminar
-            // 
-            this.txtcodigoeliminar.Location = new System.Drawing.Point(13, 435);
-            this.txtcodigoeliminar.Name = "txtcodigoeliminar";
-            this.txtcodigoeliminar.Size = new System.Drawing.Size(73, 20);
-            this.txtcodigoeliminar.TabIndex = 106;
-            // 
             // txtCodigoPro
             // 
             this.txtCodigoPro.Location = new System.Drawing.Point(13, 144);
@@ -702,12 +675,12 @@ namespace SistemaTienda
             this.txtCodigoPro.Size = new System.Drawing.Size(58, 20);
             this.txtCodigoPro.TabIndex = 2;
             // 
-            // txtDescrip
+            // txtnombre
             // 
-            this.txtDescrip.Location = new System.Drawing.Point(77, 144);
-            this.txtDescrip.Name = "txtDescrip";
-            this.txtDescrip.Size = new System.Drawing.Size(127, 20);
-            this.txtDescrip.TabIndex = 12;
+            this.txtnombre.Location = new System.Drawing.Point(77, 144);
+            this.txtnombre.Name = "txtnombre";
+            this.txtnombre.Size = new System.Drawing.Size(127, 20);
+            this.txtnombre.TabIndex = 12;
             // 
             // txtPrecio
             // 
@@ -790,9 +763,35 @@ namespace SistemaTienda
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox1.Location = new System.Drawing.Point(483, 435);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(476, 77);
+            this.groupBox1.Size = new System.Drawing.Size(476, 102);
             this.groupBox1.TabIndex = 105;
             this.groupBox1.TabStop = false;
+            // 
+            // BtnBuscarProductos
+            // 
+            this.BtnBuscarProductos.FlatAppearance.BorderSize = 0;
+            this.BtnBuscarProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnBuscarProductos.Image = global::SistemaTienda.Properties.Resources.lupa__2_;
+            this.BtnBuscarProductos.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnBuscarProductos.Location = new System.Drawing.Point(290, 12);
+            this.BtnBuscarProductos.Name = "BtnBuscarProductos";
+            this.BtnBuscarProductos.Size = new System.Drawing.Size(73, 43);
+            this.BtnBuscarProductos.TabIndex = 2;
+            this.BtnBuscarProductos.UseVisualStyleBackColor = true;
+            this.BtnBuscarProductos.Click += new System.EventHandler(this.BtnBuscarProductos_Click);
+            // 
+            // BtnAgregarCliente
+            // 
+            this.BtnAgregarCliente.FlatAppearance.BorderSize = 0;
+            this.BtnAgregarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAgregarCliente.Image = global::SistemaTienda.Properties.Resources.anadir;
+            this.BtnAgregarCliente.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnAgregarCliente.Location = new System.Drawing.Point(284, 52);
+            this.BtnAgregarCliente.Name = "BtnAgregarCliente";
+            this.BtnAgregarCliente.Size = new System.Drawing.Size(28, 30);
+            this.BtnAgregarCliente.TabIndex = 1;
+            this.BtnAgregarCliente.UseVisualStyleBackColor = true;
+            this.BtnAgregarCliente.Click += new System.EventHandler(this.BtnAgregarCliente_Click);
             // 
             // FrmPrincipal
             // 
@@ -808,9 +807,8 @@ namespace SistemaTienda
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.lblfechafactura);
             this.Controls.Add(this.txtPrecio);
-            this.Controls.Add(this.txtDescrip);
+            this.Controls.Add(this.txtnombre);
             this.Controls.Add(this.txtCodigoPro);
-            this.Controls.Add(this.txtcodigoeliminar);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.lblusuario);
             this.Controls.Add(this.BtnColocar);
@@ -886,9 +884,8 @@ namespace SistemaTienda
         private System.Windows.Forms.ToolStripMenuItem editarInventarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem historialToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
-        private System.Windows.Forms.TextBox txtcodigoeliminar;
         private System.Windows.Forms.TextBox txtCodigoPro;
-        private System.Windows.Forms.TextBox txtDescrip;
+        private System.Windows.Forms.TextBox txtnombre;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.ToolStripMenuItem historialToolStripMenuItem1;

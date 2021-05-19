@@ -61,9 +61,9 @@ namespace SistemaTienda.Pantallas
             this.label9.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
             this.label9.Location = new System.Drawing.Point(392, 115);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(106, 16);
+            this.label9.Size = new System.Drawing.Size(90, 16);
             this.label9.TabIndex = 22;
-            this.label9.Text = "TicServiceCenter";
+            this.label9.Text = "Lucas Fashion";
             // 
             // label8
             // 
@@ -91,9 +91,9 @@ namespace SistemaTienda.Pantallas
             this.label6.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
             this.label6.Location = new System.Drawing.Point(378, 9);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 16);
+            this.label6.Size = new System.Drawing.Size(100, 16);
             this.label6.TabIndex = 19;
-            this.label6.Text = "ServiceCenter";
+            this.label6.Text = "LemonSoftware";
             // 
             // textBox1
             // 
@@ -104,7 +104,7 @@ namespace SistemaTienda.Pantallas
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(398, 107);
             this.textBox1.TabIndex = 18;
-            this.textBox1.Text = "ServiceCenter es un software de facturacion e inventario el cual fue diseñado par" +
+            this.textBox1.Text = "LemonSoftware es un software de facturacion e inventario el cual fue diseñado par" +
     "a facilitar las operaciones realizadas en el entorno del servicio al cliente";
             // 
             // label5
@@ -159,9 +159,11 @@ namespace SistemaTienda.Pantallas
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(-1, -33);
+            this.pictureBox1.Image = global::SistemaTienda.Properties.Resources.LemonSoftware_removebg_preview;
+            this.pictureBox1.Location = new System.Drawing.Point(-59, 9);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(220, 507);
+            this.pictureBox1.Size = new System.Drawing.Size(293, 328);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 

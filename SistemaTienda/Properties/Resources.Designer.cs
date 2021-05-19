@@ -193,6 +193,26 @@ namespace SistemaTienda.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LemonSoftware__1__removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("LemonSoftware__1_-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LemonSoftware_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("LemonSoftware-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Luna {
             get {
                 object obj = ResourceManager.GetObject("Luna", resourceCulture);

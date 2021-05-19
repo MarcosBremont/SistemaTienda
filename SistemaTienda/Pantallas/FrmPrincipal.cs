@@ -48,7 +48,7 @@ namespace SistemaTienda
                     if (FrmI.DialogResult == DialogResult.OK)
                     {
                         txtCodigoPro.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[0].Value.ToString();
-                        txtDescrip.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[1].Value.ToString();
+                        txtnombre.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[1].Value.ToString();
                         txtPrecio.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[4].Value.ToString();
                         txtCantidad.Focus();
                         con.Close();
@@ -67,7 +67,7 @@ namespace SistemaTienda
                     if (registro.Read())
                     {
                         txtCodigoPro.Text = registro["id_producto"].ToString();
-                        txtDescrip.Text = registro["nombre_pro"].ToString();
+                        txtnombre.Text = registro["nombre_pro"].ToString();
                         txtPrecio.Text = registro["precio_pro"].ToString();
                         txtCantidad.Focus();
 
@@ -97,7 +97,7 @@ namespace SistemaTienda
         public void Limpiar()
         {
             txtCodigoPro.Text = "";
-            txtDescrip.Text = "";
+            txtnombre.Text = "";
             txtCodigoPro.Text = "";
             txtPrecio.Text = "";
             txtCantidad.Text = "";
@@ -153,9 +153,13 @@ namespace SistemaTienda
         {
             try
             {
-                foreach (DataGridViewRow row in dgvFacturacion.Rows)
+                if (con.State != ConnectionState.Open)
                 {
                     con.Open();
+                }
+
+                foreach (DataGridViewRow row in dgvFacturacion.Rows)
+                {
                     string nombrepro1 = row.Cells["nombre_pro"].Value.ToString();
                     int precio_pro = Convert.ToInt32(row.Cells["precio_pro"].Value);
                     string nombrecompleto = row.Cells["nombrecompleto"].Value.ToString();
@@ -199,6 +203,7 @@ namespace SistemaTienda
             txtbuscarproducto.TabIndex = 0;
             btnguardar.Enabled = false;
             btnImprimir.Enabled = false;
+            btnEliminar.Enabled = false;
             validacionColocarProducto();
 
         }
@@ -275,14 +280,10 @@ namespace SistemaTienda
 
             if (result == DialogResult.Yes)
             {
-                string query = "DELETE FROM historial_factura Where id_historial_factura = @id_historial_factura";
-                MySqlCommand comando = new MySqlCommand(query, con);
-                comando.Parameters.AddWithValue("@id_historial_factura", txtcodigoeliminar.Text);
-                comando.ExecuteNonQuery();
-
-                MessageBox.Show("Producto Eliminado");
-                con.Close();
-                //clear();
+                foreach (DataGridViewRow row in dgvFacturacion.SelectedRows)
+                {
+                    dgvFacturacion.Rows.RemoveAt(row.Index);
+                }
             }
             else
             {
@@ -377,7 +378,7 @@ namespace SistemaTienda
                         }
                         if (cont_fila >= 0)
                         {
-                            dgvFacturacion.Rows.Add(txtCodigoPro.Text, txtDescrip.Text, txtPrecio.Text, txtCantidad.Text);
+                            dgvFacturacion.Rows.Add(txtCodigoPro.Text, txtnombre.Text, txtPrecio.Text, txtCantidad.Text);
                             double importe = Convert.ToDouble(dgvFacturacion.Rows[cont_fila].Cells[2].Value) * Convert.ToDouble(dgvFacturacion.Rows[cont_fila].Cells[3].Value);
                             dgvFacturacion.Rows[cont_fila].Cells[6].Value = importe;
                             dgvFacturacion.Rows[cont_fila].Cells[4].Value = UnCliente;
@@ -403,7 +404,7 @@ namespace SistemaTienda
                             }
                             else
                             {
-                                dgvFacturacion.Rows.Add(txtCodigoPro.Text, txtDescrip.Text, txtPrecio.Text, txtCantidad.Text);
+                                dgvFacturacion.Rows.Add(txtCodigoPro.Text, txtnombre.Text, txtPrecio.Text, txtCantidad.Text);
                                 double importe = Convert.ToDouble(dgvFacturacion.Rows[cont_fila].Cells[2].Value) * Convert.ToDouble(dgvFacturacion.Rows[cont_fila].Cells[3].Value);
                                 dgvFacturacion.Rows[cont_fila].Cells[6].Value = importe;
                                 cont_fila++;
@@ -425,6 +426,7 @@ namespace SistemaTienda
                 }
                 btnguardar.Enabled = true;
                 btnImprimir.Enabled = true;
+                btnEliminar.Enabled = true;
                 txtbuscarproducto.Focus();
                 int cambio = 0;
                 cambio = int.Parse(txtDineroRecibido.Text) - int.Parse(txtTotal.Text);
@@ -461,7 +463,7 @@ namespace SistemaTienda
                     if (FrmI.DialogResult == DialogResult.OK)
                     {
                         txtCodigoPro.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[0].Value.ToString();
-                        txtDescrip.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[1].Value.ToString();
+                        txtnombre.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[1].Value.ToString();
                         txtPrecio.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[4].Value.ToString();
                         txtCantidad.Focus();
                         con.Close();
@@ -480,7 +482,7 @@ namespace SistemaTienda
                     if (registro.Read())
                     {
                         txtCodigoPro.Text = registro["id_producto"].ToString();
-                        txtDescrip.Text = registro["nombre_pro"].ToString();
+                        txtnombre.Text = registro["nombre_pro"].ToString();
                         txtPrecio.Text = registro["precio_pro"].ToString();
                         txtCantidad.Focus();
 
@@ -733,6 +735,19 @@ namespace SistemaTienda
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+        }
+
+        private void dgvFacturacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvFacturacion_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtCodigoPro.Text = dgvFacturacion.CurrentRow.Cells[0].Value.ToString();
+            txtnombre.Text = dgvFacturacion.CurrentRow.Cells[1].Value.ToString();
+            txtPrecio.Text = dgvFacturacion.CurrentRow.Cells[2].Value.ToString();
+            txtCantidad.Text = dgvFacturacion.CurrentRow.Cells[3].Value.ToString();
         }
     }
 }

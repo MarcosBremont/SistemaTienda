@@ -321,5 +321,11 @@
   <ItemGroup>
     <None Include="Resources\Circle1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LemonSoftware-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LemonSoftware__1_-removebg-preview.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
