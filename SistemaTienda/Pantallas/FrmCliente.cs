@@ -27,17 +27,23 @@ namespace SistemaTienda.Pantallas
 
         public void CargarDgvCliente()
         {
-            con.Open();
-            DataTable dt = new DataTable();
-            MySqlCommand cmd = new MySqlCommand("SCliente", con);
-            cmd.Parameters.Add("prm_EstadoCliente", MySqlDbType.Text).Value = "A";
-            cmd.CommandType = CommandType.StoredProcedure;
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-            da.Fill(dt);
-            dgvCliente.DataSource = dt;
-            con.Close();
+            
+            try
+            {
+                DataTable dt = new DataTable();
+                MySqlCommand cmd = new MySqlCommand("SCliente", con);
+                cmd.Parameters.Add("prm_EstadoCliente", MySqlDbType.Text).Value = "A";
+                cmd.CommandType = CommandType.StoredProcedure;
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                da.Fill(dt);
+                dgvCliente.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de cargar los datos, comuniquese con soporte");
+            }
 
-            //dgvCliente.DataBind();
+            
 
         }
 
@@ -57,46 +63,65 @@ namespace SistemaTienda.Pantallas
             txtIDCliente.Clear();
             txtNotas.Clear();
             txtTelefono.Clear();
+            comboBox1.Text = "A";
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            con.Open();
-            DialogResult result = MessageBox.Show("¿Estas seguro que quiere deshabilitar este Cliente?", "ATENCIÓN", MessageBoxButtons.YesNo);
-
-            if (result == DialogResult.Yes)
+            try
             {
                 con.Open();
-                MySqlCommand cmd = new MySqlCommand("DCliente", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("prm_IDCliente", MySqlDbType.Text).Value = txtIDCliente.Text;
-                cmd.Parameters.Add("prm_EstadoCliente", MySqlDbType.Text).Value = CmbEstado.Text;
-                cmd.ExecuteReader();
-                MessageBox.Show("Cliente Deshabilitado");
-                con.Close();
+                DialogResult result = MessageBox.Show("¿Estas seguro que quiere deshabilitar este Cliente?", "ATENCIÓN", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    con.Open();
+                    MySqlCommand cmd = new MySqlCommand("DCliente", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("prm_IDCliente", MySqlDbType.Text).Value = txtIDCliente.Text;
+                    cmd.Parameters.Add("prm_EstadoCliente", MySqlDbType.Text).Value = CmbEstado.Text;
+                    cmd.ExecuteReader();
+                    MessageBox.Show("Cliente Deshabilitado");
+                    con.Close();
+                }
+                else
+                {
+
+                }
+
+                this.txtcantidaddeproductos.Text = this.dgvCliente.Rows.Count.ToString("N0");
+
             }
-            else
+            catch (Exception ex)
             {
-
+                MessageBox.Show("Ha ocurrido un problema a la hora de eliminar los datos, comuniquese con soporte");
             }
 
-            this.txtcantidaddeproductos.Text = this.dgvCliente.Rows.Count.ToString("N0");
         }
 
         public void Insertar()
         {
-            con.Open();
-            MySqlCommand cmd = new MySqlCommand("ICliente", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("prm_NombreCompleto", MySqlDbType.Text).Value = txtNombreCompleto.Text;
-            cmd.Parameters.Add("prm_Direccion", MySqlDbType.Text).Value = txtDireccion.Text;
-            cmd.Parameters.Add("prm_TELEFONO", MySqlDbType.Text).Value = txtTelefono.Text;
-            cmd.Parameters.Add("prm_Notas", MySqlDbType.Text).Value = txtNotas.Text;
-            cmd.Parameters.Add("prm_EstadoCliente", MySqlDbType.Text).Value = CmbEstado.Text;
-            cmd.ExecuteReader();
-            MessageBox.Show("Cliente Agregado");
-            con.Close();
-            this.txtcantidaddeproductos.Text = this.dgvCliente.Rows.Count.ToString("N0");
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("ICliente", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("prm_NombreCompleto", MySqlDbType.Text).Value = txtNombreCompleto.Text;
+                cmd.Parameters.Add("prm_Direccion", MySqlDbType.Text).Value = txtDireccion.Text;
+                cmd.Parameters.Add("prm_TELEFONO", MySqlDbType.Text).Value = txtTelefono.Text;
+                cmd.Parameters.Add("prm_Notas", MySqlDbType.Text).Value = txtNotas.Text;
+                cmd.Parameters.Add("prm_EstadoCliente", MySqlDbType.Text).Value = CmbEstado.Text;
+                cmd.ExecuteReader();
+                MessageBox.Show("Cliente Agregado");
+                con.Close();
+                this.txtcantidaddeproductos.Text = this.dgvCliente.Rows.Count.ToString("N0");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de insertar los datos, comuniquese con soporte");
+            }
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -109,20 +134,28 @@ namespace SistemaTienda.Pantallas
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-
             con.Open();
-            MySqlCommand cmd = new MySqlCommand("UCliente", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@IDCliente", MySqlDbType.Text).Value = txtIDCliente.Text;
-            cmd.Parameters.Add("@NombreCompleto", MySqlDbType.Text).Value = txtNombreCompleto.Text;
-            cmd.Parameters.Add("@Direccion", MySqlDbType.Text).Value = txtDireccion.Text;
-            cmd.Parameters.Add("@TELEFONO", MySqlDbType.Text).Value = txtTelefono.Text;
-            cmd.Parameters.Add("@Notas", MySqlDbType.Text).Value = txtNotas.Text;
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Cliente Actualizado");
-            CargarDgvCliente();
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand("UCliente", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@prm_IDCliente", MySqlDbType.Text).Value = txtIDCliente.Text;
+                cmd.Parameters.Add("@prm_NombreCompleto", MySqlDbType.Text).Value = txtNombreCompleto.Text;
+                cmd.Parameters.Add("@prm_Direccion", MySqlDbType.Text).Value = txtDireccion.Text;
+                cmd.Parameters.Add("@prm_TELEFONO", MySqlDbType.Text).Value = txtTelefono.Text;
+                cmd.Parameters.Add("@prm_Notas", MySqlDbType.Text).Value = txtNotas.Text;
+                cmd.Parameters.Add("@prm_EstadoCliente", MySqlDbType.Text).Value = CmbEstado.Text;
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Cliente Actualizado");
+                CargarDgvCliente();
+                Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de actualizar los datos, comuniquese con soporte");
+            }
+
             con.Close();
-            Clear();
         }
 
         private void BtnSeleccionar_Click(object sender, EventArgs e)
@@ -145,15 +178,7 @@ namespace SistemaTienda.Pantallas
 
         private void dgvCliente_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvCliente.Rows.Count == 0)
-            {
-                return;
-            }
-            else
-            {
-                DialogResult = DialogResult.OK;
-                Close();
-            }
+
         }
 
         private void dgvCliente_KeyPress(object sender, KeyPressEventArgs e)
@@ -176,6 +201,24 @@ namespace SistemaTienda.Pantallas
                     DialogResult = DialogResult.OK;
                     Close();
                 }
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                MySqlCommand cmd = new MySqlCommand("SCliente", con);
+                cmd.Parameters.Add("prm_EstadoCliente", MySqlDbType.Text).Value = comboBox1.Text;
+                cmd.CommandType = CommandType.StoredProcedure;
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                da.Fill(dt);
+                dgvCliente.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de cargar los datos, comuniquese con soporte");
             }
         }
     }

@@ -32,61 +32,95 @@ namespace SistemaTienda.Pantallas
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            con.Open();
-            string query = "INSERT INTO categoria (NombreCategoria) values (@NombreCategoria)";
-            MySqlCommand comando = new MySqlCommand(query, con);
-            comando.Parameters.AddWithValue("@NombreCategoria", txtCategoria.Text);
-            comando.ExecuteNonQuery();
-            CARGARCOMBOBOXCATEGORIA();
-            MessageBox.Show("Categoria Agregada");
-            con.Close();
-            txtCategoria.Clear();
+            try
+            {
+                con.Open();
+                string query = "INSERT INTO categoria (NombreCategoria) values (@NombreCategoria)";
+                MySqlCommand comando = new MySqlCommand(query, con);
+                comando.Parameters.AddWithValue("@NombreCategoria", txtCategoria.Text);
+                comando.ExecuteNonQuery();
+                CARGARCOMBOBOXCATEGORIA();
+                MessageBox.Show("Categoria Agregada");
+                con.Close();
+                txtCategoria.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de guardar los datos, comuniquese con soporte");
+            }
+           
         }
 
         public void CARGARCOMBOBOXCATEGORIA()
         {
-            MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM categoria", con);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            CMBCategorias.ValueMember = "IDCategoria";
-            CMBCategorias.DisplayMember = "NombreCategoria";
-            CMBCategorias.DataSource = dt;
+            try
+            {
+                MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM categoria", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                CMBCategorias.ValueMember = "IDCategoria";
+                CMBCategorias.DisplayMember = "NombreCategoria";
+                CMBCategorias.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de cargar las categorias, comuniquese con soporte");
+            }
+           
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            con.Open();
-            DialogResult result = MessageBox.Show("¿Estas seguro que quiere eliminar esta Categoria?", "ATENCION", MessageBoxButtons.YesNo);
-
-            if (result == DialogResult.Yes)
+            try
             {
-                string query = "DELETE FROM categoria Where IDCategoria = @IDCategoria";
-                MySqlCommand comando = new MySqlCommand(query, con);
-                comando.Parameters.AddWithValue("@IDCategoria", CMBCategorias.SelectedValue);
-                comando.ExecuteNonQuery();
-                CARGARCOMBOBOXCATEGORIA();
-                MessageBox.Show("Categoria Eliminada");
-                con.Close();
-                txtCategoria.Clear();
-            }
-            else
-            {
+                con.Open();
+                DialogResult result = MessageBox.Show("¿Estas seguro que quiere eliminar esta Categoria?", "ATENCION", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    string query = "DELETE FROM categoria Where IDCategoria = @IDCategoria";
+                    MySqlCommand comando = new MySqlCommand(query, con);
+                    comando.Parameters.AddWithValue("@IDCategoria", CMBCategorias.SelectedValue);
+                    comando.ExecuteNonQuery();
+                    CARGARCOMBOBOXCATEGORIA();
+                    MessageBox.Show("Categoria Eliminada");
+                    con.Close();
+                    txtCategoria.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Ha ocurrido un problema a la hora de eliminar los datos, comuniquese con soporte");
+                }
 
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de eliminar los datos, comuniquese con soporte");
+            }
+           
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            con.Open();
-            string query = "UPDATE categoria SET NombreCategoria = @NombreCategoria where IDCategoria=@IDCategoria";
-            MySqlCommand comando = new MySqlCommand(query, con);
-            comando.Parameters.AddWithValue("@IDCategoria", lblidcategoria.Text);
-            comando.Parameters.AddWithValue("@NombreCategoria", txtCategoria.Text);
-            comando.ExecuteNonQuery();
-            CARGARCOMBOBOXCATEGORIA();
-            MessageBox.Show("Categoria Actualizada");
-            con.Close();
-            txtCategoria.Clear();
+            try
+            {
+                con.Open();
+                string query = "UPDATE categoria SET NombreCategoria = @NombreCategoria where IDCategoria=@IDCategoria";
+                MySqlCommand comando = new MySqlCommand(query, con);
+                comando.Parameters.AddWithValue("@IDCategoria", lblidcategoria.Text);
+                comando.Parameters.AddWithValue("@NombreCategoria", txtCategoria.Text);
+                comando.ExecuteNonQuery();
+                CARGARCOMBOBOXCATEGORIA();
+                MessageBox.Show("Categoria Actualizada");
+                con.Close();
+                txtCategoria.Clear();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de actualizar los datos, comuniquese con soporte");
+            }
+           
         }
 
         private void CMBCategorias_SelectedIndexChanged(object sender, EventArgs e)

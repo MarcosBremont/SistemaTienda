@@ -26,42 +26,64 @@ namespace SistemaTienda.Pantallas
 
         public void CargarDgvHistorialFactura()
         {
-            MySqlDataAdapter adaptador = new MySqlDataAdapter("Select * from historial_factura", con);
-            DataTable tabla = new DataTable();
-            adaptador.Fill(tabla);
-            dgvHistorialFactura.DataSource = tabla;
+            try
+            {
+                MySqlDataAdapter adaptador = new MySqlDataAdapter("Select * from historial_factura", con);
+                DataTable tabla = new DataTable();
+                adaptador.Fill(tabla);
+                dgvHistorialFactura.DataSource = tabla;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de cargar los datos, comuniquese con soporte");
+            }
         }
 
         private void dgvHistorialFactura_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtIDhistorialfactura.Text = dgvHistorialFactura.CurrentRow.Cells[0].Value.ToString();
-            txtNombreproducto.Text = dgvHistorialFactura.CurrentRow.Cells[1].Value.ToString();
-            txtprecioproducto.Text = dgvHistorialFactura.CurrentRow.Cells[2].Value.ToString();
-            txtnombrecompleto.Text = dgvHistorialFactura.CurrentRow.Cells[3].Value.ToString();
-            txtfacturado.Text = dgvHistorialFactura.CurrentRow.Cells[4].Value.ToString();
-            txtcantidad.Text = dgvHistorialFactura.CurrentRow.Cells[5].Value.ToString();
-            txttotal.Text = dgvHistorialFactura.CurrentRow.Cells[6].Value.ToString();
-            dateTimePicker1.Text = dgvHistorialFactura.CurrentRow.Cells[7].Value.ToString();
+            try
+            {
+                txtIDhistorialfactura.Text = dgvHistorialFactura.CurrentRow.Cells[0].Value.ToString();
+                txtNombreproducto.Text = dgvHistorialFactura.CurrentRow.Cells[1].Value.ToString();
+                txtprecioproducto.Text = dgvHistorialFactura.CurrentRow.Cells[2].Value.ToString();
+                txtnombrecompleto.Text = dgvHistorialFactura.CurrentRow.Cells[3].Value.ToString();
+                txtfacturado.Text = dgvHistorialFactura.CurrentRow.Cells[4].Value.ToString();
+                txtcantidad.Text = dgvHistorialFactura.CurrentRow.Cells[5].Value.ToString();
+                txttotal.Text = dgvHistorialFactura.CurrentRow.Cells[6].Value.ToString();
+                dateTimePicker1.Text = dgvHistorialFactura.CurrentRow.Cells[7].Value.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de cargar los datos, comuniquese con soporte");
+            }
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            con.Open();
-            string query = "UPDATE historial_factura SET nombre_pro = @nombre_pro, precio_pro = @precio_pro, nombrecompleto = @nombrecompleto, facturado = @facturado, Cantidad = @Cantidad, total_calculo = @total_calculo, fechaFactura = @fechaFactura  where id_historial_factura=@id_historial_factura";
-            MySqlCommand comando = new MySqlCommand(query, con);
-            comando.Parameters.AddWithValue("@id_historial_factura", txtIDhistorialfactura.Text);
-            comando.Parameters.AddWithValue("@nombre_pro", txtNombreproducto.Text);
-            comando.Parameters.AddWithValue("@precio_pro", txtprecioproducto.Text);
-            comando.Parameters.AddWithValue("@nombrecompleto", txtnombrecompleto.Text);
-            comando.Parameters.AddWithValue("@facturado", txtfacturado.Text);
-            comando.Parameters.AddWithValue("@Cantidad", txtcantidad.Text);
-            comando.Parameters.AddWithValue("@total_calculo", txttotal.Text);
-            comando.Parameters.AddWithValue("@fechaFactura", dateTimePicker1.Value);
-            comando.ExecuteNonQuery();
-            MessageBox.Show("Factura Actualizada");
-            CargarDgvHistorialFactura();
-            con.Close();
-            Clear();
+            try
+            {
+                con.Open();
+                string query = "UPDATE historial_factura SET nombre_pro = @nombre_pro, precio_pro = @precio_pro, nombrecompleto = @nombrecompleto, facturado = @facturado, Cantidad = @Cantidad, total_calculo = @total_calculo, fechaFactura = @fechaFactura  where id_historial_factura=@id_historial_factura";
+                MySqlCommand comando = new MySqlCommand(query, con);
+                comando.Parameters.AddWithValue("@id_historial_factura", txtIDhistorialfactura.Text);
+                comando.Parameters.AddWithValue("@nombre_pro", txtNombreproducto.Text);
+                comando.Parameters.AddWithValue("@precio_pro", txtprecioproducto.Text);
+                comando.Parameters.AddWithValue("@nombrecompleto", txtnombrecompleto.Text);
+                comando.Parameters.AddWithValue("@facturado", txtfacturado.Text);
+                comando.Parameters.AddWithValue("@Cantidad", txtcantidad.Text);
+                comando.Parameters.AddWithValue("@total_calculo", txttotal.Text);
+                comando.Parameters.AddWithValue("@fechaFactura", dateTimePicker1.Value);
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Factura Actualizada");
+                CargarDgvHistorialFactura();
+                con.Close();
+                Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de actualizar los datos, comuniquese con soporte");
+            }
         }
 
         public void Clear()
@@ -77,23 +99,30 @@ namespace SistemaTienda.Pantallas
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            con.Open();
-            DialogResult result = MessageBox.Show("¿Estas seguro que quiere eliminar esta factura?", "ATENCION", MessageBoxButtons.YesNo);
-
-            if (result == DialogResult.Yes)
+            try
             {
-                string query = "DELETE FROM historial_factura Where id_historial_factura = @id_historial_factura";
-                MySqlCommand comando = new MySqlCommand(query, con);
-                comando.Parameters.AddWithValue("@id_historial_factura", txtIDhistorialfactura.Text);
-                comando.ExecuteNonQuery();
-                CargarDgvHistorialFactura();
-                MessageBox.Show("Factura Eliminada");
-                con.Close();
-                Clear();
+                con.Open();
+                DialogResult result = MessageBox.Show("¿Estas seguro que quiere eliminar esta factura?", "ATENCION", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    string query = "DELETE FROM historial_factura Where id_historial_factura = @id_historial_factura";
+                    MySqlCommand comando = new MySqlCommand(query, con);
+                    comando.Parameters.AddWithValue("@id_historial_factura", txtIDhistorialfactura.Text);
+                    comando.ExecuteNonQuery();
+                    CargarDgvHistorialFactura();
+                    MessageBox.Show("Factura Eliminada");
+                    con.Close();
+                    Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Ha ocurrido un problema a la hora de eliminar los datos, comuniquese con soporte");
+                }
             }
-            else
+            catch (Exception ex)
             {
-
+                MessageBox.Show("Ha ocurrido un problema a la hora de eliminar los datos, comuniquese con soporte");
             }
 
         }

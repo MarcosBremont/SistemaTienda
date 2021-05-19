@@ -119,7 +119,7 @@ namespace SistemaTienda.Pantallas
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ha ocurrido un problema a la hora de cambiar la contraseña, por favor comuniquese con soporte");
             }
         }
 

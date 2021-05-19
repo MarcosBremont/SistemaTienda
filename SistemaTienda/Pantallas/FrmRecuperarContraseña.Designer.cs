@@ -104,6 +104,7 @@ namespace SistemaTienda.Pantallas
             this.Controls.Add(this.BtnEnviar);
             this.Name = "FrmRecuperarContraseña";
             this.Text = "Recuperar Contraseña";
+            this.Load += new System.EventHandler(this.FrmRecuperarContraseña_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

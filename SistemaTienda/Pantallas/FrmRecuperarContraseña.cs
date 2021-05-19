@@ -22,7 +22,7 @@ namespace SistemaTienda.Pantallas
         String cs = ("Server=localhost; database=SistemaTienda; user=root; password=1234");
         private void BtnEnviar_Click(object sender, EventArgs e)
         {
-
+            EnviarCorreo();
         }
 
         public void EnviarCorreo()
@@ -68,7 +68,7 @@ namespace SistemaTienda.Pantallas
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ha ocurrido un problema a la hora de enviar el correo, por favor comuniquese con soporte");
             }
         }
 
@@ -86,6 +86,11 @@ namespace SistemaTienda.Pantallas
                 e.SuppressKeyPress = false;
                 EnviarCorreo();
             }
+        }
+
+        private void FrmRecuperarContraseña_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

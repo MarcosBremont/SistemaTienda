@@ -113,7 +113,7 @@ namespace SistemaTienda.Pantallas
             // lblidcategoria
             // 
             this.lblidcategoria.AutoSize = true;
-            this.lblidcategoria.Location = new System.Drawing.Point(46, 25);
+            this.lblidcategoria.Location = new System.Drawing.Point(18, 57);
             this.lblidcategoria.Name = "lblidcategoria";
             this.lblidcategoria.Size = new System.Drawing.Size(21, 16);
             this.lblidcategoria.TabIndex = 2;
@@ -130,9 +130,9 @@ namespace SistemaTienda.Pantallas
             // 
             // txtCategoria
             // 
-            this.txtCategoria.Location = new System.Drawing.Point(89, 20);
+            this.txtCategoria.Location = new System.Drawing.Point(21, 20);
             this.txtCategoria.Name = "txtCategoria";
-            this.txtCategoria.Size = new System.Drawing.Size(270, 23);
+            this.txtCategoria.Size = new System.Drawing.Size(356, 23);
             this.txtCategoria.TabIndex = 0;
             // 
             // FrmCategoria

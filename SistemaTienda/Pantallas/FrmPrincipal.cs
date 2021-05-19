@@ -18,6 +18,9 @@ namespace SistemaTienda
     public partial class FrmPrincipal : Form
     {
         MySqlConnection con = new MySqlConnection("Server=localhost; database=SistemaTienda; user=root; password=1234");
+        public static int cont_fila = 0;
+        public static double total;
+        public static double cambio;
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -26,45 +29,52 @@ namespace SistemaTienda
 
         private void BtnBuscarProductos_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtbuscarproducto.Text))
+            try
             {
-                FrmInventario FrmI = new FrmInventario();
-                FrmI.ShowDialog();
 
-                if (FrmI.DialogResult == DialogResult.OK)
+                if (string.IsNullOrEmpty(txtbuscarproducto.Text))
                 {
-                    txtCodigoPro.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[0].Value.ToString();
-                    txtDescrip.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[1].Value.ToString();
-                    txtPrecio.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[4].Value.ToString();
-                    txtCantidad.Focus();
+                    FrmInventario FrmI = new FrmInventario();
+                    FrmI.ShowDialog();
+
+                    if (FrmI.DialogResult == DialogResult.OK)
+                    {
+                        txtCodigoPro.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[0].Value.ToString();
+                        txtDescrip.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[1].Value.ToString();
+                        txtPrecio.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[4].Value.ToString();
+                        txtCantidad.Focus();
+                        con.Close();
+                    }
+                    this.txtcantidaddeproductos.Text = this.dgvFacturacion.Rows.Count.ToString("N0");
+
+                }
+
+                else
+                {
+                    MySqlCommand cmd = new MySqlCommand(" SELECT * FROM producto where id_producto = @id_producto", con);
+                    cmd.Parameters.AddWithValue("id_producto", txtbuscarproducto.Text);
+
+                    con.Open();
+                    MySqlDataReader registro = cmd.ExecuteReader();
+                    if (registro.Read())
+                    {
+                        txtCodigoPro.Text = registro["id_producto"].ToString();
+                        txtDescrip.Text = registro["nombre_pro"].ToString();
+                        txtPrecio.Text = registro["precio_pro"].ToString();
+                        txtCantidad.Focus();
+
+                    }
                     con.Close();
+
                 }
-                this.txtcantidaddeproductos.Text = this.dgvFacturacion.Rows.Count.ToString("N0");
-
             }
-
-            else
+            catch (Exception ex)
             {
-                MySqlCommand cmd = new MySqlCommand(" SELECT * FROM producto where id_producto = @id_producto", con);
-                cmd.Parameters.AddWithValue("id_producto", txtbuscarproducto.Text);
-
-                con.Open();
-                MySqlDataReader registro = cmd.ExecuteReader();
-                if (registro.Read())
-                {
-                    txtCodigoPro.Text = registro["id_producto"].ToString();
-                    txtDescrip.Text = registro["nombre_pro"].ToString();
-                    txtPrecio.Text = registro["precio_pro"].ToString();
-                    txtCantidad.Focus();
-
-                }
-                con.Close();
-
+                MessageBox.Show("Ha ocurrido un problema a la hora de cargar los datos, comuniquese con soporte");
             }
+            
         }
-        public static int cont_fila = 0;
-        public static double total;
-        public static double cambio;
+     
         private void BtnColocar_Click(object sender, EventArgs e)
         {
             ColocarEnGrid();
@@ -92,66 +102,82 @@ namespace SistemaTienda
 
         public void AgregarCliente()
         {
-            if (string.IsNullOrEmpty(txtSeleccionarCLiente.Text))
+            try
             {
-
-                FrmCliente FrmC = new FrmCliente();
-                FrmC.ShowDialog();
-
-                if (FrmC.DialogResult == DialogResult.OK)
+                if (string.IsNullOrEmpty(txtSeleccionarCLiente.Text))
                 {
-                    //txtSeleccionarCLiente.Text = FrmC.dgvCliente.Rows[FrmC.dgvCliente.CurrentRow.Cells].Cells[1].Value.ToString();
-                    txtSeleccionarCLiente.Text = FrmC.dgvCliente.CurrentRow.Cells[1].Value.ToString();
+
+                    FrmCliente FrmC = new FrmCliente();
+                    FrmC.ShowDialog();
+
+                    if (FrmC.DialogResult == DialogResult.OK)
+                    {
+                        //txtSeleccionarCLiente.Text = FrmC.dgvCliente.Rows[FrmC.dgvCliente.CurrentRow.Cells].Cells[1].Value.ToString();
+                        txtSeleccionarCLiente.Text = FrmC.dgvCliente.CurrentRow.Cells[1].Value.ToString();
+                        con.Close();
+                    }
+                }
+
+                else
+                {
+                    MySqlCommand cmd = new MySqlCommand(" SELECT * FROM cliente where IDCliente = @IDCliente", con);
+                    cmd.Parameters.AddWithValue("IDCliente", txtSeleccionarCLiente.Text);
+                    con.Open();
+                    MySqlDataReader registro = cmd.ExecuteReader();
+                    if (registro.Read())
+                    {
+                        txtSeleccionarCLiente.Text = registro["NombreCompleto"].ToString();
+                        txtclienteTemporal.Focus();
+
+                    }
                     con.Close();
                 }
             }
-
-            else
+            catch (Exception ex)
             {
-                MySqlCommand cmd = new MySqlCommand(" SELECT * FROM cliente where IDCliente = @IDCliente", con);
-                cmd.Parameters.AddWithValue("IDCliente", txtSeleccionarCLiente.Text);
-                con.Open();
-                MySqlDataReader registro = cmd.ExecuteReader();
-                if (registro.Read())
-                {
-                    txtSeleccionarCLiente.Text = registro["NombreCompleto"].ToString();
-                    txtclienteTemporal.Focus();
-
-                }
-                con.Close();
+                MessageBox.Show("Ha ocurrido un problema a la hora de cargar los datos, comuniquese con soporte");
             }
+            
 
 
         }
         public void Insertar()
         {
-            foreach (DataGridViewRow row in dgvFacturacion.Rows)
+            try
             {
-                con.Open();
-                string nombrepro1 = row.Cells["nombre_pro"].Value.ToString();
-                int precio_pro = Convert.ToInt32(row.Cells["precio_pro"].Value);
-                string nombrecompleto = row.Cells["nombrecompleto"].Value.ToString();
-                string facturado = row.Cells["facturado"].Value.ToString();
-                int cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
-                int total_calculo = Convert.ToInt32(row.Cells["total_calculo"].Value);
-                DateTime fechaFactura = Convert.ToDateTime(row.Cells["fechaFactura"].Value);
-                int codigoproducto = Convert.ToInt32(row.Cells["id_historial_factura"].Value);
+                foreach (DataGridViewRow row in dgvFacturacion.Rows)
+                {
+                    con.Open();
+                    string nombrepro1 = row.Cells["nombre_pro"].Value.ToString();
+                    int precio_pro = Convert.ToInt32(row.Cells["precio_pro"].Value);
+                    string nombrecompleto = row.Cells["nombrecompleto"].Value.ToString();
+                    string facturado = row.Cells["facturado"].Value.ToString();
+                    int cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+                    int total_calculo = Convert.ToInt32(row.Cells["total_calculo"].Value);
+                    DateTime fechaFactura = Convert.ToDateTime(row.Cells["fechaFactura"].Value);
+                    int codigoproducto = Convert.ToInt32(row.Cells["id_historial_factura"].Value);
 
-                MySqlCommand cmd = new MySqlCommand("IHistorial_Factura", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("prm_nombre_pro", MySqlDbType.Text).Value = nombrepro1;
-                cmd.Parameters.Add("prm_precio_pro", MySqlDbType.Double).Value = precio_pro;
-                cmd.Parameters.Add("prm_nombrecompleto", MySqlDbType.Text).Value = nombrecompleto;
-                cmd.Parameters.Add("prm_facturado", MySqlDbType.Text).Value = facturado;
-                cmd.Parameters.Add("prm_Cantidad", MySqlDbType.Int32).Value = cantidad;
-                cmd.Parameters.Add("prm_total_calculo", MySqlDbType.Double).Value = total_calculo;
-                cmd.Parameters.Add("prm_fechaFactura", MySqlDbType.DateTime).Value = fechaFactura;
-                cmd.Parameters.Add("prm_idproducto", MySqlDbType.Int32).Value = codigoproducto;
-                cmd.ExecuteReader();
-                con.Close();
+                    MySqlCommand cmd = new MySqlCommand("IHistorial_Factura", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("prm_nombre_pro", MySqlDbType.Text).Value = nombrepro1;
+                    cmd.Parameters.Add("prm_precio_pro", MySqlDbType.Double).Value = precio_pro;
+                    cmd.Parameters.Add("prm_nombrecompleto", MySqlDbType.Text).Value = nombrecompleto;
+                    cmd.Parameters.Add("prm_facturado", MySqlDbType.Text).Value = facturado;
+                    cmd.Parameters.Add("prm_Cantidad", MySqlDbType.Int32).Value = cantidad;
+                    cmd.Parameters.Add("prm_total_calculo", MySqlDbType.Double).Value = total_calculo;
+                    cmd.Parameters.Add("prm_fechaFactura", MySqlDbType.DateTime).Value = fechaFactura;
+                    cmd.Parameters.Add("prm_idproducto", MySqlDbType.Int32).Value = codigoproducto;
+                    cmd.ExecuteReader();
+                    con.Close();
+                }
+                MessageBox.Show("Facturación Completa");
+                this.txtcantidaddeproductos.Text = this.dgvFacturacion.Rows.Count.ToString("N0");
             }
-            MessageBox.Show("Facturación Completa");
-            this.txtcantidaddeproductos.Text = this.dgvFacturacion.Rows.Count.ToString("N0");
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de insertar los datos, comuniquese con soporte");
+            }
+            
         }
         private void btnguardar_Click(object sender, EventArgs e)
         {
@@ -234,15 +260,6 @@ namespace SistemaTienda
         }
 
 
-        public void CargarDgvPrincipal()
-        {
-            //MySqlDataAdapter adaptador = new MySqlDataAdapter("Select * from historial_factura where id_historial_factura = @id_historial_factura", con);
-            //DataTable tabla = new DataTable();
-            //adaptador.Fill(tabla);
-            //dgvStock.DataSource = tabla;
-        }
-
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             con.Open();
@@ -268,133 +285,149 @@ namespace SistemaTienda
 
         public void Facturar()
         {
-            DataTable dt = new DataTable();
-            dgvFacturacion.DataSource = dt;
-
-            Factura fact = new Factura();
-            List<Factura> listaFact = new List<Factura>();
-
-            foreach (DataRow row in dt.Rows)
+            try
             {
-                //fact.Codigo = row["Codigo"].ToString();
-                fact.Nombre_pro = row["precio_pro"].ToString();
-                fact.Nombrecompleto = row["nombrecompleto"].ToString();
-                fact.Facturado = row["facturado"].ToString();
-                //fact.Cantidad = row["cantidad"].ToString();
-                //fact.Total_calculo = row["total_calculo"].ToString();
-                //fact.FechaFactura = row["fechaFactura"].ToString();
+                DataTable dt = new DataTable();
+                dgvFacturacion.DataSource = dt;
 
-                listaFact.Add(fact);
+                Factura fact = new Factura();
+                List<Factura> listaFact = new List<Factura>();
 
-                MessageBox.Show(listaFact.Count().ToString());
+                foreach (DataRow row in dt.Rows)
+                {
+                    //fact.Codigo = row["Codigo"].ToString();
+                    fact.Nombre_pro = row["precio_pro"].ToString();
+                    fact.Nombrecompleto = row["nombrecompleto"].ToString();
+                    fact.Facturado = row["facturado"].ToString();
+                    //fact.Cantidad = row["cantidad"].ToString();
+                    //fact.Total_calculo = row["total_calculo"].ToString();
+                    //fact.FechaFactura = row["fechaFactura"].ToString();
+
+                    listaFact.Add(fact);
+
+                    MessageBox.Show(listaFact.Count().ToString());
+                }
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de cargar los datos, comuniquese con soporte");
+            }
+            
         }
 
         public void ColocarEnGrid()
         {
+
             bool existe = false;
             int num_fila = 0;
             string UnCliente = "";
-
-            if (string.IsNullOrEmpty(txtSeleccionarCLiente.Text))
+            try
             {
-                UnCliente = txtclienteTemporal.Text;
+                if (string.IsNullOrEmpty(txtSeleccionarCLiente.Text))
+                {
+                    UnCliente = txtclienteTemporal.Text;
 
-            }
-            else
-            {
-                UnCliente = txtSeleccionarCLiente.Text;
-            }
+                }
+                else
+                {
+                    UnCliente = txtSeleccionarCLiente.Text;
+                }
 
 
 
-            if (string.IsNullOrEmpty(txtCantidad.Text))
-            {
-                MessageBox.Show("Debe introducir una cantidad del producto seleccionado");
-                txtCantidad.Focus();
-                return;
-            }
-            if (string.IsNullOrEmpty(cmbfacturara.Text))
-            {
-                MessageBox.Show("Debe seleccionar una forma de facturar");
-                cmbfacturara.Focus();
-
-                return;
-            }
-
-            else
-            {
                 if (string.IsNullOrEmpty(txtCantidad.Text))
                 {
                     MessageBox.Show("Debe introducir una cantidad del producto seleccionado");
                     txtCantidad.Focus();
                     return;
                 }
+                if (string.IsNullOrEmpty(cmbfacturara.Text))
+                {
+                    MessageBox.Show("Debe seleccionar una forma de facturar");
+                    cmbfacturara.Focus();
+
+                    return;
+                }
+
                 else
                 {
-
-                    if (string.IsNullOrEmpty(cmbfacturara.Text))
+                    if (string.IsNullOrEmpty(txtCantidad.Text))
                     {
-                        MessageBox.Show("Debe seleccionar una forma de facturar");
-                        cmbfacturara.Focus();
-
+                        MessageBox.Show("Debe introducir una cantidad del producto seleccionado");
+                        txtCantidad.Focus();
                         return;
-                    }
-                    if (cont_fila >= 0)
-                    {
-                        dgvFacturacion.Rows.Add(txtCodigoPro.Text, txtDescrip.Text, txtPrecio.Text, txtCantidad.Text);
-                        double importe = Convert.ToDouble(dgvFacturacion.Rows[cont_fila].Cells[2].Value) * Convert.ToDouble(dgvFacturacion.Rows[cont_fila].Cells[3].Value);
-                        dgvFacturacion.Rows[cont_fila].Cells[6].Value = importe;
-                        dgvFacturacion.Rows[cont_fila].Cells[4].Value = UnCliente;
-                        dgvFacturacion.Rows[cont_fila].Cells[5].Value = cmbfacturara.Text;
-                        dgvFacturacion.Rows[cont_fila].Cells[7].Value = dateTimePicker1.Text;
-                        cont_fila++;
                     }
                     else
                     {
-                        foreach (DataGridViewRow Fila in dgvFacturacion.Rows)
+
+                        if (string.IsNullOrEmpty(cmbfacturara.Text))
                         {
-                            if (Fila.Cells[0].Value.ToString() == txtCodigoPro.Text)
-                            {
-                                existe = true;
-                                num_fila = Fila.Index;
-                            }
+                            MessageBox.Show("Debe seleccionar una forma de facturar");
+                            cmbfacturara.Focus();
+
+                            return;
                         }
-                        if (existe == true)
-                        {
-                            dgvFacturacion.Rows[num_fila].Cells[3].Value = (Convert.ToDouble(txtCantidad.Text) + Convert.ToDouble(dgvFacturacion.Rows[num_fila].Cells[3].Value)).ToString();
-                            double importe = Convert.ToDouble(dgvFacturacion.Rows[num_fila].Cells[2].Value) * Convert.ToDouble(dgvFacturacion.Rows[num_fila].Cells[3].Value);
-                            dgvFacturacion.Rows[num_fila].Cells[6].Value = importe;
-                        }
-                        else
+                        if (cont_fila >= 0)
                         {
                             dgvFacturacion.Rows.Add(txtCodigoPro.Text, txtDescrip.Text, txtPrecio.Text, txtCantidad.Text);
                             double importe = Convert.ToDouble(dgvFacturacion.Rows[cont_fila].Cells[2].Value) * Convert.ToDouble(dgvFacturacion.Rows[cont_fila].Cells[3].Value);
                             dgvFacturacion.Rows[cont_fila].Cells[6].Value = importe;
+                            dgvFacturacion.Rows[cont_fila].Cells[4].Value = UnCliente;
+                            dgvFacturacion.Rows[cont_fila].Cells[5].Value = cmbfacturara.Text;
+                            dgvFacturacion.Rows[cont_fila].Cells[7].Value = dateTimePicker1.Text;
                             cont_fila++;
                         }
+                        else
+                        {
+                            foreach (DataGridViewRow Fila in dgvFacturacion.Rows)
+                            {
+                                if (Fila.Cells[0].Value.ToString() == txtCodigoPro.Text)
+                                {
+                                    existe = true;
+                                    num_fila = Fila.Index;
+                                }
+                            }
+                            if (existe == true)
+                            {
+                                dgvFacturacion.Rows[num_fila].Cells[3].Value = (Convert.ToDouble(txtCantidad.Text) + Convert.ToDouble(dgvFacturacion.Rows[num_fila].Cells[3].Value)).ToString();
+                                double importe = Convert.ToDouble(dgvFacturacion.Rows[num_fila].Cells[2].Value) * Convert.ToDouble(dgvFacturacion.Rows[num_fila].Cells[3].Value);
+                                dgvFacturacion.Rows[num_fila].Cells[6].Value = importe;
+                            }
+                            else
+                            {
+                                dgvFacturacion.Rows.Add(txtCodigoPro.Text, txtDescrip.Text, txtPrecio.Text, txtCantidad.Text);
+                                double importe = Convert.ToDouble(dgvFacturacion.Rows[cont_fila].Cells[2].Value) * Convert.ToDouble(dgvFacturacion.Rows[cont_fila].Cells[3].Value);
+                                dgvFacturacion.Rows[cont_fila].Cells[6].Value = importe;
+                                cont_fila++;
+                            }
+                        }
+
+                        total = 0;
+                        foreach (DataGridViewRow Fila in dgvFacturacion.Rows)
+                        {
+                            total += Convert.ToDouble(Fila.Cells[6].Value);
+                        }
+                        txtTotal.Text = total.ToString();
+                        txtSeleccionarCLiente.Focus();
+                        this.txtcantidaddeproductos.Text = this.dgvFacturacion.Rows.Count.ToString("N0");
+
+                        Limpiar();
                     }
 
-                    total = 0;
-                    foreach (DataGridViewRow Fila in dgvFacturacion.Rows)
-                    {
-                        total += Convert.ToDouble(Fila.Cells[6].Value);
-                    }
-                    txtTotal.Text = total.ToString();
-                    txtSeleccionarCLiente.Focus();
-                    this.txtcantidaddeproductos.Text = this.dgvFacturacion.Rows.Count.ToString("N0");
-
-                    Limpiar();
                 }
+                btnguardar.Enabled = true;
+                btnImprimir.Enabled = true;
+                txtbuscarproducto.Focus();
+                int cambio = 0;
+                cambio = int.Parse(txtDineroRecibido.Text) - int.Parse(txtTotal.Text);
+                txtCambio.Text = cambio.ToString();
 
             }
-            btnguardar.Enabled = true;
-            btnImprimir.Enabled = true;
-            txtbuscarproducto.Focus();
-            int cambio = 0;
-            cambio = int.Parse(txtDineroRecibido.Text) - int.Parse(txtTotal.Text);
-            txtCambio.Text = cambio.ToString();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de colocar los datos en pantalla, comuniquese con soporte");
+            }
+           
         }
 
         private void txtCantidad_KeyDown(object sender, KeyEventArgs e)
@@ -486,31 +519,40 @@ namespace SistemaTienda
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            PrintDialog printDialog = new PrintDialog();
-            DialogResult userResp = printDialog.ShowDialog();
-            printDocument1 = new PrintDocument();
-            if (printDialog.PrinterSettings.PrinterName == "Microsoft Print to PDF")
-            {   // force a reasonable filename
-                string basename = Path.GetFileNameWithoutExtension((Path.GetTempFileName()));
-                string directory = Path.GetDirectoryName("c:/");
-                printDocument1.PrinterSettings.PrintToFile = true;
-                // confirm the user wants to use that name
-                SaveFileDialog pdfSaveDialog = new SaveFileDialog();
-                pdfSaveDialog.InitialDirectory = directory;
-                pdfSaveDialog.FileName = basename + ".pdf";
-                pdfSaveDialog.Filter = "PDF File|*.pdf";
-                userResp = pdfSaveDialog.ShowDialog();
-                if (userResp != DialogResult.Cancel)
-                    printDocument1.PrinterSettings.PrintFileName = pdfSaveDialog.FileName;
-            }
-            //Facturar();
+            try
+            {
+                PrintDialog printDialog = new PrintDialog();
+                DialogResult userResp = printDialog.ShowDialog();
+                printDocument1 = new PrintDocument();
+                if (printDialog.PrinterSettings.PrinterName == "Microsoft Print to PDF")
+                {   // force a reasonable filename
+                    string basename = Path.GetFileNameWithoutExtension((Path.GetTempFileName()));
+                    string directory = Path.GetDirectoryName("c:/");
+                    printDocument1.PrinterSettings.PrintToFile = true;
+                    // confirm the user wants to use that name
+                    SaveFileDialog pdfSaveDialog = new SaveFileDialog();
+                    pdfSaveDialog.InitialDirectory = directory;
+                    pdfSaveDialog.FileName = basename + ".pdf";
+                    pdfSaveDialog.Filter = "PDF File|*.pdf";
+                    userResp = pdfSaveDialog.ShowDialog();
+                    if (userResp != DialogResult.Cancel)
+                        printDocument1.PrinterSettings.PrintFileName = pdfSaveDialog.FileName;
+                }
+                //Facturar();
 
-            //printDocument1 = new PrintDocument();
-            //PrinterSettings ps = new PrinterSettings();
-            //printDocument1.PrinterSettings = ps;
-            printDocument1.PrintPage += Imprimir;
-            //printDocument1.DocumentName = "Factura";
-            printDocument1.Print();
+                //printDocument1 = new PrintDocument();
+                //PrinterSettings ps = new PrinterSettings();
+                //printDocument1.PrinterSettings = ps;
+                printDocument1.PrintPage += Imprimir;
+                //printDocument1.DocumentName = "Factura";
+                printDocument1.Print();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de imprimir los datos, comuniquese con soporte");
+            }
+           
         }
 
         private void Imprimir(object sender, PrintPageEventArgs e)
@@ -551,7 +593,7 @@ namespace SistemaTienda
 
                 e.Graphics.DrawImage(image, new Rectangle(80, 5, 50, 50));
                 e.Graphics.DrawString("           ", font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
-                e.Graphics.DrawString("    --- Compañia X ---", font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
+                e.Graphics.DrawString("    --- Lucas Fashion ---", font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
                 e.Graphics.DrawString("          " + fecha.ToString("MM/dd/yyyy"), font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);
                 //e.Graphics.DrawString("--- Factura # ---" + txtCantidad.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
                 e.Graphics.DrawString("Cliente: " + unCliente, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20), format);

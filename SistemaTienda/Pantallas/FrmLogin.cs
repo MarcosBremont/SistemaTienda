@@ -37,6 +37,7 @@ namespace SistemaTienda.Pantallas
 
         public void Ingresar()
         {
+
             if (cbRol.Text == "")
             {
                 MessageBox.Show("Por favor seleccione un Rol", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -139,7 +140,7 @@ namespace SistemaTienda.Pantallas
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ha ocurrido un problema a la hora de iniciar sesion, por favor comuniquese con soporte");
             }
         }
 

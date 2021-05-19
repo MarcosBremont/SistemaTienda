@@ -26,10 +26,17 @@ namespace SistemaTienda.Pantallas
 
         public void CargarDgvInventario()
         {
-            MySqlDataAdapter adaptador = new MySqlDataAdapter("Select * from producto", con);
-            DataTable tabla = new DataTable();
-            adaptador.Fill(tabla);
-            dgvInventario.DataSource = tabla;
+            try
+            {
+                MySqlDataAdapter adaptador = new MySqlDataAdapter("Select * from producto", con);
+                DataTable tabla = new DataTable();
+                adaptador.Fill(tabla);
+                dgvInventario.DataSource = tabla;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de cargar los datos, comuniquese con soporte");
+            }
         }
 
         private void txtbuscarpornombredelproducto_KeyUp(object sender, KeyEventArgs e)
@@ -54,42 +61,59 @@ namespace SistemaTienda.Pantallas
 
         private void txtbuscarporcategoria_KeyUp(object sender, KeyEventArgs e)
         {
-            con.Open();
+            try
+            {
+                con.Open();
 
-            MySqlCommand cmd = con.CreateCommand();
+                MySqlCommand cmd = con.CreateCommand();
 
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM producto where categoria_pro like ('" + txtbuscarporcategoria.Text + "%')";
-            cmd.ExecuteNonQuery();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "SELECT * FROM producto where categoria_pro like ('" + txtbuscarporcategoria.Text + "%')";
+                cmd.ExecuteNonQuery();
 
-            DataTable dt = new DataTable();
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
-            da.Fill(dt);
+                da.Fill(dt);
 
-            dgvInventario.DataSource = dt;
+                dgvInventario.DataSource = dt;
 
-            con.Close();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de buscar los datos, comuniquese con soporte");
+            }
+           
         }
 
         private void txtbuscarporcodigo_KeyUp(object sender, KeyEventArgs e)
         {
-            con.Open();
+            try
+            {
+                con.Open();
 
-            MySqlCommand cmd = con.CreateCommand();
+                MySqlCommand cmd = con.CreateCommand();
 
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM producto where id_producto like ('" + txtbuscarporcodigo.Text + "%')";
-            cmd.ExecuteNonQuery();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "SELECT * FROM producto where id_producto like ('" + txtbuscarporcodigo.Text + "%')";
+                cmd.ExecuteNonQuery();
 
-            DataTable dt = new DataTable();
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
-            da.Fill(dt);
+                da.Fill(dt);
 
-            dgvInventario.DataSource = dt;
+                dgvInventario.DataSource = dt;
 
-            con.Close();
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de buscar los datos, comuniquese con soporte");
+            }
+            
         }
 
         private void btnSeleccionar_Click(object sender, EventArgs e)

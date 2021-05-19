@@ -87,21 +87,29 @@ namespace SistemaTienda.Pantallas
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            con.Open();
-            string query = "INSERT INTO usuario (Nombre, Role, Usuario, Contrasena, NDeContacto, Email) values (@Nombre, @Role, @Usuario, @Contrasena, @NDeContacto, @Email)";
-            MySqlCommand comando = new MySqlCommand(query, con);
-            comando.Parameters.AddWithValue("@Nombre", txtNombre.Text);
-            comando.Parameters.AddWithValue("@Role", comboRoles.Text);
-            comando.Parameters.AddWithValue("@Usuario", txtUsuario.Text);
-            comando.Parameters.AddWithValue("@Contrasena", txtContrasena.Text);
-            comando.Parameters.AddWithValue("@NDeContacto", txtNumeroDeContacto.Text);
-            comando.Parameters.AddWithValue("@Email", txtEmail.Text);
-            comando.ExecuteNonQuery();
-            con.Close();
-            CargarDgvUsuariosRegistrados();
-            MessageBox.Show("Usuario Agregado exitosamente");
+            try
+            {
+                con.Open();
+                string query = "INSERT INTO usuario (Nombre, Role, Usuario, Contrasena, NDeContacto, Email) values (@Nombre, @Role, @Usuario, @Contrasena, @NDeContacto, @Email)";
+                MySqlCommand comando = new MySqlCommand(query, con);
+                comando.Parameters.AddWithValue("@Nombre", txtNombre.Text);
+                comando.Parameters.AddWithValue("@Role", comboRoles.Text);
+                comando.Parameters.AddWithValue("@Usuario", txtUsuario.Text);
+                comando.Parameters.AddWithValue("@Contrasena", txtContrasena.Text);
+                comando.Parameters.AddWithValue("@NDeContacto", txtNumeroDeContacto.Text);
+                comando.Parameters.AddWithValue("@Email", txtEmail.Text);
+                comando.ExecuteNonQuery();
+                con.Close();
+                CargarDgvUsuariosRegistrados();
+                MessageBox.Show("Usuario Agregado exitosamente");
 
-            clear();
+                clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de guardar los datos, comuniquese con soporte");
+            }
+           
         }
 
         public void CargarDgvUsuariosRegistrados()
@@ -129,43 +137,61 @@ namespace SistemaTienda.Pantallas
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            con.Open();
-            string query = "UPDATE usuario SET Nombre = @Nombre, Role = @Role, Usuario = @Usuario, Contrasena = @Contrasena, NDeContacto = @NDeContacto, Email = @Email where idusuario=@idusuario";
-            MySqlCommand comando = new MySqlCommand(query, con);
-            comando.Parameters.AddWithValue("@idusuario", TXTID.Text);
-            comando.Parameters.AddWithValue("@Nombre", txtNombre.Text);
-            comando.Parameters.AddWithValue("@Role", comboRoles.Text);
-            comando.Parameters.AddWithValue("@Usuario", txtUsuario.Text);
-            comando.Parameters.AddWithValue("@Contrasena", txtContrasena.Text);
-            comando.Parameters.AddWithValue("@NDeContacto", txtNumeroDeContacto.Text);
-            comando.Parameters.AddWithValue("@Email", txtEmail.Text);
-            comando.ExecuteNonQuery();
-            CargarDgvUsuariosRegistrados();
-            MessageBox.Show("Usuario Actualizado");
-            con.Close();
-            clear();
+            try
+            {
+                con.Open();
+                string query = "UPDATE usuario SET Nombre = @Nombre, Role = @Role, Usuario = @Usuario, Contrasena = @Contrasena, NDeContacto = @NDeContacto, Email = @Email where idusuario=@idusuario";
+                MySqlCommand comando = new MySqlCommand(query, con);
+                comando.Parameters.AddWithValue("@idusuario", TXTID.Text);
+                comando.Parameters.AddWithValue("@Nombre", txtNombre.Text);
+                comando.Parameters.AddWithValue("@Role", comboRoles.Text);
+                comando.Parameters.AddWithValue("@Usuario", txtUsuario.Text);
+                comando.Parameters.AddWithValue("@Contrasena", txtContrasena.Text);
+                comando.Parameters.AddWithValue("@NDeContacto", txtNumeroDeContacto.Text);
+                comando.Parameters.AddWithValue("@Email", txtEmail.Text);
+                comando.ExecuteNonQuery();
+                CargarDgvUsuariosRegistrados();
+                MessageBox.Show("Usuario Actualizado");
+                con.Close();
+                clear();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de actualizar los datos, comuniquese con soporte");
+            }
+            
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            con.Open();
-            DialogResult result = MessageBox.Show("¿Estas seguro que quiere eliminar este Usuario?.", "ATENCION", MessageBoxButtons.YesNo);
-
-            if (result == DialogResult.Yes)
+            try
             {
-                string query = "DELETE FROM usuario Where idusuario = @idusuario";
-                MySqlCommand comando = new MySqlCommand(query, con);
-                comando.Parameters.AddWithValue("@idusuario", TXTID.Text);
-                comando.ExecuteNonQuery();
-                CargarDgvUsuariosRegistrados();
-                MessageBox.Show("Usuario Eliminado");
-                con.Close();
-                clear();
-            }
-            else
-            {
+                con.Open();
+                DialogResult result = MessageBox.Show("¿Estas seguro que quiere eliminar este Usuario?.", "ATENCION", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    string query = "DELETE FROM usuario Where idusuario = @idusuario";
+                    MySqlCommand comando = new MySqlCommand(query, con);
+                    comando.Parameters.AddWithValue("@idusuario", TXTID.Text);
+                    comando.ExecuteNonQuery();
+                    CargarDgvUsuariosRegistrados();
+                    MessageBox.Show("Usuario Eliminado");
+                    con.Close();
+                    clear();
+                }
+                else
+                {
+
+                }
 
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de eliminar los datos, comuniquese con soporte");
+            }
+            
 
         }
 
@@ -188,6 +214,11 @@ namespace SistemaTienda.Pantallas
             {
                 txtContrasena.PasswordChar = char.Parse("*");
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -32,20 +32,28 @@ namespace SistemaTienda.Pantallas
 
         private void btnguardar_Click(object sender, EventArgs e)
         {
-            con.Open();
-            string query = "INSERT INTO producto (nombre_pro, categoria_pro, precio_pro, compra_pro, cantidad_pro) values (@nombre_pro, @categoria_pro, @precio_pro, @compra_pro, @cantidad_pro)";
-            MySqlCommand comando = new MySqlCommand(query, con);
-            comando.Parameters.AddWithValue("@nombre_pro", txtnombreproducto.Text);
-            comando.Parameters.AddWithValue("@categoria_pro", cmbCategoria.Text);
-            comando.Parameters.AddWithValue("@precio_pro", txtprecio.Text);
-            comando.Parameters.AddWithValue("@compra_pro", txtcompra.Text);
-            comando.Parameters.AddWithValue("@cantidad_pro", txtcantidad.Text);
-            comando.ExecuteNonQuery();
-            CargarDgvStock();
-            MessageBox.Show("Producto Agregado al Stock");
-            con.Close();
-            clear();
-            this.txtcantidaddeproductos.Text = this.dgvStock.Rows.Count.ToString("N0");
+            try
+            {
+                con.Open();
+                string query = "INSERT INTO producto (nombre_pro, categoria_pro, precio_pro, compra_pro, cantidad_pro) values (@nombre_pro, @categoria_pro, @precio_pro, @compra_pro, @cantidad_pro)";
+                MySqlCommand comando = new MySqlCommand(query, con);
+                comando.Parameters.AddWithValue("@nombre_pro", txtnombreproducto.Text);
+                comando.Parameters.AddWithValue("@categoria_pro", cmbCategoria.Text);
+                comando.Parameters.AddWithValue("@precio_pro", txtprecio.Text);
+                comando.Parameters.AddWithValue("@compra_pro", txtcompra.Text);
+                comando.Parameters.AddWithValue("@cantidad_pro", txtcantidad.Text);
+                comando.ExecuteNonQuery();
+                CargarDgvStock();
+                MessageBox.Show("Producto Agregado al Stock");
+                con.Close();
+                clear();
+                this.txtcantidaddeproductos.Text = this.dgvStock.Rows.Count.ToString("N0");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de guardar los datos, comuniquese con soporte");
+            }
+           
         }
 
         private void btnnuevo_Click(object sender, EventArgs e)
@@ -76,10 +84,18 @@ namespace SistemaTienda.Pantallas
 
         public void CargarDgvStock()
         {
-            MySqlDataAdapter adaptador = new MySqlDataAdapter("Select * from producto", con);
-            DataTable tabla = new DataTable();
-            adaptador.Fill(tabla);
-            dgvStock.DataSource = tabla;
+            try
+            {
+                MySqlDataAdapter adaptador = new MySqlDataAdapter("Select * from producto", con);
+                DataTable tabla = new DataTable();
+                adaptador.Fill(tabla);
+                dgvStock.DataSource = tabla;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de cargar los datos, comuniquese con soporte");
+            }
+           
         }
 
         private void dgvStock_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -100,43 +116,59 @@ namespace SistemaTienda.Pantallas
 
         private void btneliminar_Click(object sender, EventArgs e)
         {
-            con.Open();
-            DialogResult result = MessageBox.Show("¿Estas seguro que quiere eliminar este producto?.", "ATENCION", MessageBoxButtons.YesNo);
-
-            if (result == DialogResult.Yes)
+            try
             {
-                string query = "DELETE FROM producto Where id_producto = @id_producto";
-                MySqlCommand comando = new MySqlCommand(query, con);
-                comando.Parameters.AddWithValue("@id_producto", txtidproducto.Text);
-                comando.ExecuteNonQuery();
-                CargarDgvStock();
-                MessageBox.Show("Producto Eliminado");
-                con.Close();
-                clear();
-            }
-            else
-            {
+                con.Open();
+                DialogResult result = MessageBox.Show("¿Estas seguro que quiere eliminar este producto?.", "ATENCION", MessageBoxButtons.YesNo);
 
+                if (result == DialogResult.Yes)
+                {
+                    string query = "DELETE FROM producto Where id_producto = @id_producto";
+                    MySqlCommand comando = new MySqlCommand(query, con);
+                    comando.Parameters.AddWithValue("@id_producto", txtidproducto.Text);
+                    comando.ExecuteNonQuery();
+                    CargarDgvStock();
+                    MessageBox.Show("Producto Eliminado");
+                    con.Close();
+                    clear();
+                }
+                else
+                {
+
+                }
+                this.txtcantidaddeproductos.Text = this.dgvStock.Rows.Count.ToString("N0");
             }
-            this.txtcantidaddeproductos.Text = this.dgvStock.Rows.Count.ToString("N0");
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de eliminar los datos, comuniquese con soporte");
+            }
+            
         }
 
         private void btneditar_Click(object sender, EventArgs e)
         {
-            con.Open();
-            string query = "UPDATE producto SET nombre_pro = @nombre_pro, categoria_pro = @categoria_pro, precio_pro = @precio_pro, compra_pro = @compra_pro, cantidad_pro = @cantidad_pro where id_producto=@id_producto";
-            MySqlCommand comando = new MySqlCommand(query, con);
-            comando.Parameters.AddWithValue("@id_producto", txtidproducto.Text);
-            comando.Parameters.AddWithValue("@nombre_pro", txtnombreproducto.Text);
-            comando.Parameters.AddWithValue("@categoria_pro", cmbCategoria.Text);
-            comando.Parameters.AddWithValue("@precio_pro", txtprecio.Text);
-            comando.Parameters.AddWithValue("@compra_pro", txtcompra.Text);
-            comando.Parameters.AddWithValue("@cantidad_pro", txtcantidad.Text);
-            comando.ExecuteNonQuery();
-            CargarDgvStock();
-            MessageBox.Show("Producto Actualizado");
-            con.Close();
-            clear();
+            try
+            {
+                con.Open();
+                string query = "UPDATE producto SET nombre_pro = @nombre_pro, categoria_pro = @categoria_pro, precio_pro = @precio_pro, compra_pro = @compra_pro, cantidad_pro = @cantidad_pro where id_producto=@id_producto";
+                MySqlCommand comando = new MySqlCommand(query, con);
+                comando.Parameters.AddWithValue("@id_producto", txtidproducto.Text);
+                comando.Parameters.AddWithValue("@nombre_pro", txtnombreproducto.Text);
+                comando.Parameters.AddWithValue("@categoria_pro", cmbCategoria.Text);
+                comando.Parameters.AddWithValue("@precio_pro", txtprecio.Text);
+                comando.Parameters.AddWithValue("@compra_pro", txtcompra.Text);
+                comando.Parameters.AddWithValue("@cantidad_pro", txtcantidad.Text);
+                comando.ExecuteNonQuery();
+                CargarDgvStock();
+                MessageBox.Show("Producto Actualizado");
+                con.Close();
+                clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de actualizar los datos, comuniquese con soporte");
+            }
+           
         }
 
         public void CARGARCOMBOBOXCATEGORIA()

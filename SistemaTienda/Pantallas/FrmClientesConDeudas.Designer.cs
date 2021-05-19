@@ -40,7 +40,6 @@ namespace SistemaTienda.Pantallas
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.lblfacturado = new System.Windows.Forms.Label();
             this.lblnombrecompleto = new System.Windows.Forms.Label();
             this.txtprecioproducto = new System.Windows.Forms.TextBox();
             this.lblprecioproducto = new System.Windows.Forms.Label();
@@ -49,13 +48,13 @@ namespace SistemaTienda.Pantallas
             this.lblcantidad = new System.Windows.Forms.Label();
             this.lbltotal = new System.Windows.Forms.Label();
             this.txtnombrecompleto = new System.Windows.Forms.TextBox();
-            this.txtfacturado = new System.Windows.Forms.TextBox();
             this.txtcantidad = new System.Windows.Forms.TextBox();
             this.txttotal = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.lblidhistorialfactura = new System.Windows.Forms.Label();
-            this.txtIDhistorialfactura = new System.Windows.Forms.TextBox();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.cod_prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precio_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombrecompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -112,6 +111,7 @@ namespace SistemaTienda.Pantallas
             this.dgv_clientes_con_deudas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_clientes_con_deudas.ColumnHeadersHeight = 40;
             this.dgv_clientes_con_deudas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cod_prod,
             this.nombre_pro,
             this.precio_pro,
             this.nombrecompleto,
@@ -200,16 +200,6 @@ namespace SistemaTienda.Pantallas
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // lblfacturado
-            // 
-            this.lblfacturado.AutoSize = true;
-            this.lblfacturado.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
-            this.lblfacturado.Location = new System.Drawing.Point(449, 21);
-            this.lblfacturado.Name = "lblfacturado";
-            this.lblfacturado.Size = new System.Drawing.Size(66, 16);
-            this.lblfacturado.TabIndex = 156;
-            this.lblfacturado.Text = "Facturado";
-            // 
             // lblnombrecompleto
             // 
             this.lblnombrecompleto.AutoSize = true;
@@ -281,13 +271,6 @@ namespace SistemaTienda.Pantallas
             this.txtnombrecompleto.Size = new System.Drawing.Size(273, 20);
             this.txtnombrecompleto.TabIndex = 146;
             // 
-            // txtfacturado
-            // 
-            this.txtfacturado.Location = new System.Drawing.Point(521, 19);
-            this.txtfacturado.Name = "txtfacturado";
-            this.txtfacturado.Size = new System.Drawing.Size(151, 20);
-            this.txtfacturado.TabIndex = 145;
-            // 
             // txtcantidad
             // 
             this.txtcantidad.Location = new System.Drawing.Point(521, 56);
@@ -326,17 +309,24 @@ namespace SistemaTienda.Pantallas
             this.lblidhistorialfactura.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
             this.lblidhistorialfactura.Location = new System.Drawing.Point(25, 21);
             this.lblidhistorialfactura.Name = "lblidhistorialfactura";
-            this.lblidhistorialfactura.Size = new System.Drawing.Size(121, 16);
+            this.lblidhistorialfactura.Size = new System.Drawing.Size(47, 16);
             this.lblidhistorialfactura.TabIndex = 152;
-            this.lblidhistorialfactura.Text = "ID Historial Factura";
+            this.lblidhistorialfactura.Text = "Codigo";
             // 
-            // txtIDhistorialfactura
+            // txtCodigo
             // 
-            this.txtIDhistorialfactura.Location = new System.Drawing.Point(149, 19);
-            this.txtIDhistorialfactura.Name = "txtIDhistorialfactura";
-            this.txtIDhistorialfactura.ReadOnly = true;
-            this.txtIDhistorialfactura.Size = new System.Drawing.Size(43, 20);
-            this.txtIDhistorialfactura.TabIndex = 151;
+            this.txtCodigo.Location = new System.Drawing.Point(149, 19);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.ReadOnly = true;
+            this.txtCodigo.Size = new System.Drawing.Size(43, 20);
+            this.txtCodigo.TabIndex = 151;
+            // 
+            // cod_prod
+            // 
+            this.cod_prod.DataPropertyName = "cod_prod";
+            this.cod_prod.HeaderText = "Codigo";
+            this.cod_prod.Name = "cod_prod";
+            this.cod_prod.ReadOnly = true;
             // 
             // nombre_pro
             // 
@@ -395,7 +385,6 @@ namespace SistemaTienda.Pantallas
             this.Controls.Add(this.GroupBox2);
             this.Controls.Add(this.lbltotal);
             this.Controls.Add(this.lblcantidad);
-            this.Controls.Add(this.lblfacturado);
             this.Controls.Add(this.lblnombrecompleto);
             this.Controls.Add(this.txtnombrecompleto);
             this.Controls.Add(this.txtprecioproducto);
@@ -403,9 +392,8 @@ namespace SistemaTienda.Pantallas
             this.Controls.Add(this.lblnombreproducto);
             this.Controls.Add(this.txttotal);
             this.Controls.Add(this.txtcantidad);
-            this.Controls.Add(this.txtfacturado);
             this.Controls.Add(this.txtNombreproducto);
-            this.Controls.Add(this.txtIDhistorialfactura);
+            this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.lblidhistorialfactura);
             this.Name = "FrmClientesConDeudas";
             this.Text = "FrmHistorialFacturas";
@@ -425,7 +413,6 @@ namespace SistemaTienda.Pantallas
         internal System.Windows.Forms.Button btnEliminar;
         internal System.Windows.Forms.Button btnActualizar;
         internal System.Windows.Forms.Button btnNuevo;
-        internal System.Windows.Forms.Label lblfacturado;
         internal System.Windows.Forms.Label lblnombrecompleto;
         internal System.Windows.Forms.TextBox txtprecioproducto;
         internal System.Windows.Forms.Label lblprecioproducto;
@@ -434,13 +421,13 @@ namespace SistemaTienda.Pantallas
         internal System.Windows.Forms.Label lblcantidad;
         internal System.Windows.Forms.Label lbltotal;
         internal System.Windows.Forms.TextBox txtnombrecompleto;
-        internal System.Windows.Forms.TextBox txtfacturado;
         internal System.Windows.Forms.TextBox txtcantidad;
         internal System.Windows.Forms.TextBox txttotal;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         internal System.Windows.Forms.Label label2;
         internal System.Windows.Forms.Label lblidhistorialfactura;
-        internal System.Windows.Forms.TextBox txtIDhistorialfactura;
+        internal System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cod_prod;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre_pro;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio_pro;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombrecompleto;
