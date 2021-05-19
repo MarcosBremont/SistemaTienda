@@ -44,6 +44,7 @@ namespace SistemaTienda.Pantallas
             this.GBBuscarPorNombre = new System.Windows.Forms.GroupBox();
             this.txtbuscarpornombredelproducto = new System.Windows.Forms.TextBox();
             this.GPDetallesdeStock = new System.Windows.Forms.GroupBox();
+            this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.txtcompra = new System.Windows.Forms.TextBox();
             this.lblCategoria = new System.Windows.Forms.Label();
             this.btneditar = new System.Windows.Forms.Button();
@@ -59,7 +60,6 @@ namespace SistemaTienda.Pantallas
             this.txtnombreproducto = new System.Windows.Forms.TextBox();
             this.txtcantidad = new System.Windows.Forms.TextBox();
             this.txtidproducto = new System.Windows.Forms.TextBox();
-            this.cmbCategoria = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
             this.GBBuscarPorNombre.SuspendLayout();
             this.GPDetallesdeStock.SuspendLayout();
@@ -231,6 +231,14 @@ namespace SistemaTienda.Pantallas
             this.GPDetallesdeStock.TabStop = false;
             this.GPDetallesdeStock.Text = "Detalles de Stock";
             // 
+            // cmbCategoria
+            // 
+            this.cmbCategoria.FormattingEnabled = true;
+            this.cmbCategoria.Location = new System.Drawing.Point(147, 111);
+            this.cmbCategoria.Name = "cmbCategoria";
+            this.cmbCategoria.Size = new System.Drawing.Size(240, 21);
+            this.cmbCategoria.TabIndex = 22;
+            // 
             // txtcompra
             // 
             this.txtcompra.Location = new System.Drawing.Point(147, 186);
@@ -370,14 +378,6 @@ namespace SistemaTienda.Pantallas
             this.txtidproducto.Size = new System.Drawing.Size(28, 20);
             this.txtidproducto.TabIndex = 0;
             // 
-            // cmbCategoria
-            // 
-            this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Location = new System.Drawing.Point(147, 111);
-            this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(240, 21);
-            this.cmbCategoria.TabIndex = 22;
-            // 
             // FrmEditarProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -388,7 +388,7 @@ namespace SistemaTienda.Pantallas
             this.Controls.Add(this.GBBuscarPorNombre);
             this.Controls.Add(this.GPDetallesdeStock);
             this.Name = "FrmEditarProductos";
-            this.Text = "FrmEditarProductos";
+            this.Text = "Productos";
             this.Load += new System.EventHandler(this.FrmEditarProductos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).EndInit();
             this.GBBuscarPorNombre.ResumeLayout(false);

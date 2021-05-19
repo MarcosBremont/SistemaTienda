@@ -29,15 +29,15 @@ namespace SistemaTienda
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BtnColocar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.BtnBuscarProductos = new System.Windows.Forms.Button();
             this.txtbuscarproducto = new System.Windows.Forms.TextBox();
             this.lblnombreproducto = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtCambio = new System.Windows.Forms.TextBox();
             this.lblcambio = new System.Windows.Forms.Label();
             this.txtDineroRecibido = new System.Windows.Forms.TextBox();
@@ -62,6 +62,7 @@ namespace SistemaTienda
             this.fechaFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GPDetallesdeStock = new System.Windows.Forms.GroupBox();
             this.txtFacturadoPor = new System.Windows.Forms.TextBox();
+            this.BtnAgregarCliente = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.lblprecio = new System.Windows.Forms.Label();
             this.lblcantidad = new System.Windows.Forms.Label();
@@ -80,7 +81,6 @@ namespace SistemaTienda
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verYEditarProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarInventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historialToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,25 +97,28 @@ namespace SistemaTienda
             this.lblnombreprod = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.BtnBuscarProductos = new System.Windows.Forms.Button();
-            this.BtnAgregarCliente = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.GBBuscarPorNombre.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturacion)).BeginInit();
             this.GPDetallesdeStock.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnColocar
             // 
+            this.BtnColocar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(92)))), ((int)(((byte)(21)))));
+            this.BtnColocar.FlatAppearance.BorderSize = 0;
+            this.BtnColocar.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.BtnColocar.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
-            this.BtnColocar.Location = new System.Drawing.Point(753, 153);
+            this.BtnColocar.Location = new System.Drawing.Point(965, 191);
             this.BtnColocar.Name = "BtnColocar";
             this.BtnColocar.Size = new System.Drawing.Size(132, 38);
             this.BtnColocar.TabIndex = 6;
             this.BtnColocar.Text = "Colocar";
-            this.BtnColocar.UseVisualStyleBackColor = true;
+            this.BtnColocar.UseVisualStyleBackColor = false;
             this.BtnColocar.Click += new System.EventHandler(this.BtnColocar_Click);
             // 
             // groupBox2
@@ -123,11 +126,24 @@ namespace SistemaTienda
             this.groupBox2.Controls.Add(this.BtnBuscarProductos);
             this.groupBox2.Controls.Add(this.txtbuscarproducto);
             this.groupBox2.Controls.Add(this.lblnombreproducto);
-            this.groupBox2.Location = new System.Drawing.Point(12, 25);
+            this.groupBox2.Location = new System.Drawing.Point(12, 49);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(369, 63);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
+            // 
+            // BtnBuscarProductos
+            // 
+            this.BtnBuscarProductos.FlatAppearance.BorderSize = 0;
+            this.BtnBuscarProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnBuscarProductos.Image = global::SistemaTienda.Properties.Resources.lupa__2_;
+            this.BtnBuscarProductos.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnBuscarProductos.Location = new System.Drawing.Point(290, 12);
+            this.BtnBuscarProductos.Name = "BtnBuscarProductos";
+            this.BtnBuscarProductos.Size = new System.Drawing.Size(73, 43);
+            this.BtnBuscarProductos.TabIndex = 2;
+            this.BtnBuscarProductos.UseVisualStyleBackColor = true;
+            this.BtnBuscarProductos.Click += new System.EventHandler(this.BtnBuscarProductos_Click);
             // 
             // txtbuscarproducto
             // 
@@ -148,28 +164,9 @@ namespace SistemaTienda
             this.lblnombreproducto.TabIndex = 1;
             this.lblnombreproducto.Text = "Buscar Producto";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtCambio);
-            this.groupBox1.Controls.Add(this.lblcambio);
-            this.groupBox1.Controls.Add(this.txtDineroRecibido);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.txtTotal);
-            this.groupBox1.Controls.Add(this.txtcantidaddeproductos);
-            this.groupBox1.Controls.Add(this.lblfechafactura);
-            this.groupBox1.Controls.Add(this.lblproductosfacturados);
-            this.groupBox1.Controls.Add(this.lbldinerorecibido);
-            this.groupBox1.Controls.Add(this.lbltotal);
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox1.Location = new System.Drawing.Point(459, 436);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(286, 178);
-            this.groupBox1.TabIndex = 101;
-            this.groupBox1.TabStop = false;
-            // 
             // txtCambio
             // 
-            this.txtCambio.Location = new System.Drawing.Point(133, 148);
+            this.txtCambio.Location = new System.Drawing.Point(340, 45);
             this.txtCambio.Name = "txtCambio";
             this.txtCambio.Size = new System.Drawing.Size(130, 20);
             this.txtCambio.TabIndex = 103;
@@ -178,7 +175,7 @@ namespace SistemaTienda
             // 
             this.lblcambio.AutoSize = true;
             this.lblcambio.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcambio.Location = new System.Drawing.Point(22, 153);
+            this.lblcambio.Location = new System.Drawing.Point(283, 46);
             this.lblcambio.Name = "lblcambio";
             this.lblcambio.Size = new System.Drawing.Size(51, 16);
             this.lblcambio.TabIndex = 102;
@@ -186,7 +183,7 @@ namespace SistemaTienda
             // 
             // txtDineroRecibido
             // 
-            this.txtDineroRecibido.Location = new System.Drawing.Point(133, 121);
+            this.txtDineroRecibido.Location = new System.Drawing.Point(147, 20);
             this.txtDineroRecibido.Name = "txtDineroRecibido";
             this.txtDineroRecibido.Size = new System.Drawing.Size(130, 20);
             this.txtDineroRecibido.TabIndex = 101;
@@ -195,14 +192,14 @@ namespace SistemaTienda
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(162, 19);
+            this.dateTimePicker1.Location = new System.Drawing.Point(843, 144);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(101, 20);
             this.dateTimePicker1.TabIndex = 100;
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(133, 91);
+            this.txtTotal.Location = new System.Drawing.Point(340, 19);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
             this.txtTotal.Size = new System.Drawing.Size(130, 20);
@@ -210,19 +207,19 @@ namespace SistemaTienda
             // 
             // txtcantidaddeproductos
             // 
-            this.txtcantidaddeproductos.Location = new System.Drawing.Point(155, 56);
+            this.txtcantidaddeproductos.Location = new System.Drawing.Point(147, 42);
             this.txtcantidaddeproductos.Name = "txtcantidaddeproductos";
             this.txtcantidaddeproductos.ReadOnly = true;
-            this.txtcantidaddeproductos.Size = new System.Drawing.Size(108, 20);
+            this.txtcantidaddeproductos.Size = new System.Drawing.Size(130, 20);
             this.txtcantidaddeproductos.TabIndex = 99;
             // 
             // lblfechafactura
             // 
             this.lblfechafactura.AutoSize = true;
-            this.lblfechafactura.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblfechafactura.Location = new System.Drawing.Point(21, 19);
+            this.lblfechafactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblfechafactura.Location = new System.Drawing.Point(840, 126);
             this.lblfechafactura.Name = "lblfechafactura";
-            this.lblfechafactura.Size = new System.Drawing.Size(89, 16);
+            this.lblfechafactura.Size = new System.Drawing.Size(89, 13);
             this.lblfechafactura.TabIndex = 12;
             this.lblfechafactura.Text = "Fecha Factura";
             // 
@@ -230,7 +227,7 @@ namespace SistemaTienda
             // 
             this.lblproductosfacturados.AutoSize = true;
             this.lblproductosfacturados.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblproductosfacturados.Location = new System.Drawing.Point(21, 56);
+            this.lblproductosfacturados.Location = new System.Drawing.Point(13, 42);
             this.lblproductosfacturados.Name = "lblproductosfacturados";
             this.lblproductosfacturados.Size = new System.Drawing.Size(135, 16);
             this.lblproductosfacturados.TabIndex = 12;
@@ -240,7 +237,7 @@ namespace SistemaTienda
             // 
             this.lbldinerorecibido.AutoSize = true;
             this.lbldinerorecibido.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldinerorecibido.Location = new System.Drawing.Point(21, 125);
+            this.lbldinerorecibido.Location = new System.Drawing.Point(13, 21);
             this.lbldinerorecibido.Name = "lbldinerorecibido";
             this.lbldinerorecibido.Size = new System.Drawing.Size(98, 16);
             this.lbldinerorecibido.TabIndex = 10;
@@ -250,7 +247,7 @@ namespace SistemaTienda
             // 
             this.lbltotal.AutoSize = true;
             this.lbltotal.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltotal.Location = new System.Drawing.Point(21, 95);
+            this.lbltotal.Location = new System.Drawing.Point(283, 21);
             this.lbltotal.Name = "lbltotal";
             this.lbltotal.Size = new System.Drawing.Size(35, 16);
             this.lbltotal.TabIndex = 10;
@@ -261,7 +258,7 @@ namespace SistemaTienda
             this.GBBuscarPorNombre.Controls.Add(this.cmbfacturara);
             this.GBBuscarPorNombre.Controls.Add(this.label1);
             this.GBBuscarPorNombre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GBBuscarPorNombre.Location = new System.Drawing.Point(443, 25);
+            this.GBBuscarPorNombre.Location = new System.Drawing.Point(443, 47);
             this.GBBuscarPorNombre.Name = "GBBuscarPorNombre";
             this.GBBuscarPorNombre.Size = new System.Drawing.Size(242, 63);
             this.GBBuscarPorNombre.TabIndex = 4;
@@ -303,14 +300,14 @@ namespace SistemaTienda
             this.dgvFacturacion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvFacturacion.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvFacturacion.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(71)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFacturacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(57)))), ((int)(((byte)(121)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFacturacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvFacturacion.ColumnHeadersHeight = 40;
             this.dgvFacturacion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_historial_factura,
@@ -322,40 +319,40 @@ namespace SistemaTienda
             this.total_calculo,
             this.fechaFactura});
             this.dgvFacturacion.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(22)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFacturacion.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(121)))), ((int)(((byte)(236)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFacturacion.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvFacturacion.EnableHeadersVisualStyles = false;
             this.dgvFacturacion.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvFacturacion.Location = new System.Drawing.Point(12, 153);
+            this.dgvFacturacion.Location = new System.Drawing.Point(12, 167);
             this.dgvFacturacion.MultiSelect = false;
             this.dgvFacturacion.Name = "dgvFacturacion";
             this.dgvFacturacion.ReadOnly = true;
             this.dgvFacturacion.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFacturacion.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFacturacion.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvFacturacion.RowHeadersVisible = false;
             this.dgvFacturacion.RowHeadersWidth = 10;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Bahnschrift SemiLight", 10F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(22)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvFacturacion.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Bahnschrift SemiLight", 10F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(121)))), ((int)(((byte)(236)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvFacturacion.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvFacturacion.RowTemplate.Height = 30;
             this.dgvFacturacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFacturacion.Size = new System.Drawing.Size(735, 262);
+            this.dgvFacturacion.Size = new System.Drawing.Size(947, 262);
             this.dgvFacturacion.TabIndex = 3;
             // 
             // id_historial_factura
@@ -427,25 +424,38 @@ namespace SistemaTienda
             this.GPDetallesdeStock.Controls.Add(this.txtSeleccionarCLiente);
             this.GPDetallesdeStock.Controls.Add(this.txtclienteTemporal);
             this.GPDetallesdeStock.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GPDetallesdeStock.Location = new System.Drawing.Point(12, 451);
+            this.GPDetallesdeStock.Location = new System.Drawing.Point(92, 435);
             this.GPDetallesdeStock.Name = "GPDetallesdeStock";
-            this.GPDetallesdeStock.Size = new System.Drawing.Size(362, 168);
+            this.GPDetallesdeStock.Size = new System.Drawing.Size(331, 127);
             this.GPDetallesdeStock.TabIndex = 5;
             this.GPDetallesdeStock.TabStop = false;
             // 
             // txtFacturadoPor
             // 
-            this.txtFacturadoPor.Location = new System.Drawing.Point(150, 35);
+            this.txtFacturadoPor.Location = new System.Drawing.Point(150, 22);
             this.txtFacturadoPor.Name = "txtFacturadoPor";
             this.txtFacturadoPor.ReadOnly = true;
             this.txtFacturadoPor.Size = new System.Drawing.Size(130, 20);
             this.txtFacturadoPor.TabIndex = 104;
             // 
+            // BtnAgregarCliente
+            // 
+            this.BtnAgregarCliente.FlatAppearance.BorderSize = 0;
+            this.BtnAgregarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAgregarCliente.Image = global::SistemaTienda.Properties.Resources.anadir;
+            this.BtnAgregarCliente.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnAgregarCliente.Location = new System.Drawing.Point(284, 52);
+            this.BtnAgregarCliente.Name = "BtnAgregarCliente";
+            this.BtnAgregarCliente.Size = new System.Drawing.Size(28, 30);
+            this.BtnAgregarCliente.TabIndex = 1;
+            this.BtnAgregarCliente.UseVisualStyleBackColor = true;
+            this.BtnAgregarCliente.Click += new System.EventHandler(this.BtnAgregarCliente_Click);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(23, 36);
+            this.label5.Location = new System.Drawing.Point(23, 23);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 16);
             this.label5.TabIndex = 12;
@@ -455,7 +465,7 @@ namespace SistemaTienda
             // 
             this.lblprecio.AutoSize = true;
             this.lblprecio.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblprecio.Location = new System.Drawing.Point(23, 73);
+            this.lblprecio.Location = new System.Drawing.Point(23, 60);
             this.lblprecio.Name = "lblprecio";
             this.lblprecio.Size = new System.Drawing.Size(119, 16);
             this.lblprecio.TabIndex = 10;
@@ -465,7 +475,7 @@ namespace SistemaTienda
             // 
             this.lblcantidad.AutoSize = true;
             this.lblcantidad.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcantidad.Location = new System.Drawing.Point(23, 110);
+            this.lblcantidad.Location = new System.Drawing.Point(23, 97);
             this.lblcantidad.Name = "lblcantidad";
             this.lblcantidad.Size = new System.Drawing.Size(105, 16);
             this.lblcantidad.TabIndex = 9;
@@ -473,7 +483,7 @@ namespace SistemaTienda
             // 
             // txtSeleccionarCLiente
             // 
-            this.txtSeleccionarCLiente.Location = new System.Drawing.Point(150, 70);
+            this.txtSeleccionarCLiente.Location = new System.Drawing.Point(150, 57);
             this.txtSeleccionarCLiente.Name = "txtSeleccionarCLiente";
             this.txtSeleccionarCLiente.Size = new System.Drawing.Size(130, 20);
             this.txtSeleccionarCLiente.TabIndex = 4;
@@ -481,7 +491,7 @@ namespace SistemaTienda
             // 
             // txtclienteTemporal
             // 
-            this.txtclienteTemporal.Location = new System.Drawing.Point(150, 106);
+            this.txtclienteTemporal.Location = new System.Drawing.Point(150, 93);
             this.txtclienteTemporal.Name = "txtclienteTemporal";
             this.txtclienteTemporal.Size = new System.Drawing.Size(130, 20);
             this.txtclienteTemporal.TabIndex = 6;
@@ -489,56 +499,69 @@ namespace SistemaTienda
             // 
             // BtnNueva
             // 
+            this.BtnNueva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(92)))), ((int)(((byte)(21)))));
+            this.BtnNueva.FlatAppearance.BorderSize = 0;
+            this.BtnNueva.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.BtnNueva.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
-            this.BtnNueva.Location = new System.Drawing.Point(753, 201);
+            this.BtnNueva.Location = new System.Drawing.Point(965, 239);
             this.BtnNueva.Name = "BtnNueva";
             this.BtnNueva.Size = new System.Drawing.Size(132, 33);
             this.BtnNueva.TabIndex = 93;
             this.BtnNueva.Text = "Nueva";
-            this.BtnNueva.UseVisualStyleBackColor = true;
+            this.BtnNueva.UseVisualStyleBackColor = false;
             this.BtnNueva.Click += new System.EventHandler(this.BtnNueva_Click);
             // 
             // btnsalir
             // 
             this.btnsalir.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
-            this.btnsalir.Location = new System.Drawing.Point(753, 603);
+            this.btnsalir.Location = new System.Drawing.Point(965, 528);
             this.btnsalir.Name = "btnsalir";
             this.btnsalir.Size = new System.Drawing.Size(132, 33);
             this.btnsalir.TabIndex = 97;
             this.btnsalir.Text = "Salir";
             this.btnsalir.UseVisualStyleBackColor = true;
+            this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
             // 
             // btnImprimir
             // 
+            this.btnImprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(92)))), ((int)(((byte)(21)))));
+            this.btnImprimir.FlatAppearance.BorderSize = 0;
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnImprimir.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
-            this.btnImprimir.Location = new System.Drawing.Point(753, 328);
+            this.btnImprimir.Location = new System.Drawing.Point(965, 366);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(132, 33);
             this.btnImprimir.TabIndex = 96;
             this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.UseVisualStyleBackColor = false;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnguardar
             // 
+            this.btnguardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(92)))), ((int)(((byte)(21)))));
+            this.btnguardar.FlatAppearance.BorderSize = 0;
+            this.btnguardar.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnguardar.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
-            this.btnguardar.Location = new System.Drawing.Point(753, 279);
+            this.btnguardar.Location = new System.Drawing.Point(965, 317);
             this.btnguardar.Name = "btnguardar";
             this.btnguardar.Size = new System.Drawing.Size(132, 33);
             this.btnguardar.TabIndex = 4;
             this.btnguardar.Text = "Guardar";
-            this.btnguardar.UseVisualStyleBackColor = true;
+            this.btnguardar.UseVisualStyleBackColor = false;
             this.btnguardar.Click += new System.EventHandler(this.btnguardar_Click);
             // 
             // btnEliminar
             // 
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(92)))), ((int)(((byte)(21)))));
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnEliminar.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
-            this.btnEliminar.Location = new System.Drawing.Point(753, 240);
+            this.btnEliminar.Location = new System.Drawing.Point(965, 278);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(132, 33);
             this.btnEliminar.TabIndex = 94;
             this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // lblusuario
@@ -552,6 +575,7 @@ namespace SistemaTienda
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(57)))), ((int)(((byte)(121)))));
             this.menuStrip1.Font = new System.Drawing.Font("Bahnschrift SemiLight", 9.75F);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
@@ -560,10 +584,12 @@ namespace SistemaTienda
             this.historialToolStripMenuItem1,
             this.acercaDeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Margin = new System.Windows.Forms.Padding(5);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(891, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1109, 24);
             this.menuStrip1.TabIndex = 105;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuStrip1_MouseDown);
             // 
             // archivoToolStripMenuItem
             // 
@@ -571,6 +597,7 @@ namespace SistemaTienda
             this.editarCategoriasToolStripMenuItem,
             this.usuariosToolStripMenuItem,
             this.logoutToolStripMenuItem});
+            this.archivoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.archivoToolStripMenuItem.Text = "Archivo";
@@ -578,26 +605,27 @@ namespace SistemaTienda
             // editarCategoriasToolStripMenuItem
             // 
             this.editarCategoriasToolStripMenuItem.Name = "editarCategoriasToolStripMenuItem";
-            this.editarCategoriasToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.editarCategoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editarCategoriasToolStripMenuItem.Text = "Editar Categorias";
             this.editarCategoriasToolStripMenuItem.Click += new System.EventHandler(this.editarCategoriasToolStripMenuItem_Click);
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
             // 
+            this.clientesToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
             this.clientesToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.clientesToolStripMenuItem.Text = "Clientes";
@@ -606,30 +634,25 @@ namespace SistemaTienda
             // inventarioToolStripMenuItem
             // 
             this.inventarioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verYEditarProductosToolStripMenuItem,
             this.editarInventarioToolStripMenuItem,
             this.historialToolStripMenuItem});
+            this.inventarioToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.inventarioToolStripMenuItem.Name = "inventarioToolStripMenuItem";
             this.inventarioToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.inventarioToolStripMenuItem.Text = "Inventario";
-            // 
-            // verYEditarProductosToolStripMenuItem
-            // 
-            this.verYEditarProductosToolStripMenuItem.Name = "verYEditarProductosToolStripMenuItem";
-            this.verYEditarProductosToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.verYEditarProductosToolStripMenuItem.Text = "Ver Inventario";
+            this.inventarioToolStripMenuItem.Click += new System.EventHandler(this.inventarioToolStripMenuItem_Click);
             // 
             // editarInventarioToolStripMenuItem
             // 
             this.editarInventarioToolStripMenuItem.Name = "editarInventarioToolStripMenuItem";
-            this.editarInventarioToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.editarInventarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editarInventarioToolStripMenuItem.Text = "Editar Inventario";
             this.editarInventarioToolStripMenuItem.Click += new System.EventHandler(this.editarInventarioToolStripMenuItem_Click);
             // 
             // historialToolStripMenuItem
             // 
             this.historialToolStripMenuItem.Name = "historialToolStripMenuItem";
-            this.historialToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.historialToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.historialToolStripMenuItem.Text = "Historial";
             this.historialToolStripMenuItem.Click += new System.EventHandler(this.historialToolStripMenuItem_Click);
             // 
@@ -638,6 +661,7 @@ namespace SistemaTienda
             this.historialToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.historialDeFacturasToolStripMenuItem,
             this.historialDeudasToolStripMenuItem});
+            this.historialToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.historialToolStripMenuItem1.Name = "historialToolStripMenuItem1";
             this.historialToolStripMenuItem1.Size = new System.Drawing.Size(70, 20);
             this.historialToolStripMenuItem1.Text = "Historial";
@@ -658,6 +682,7 @@ namespace SistemaTienda
             // 
             // acercaDeToolStripMenuItem
             // 
+            this.acercaDeToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
             this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
             this.acercaDeToolStripMenuItem.Text = "Acerca de";
@@ -665,37 +690,37 @@ namespace SistemaTienda
             // 
             // txtcodigoeliminar
             // 
-            this.txtcodigoeliminar.Location = new System.Drawing.Point(12, 436);
+            this.txtcodigoeliminar.Location = new System.Drawing.Point(13, 435);
             this.txtcodigoeliminar.Name = "txtcodigoeliminar";
             this.txtcodigoeliminar.Size = new System.Drawing.Size(73, 20);
             this.txtcodigoeliminar.TabIndex = 106;
             // 
             // txtCodigoPro
             // 
-            this.txtCodigoPro.Location = new System.Drawing.Point(13, 130);
+            this.txtCodigoPro.Location = new System.Drawing.Point(13, 144);
             this.txtCodigoPro.Name = "txtCodigoPro";
-            this.txtCodigoPro.Size = new System.Drawing.Size(48, 20);
+            this.txtCodigoPro.Size = new System.Drawing.Size(58, 20);
             this.txtCodigoPro.TabIndex = 2;
             // 
             // txtDescrip
             // 
-            this.txtDescrip.Location = new System.Drawing.Point(64, 129);
+            this.txtDescrip.Location = new System.Drawing.Point(77, 144);
             this.txtDescrip.Name = "txtDescrip";
-            this.txtDescrip.Size = new System.Drawing.Size(101, 20);
+            this.txtDescrip.Size = new System.Drawing.Size(127, 20);
             this.txtDescrip.TabIndex = 12;
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(168, 129);
+            this.txtPrecio.Location = new System.Drawing.Point(208, 144);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(87, 20);
+            this.txtPrecio.Size = new System.Drawing.Size(116, 20);
             this.txtPrecio.TabIndex = 8;
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(261, 129);
+            this.txtCantidad.Location = new System.Drawing.Point(330, 144);
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(95, 20);
+            this.txtCantidad.Size = new System.Drawing.Size(123, 20);
             this.txtCantidad.TabIndex = 5;
             this.txtCantidad.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCantidad_KeyDown_1);
             // 
@@ -707,7 +732,7 @@ namespace SistemaTienda
             // 
             this.lblcodigo.AutoSize = true;
             this.lblcodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcodigo.Location = new System.Drawing.Point(12, 112);
+            this.lblcodigo.Location = new System.Drawing.Point(12, 126);
             this.lblcodigo.Name = "lblcodigo";
             this.lblcodigo.Size = new System.Drawing.Size(33, 13);
             this.lblcodigo.TabIndex = 107;
@@ -717,7 +742,7 @@ namespace SistemaTienda
             // 
             this.lblnombreprod.AutoSize = true;
             this.lblnombreprod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblnombreprod.Location = new System.Drawing.Point(61, 112);
+            this.lblnombreprod.Location = new System.Drawing.Point(74, 127);
             this.lblnombreprod.Name = "lblnombreprod";
             this.lblnombreprod.Size = new System.Drawing.Size(50, 13);
             this.lblnombreprod.TabIndex = 107;
@@ -727,7 +752,7 @@ namespace SistemaTienda
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(165, 113);
+            this.label3.Location = new System.Drawing.Point(205, 128);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 107;
@@ -737,48 +762,51 @@ namespace SistemaTienda
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(258, 113);
+            this.label4.Location = new System.Drawing.Point(327, 128);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 13);
             this.label4.TabIndex = 107;
             this.label4.Text = "Cantidad";
             // 
-            // BtnBuscarProductos
+            // panel1
             // 
-            this.BtnBuscarProductos.FlatAppearance.BorderSize = 0;
-            this.BtnBuscarProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnBuscarProductos.Image = global::SistemaTienda.Properties.Resources.lupa__2_;
-            this.BtnBuscarProductos.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnBuscarProductos.Location = new System.Drawing.Point(290, 12);
-            this.BtnBuscarProductos.Name = "BtnBuscarProductos";
-            this.BtnBuscarProductos.Size = new System.Drawing.Size(73, 43);
-            this.BtnBuscarProductos.TabIndex = 2;
-            this.BtnBuscarProductos.UseVisualStyleBackColor = true;
-            this.BtnBuscarProductos.Click += new System.EventHandler(this.BtnBuscarProductos_Click);
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(57)))), ((int)(((byte)(121)))));
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1109, 38);
+            this.panel1.TabIndex = 108;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
-            // BtnAgregarCliente
+            // groupBox1
             // 
-            this.BtnAgregarCliente.FlatAppearance.BorderSize = 0;
-            this.BtnAgregarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAgregarCliente.Image = global::SistemaTienda.Properties.Resources.anadir;
-            this.BtnAgregarCliente.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnAgregarCliente.Location = new System.Drawing.Point(284, 65);
-            this.BtnAgregarCliente.Name = "BtnAgregarCliente";
-            this.BtnAgregarCliente.Size = new System.Drawing.Size(28, 30);
-            this.BtnAgregarCliente.TabIndex = 1;
-            this.BtnAgregarCliente.UseVisualStyleBackColor = true;
-            this.BtnAgregarCliente.Click += new System.EventHandler(this.BtnAgregarCliente_Click);
+            this.groupBox1.Controls.Add(this.txtcantidaddeproductos);
+            this.groupBox1.Controls.Add(this.txtCambio);
+            this.groupBox1.Controls.Add(this.lbltotal);
+            this.groupBox1.Controls.Add(this.lblcambio);
+            this.groupBox1.Controls.Add(this.lbldinerorecibido);
+            this.groupBox1.Controls.Add(this.txtTotal);
+            this.groupBox1.Controls.Add(this.txtDineroRecibido);
+            this.groupBox1.Controls.Add(this.lblproductosfacturados);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.groupBox1.Location = new System.Drawing.Point(483, 435);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(476, 77);
+            this.groupBox1.TabIndex = 105;
+            this.groupBox1.TabStop = false;
             // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 648);
+            this.ClientSize = new System.Drawing.Size(1109, 583);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblnombreprod);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.lblcodigo);
             this.Controls.Add(this.txtCantidad);
+            this.Controls.Add(this.lblfechafactura);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.txtDescrip);
             this.Controls.Add(this.txtCodigoPro);
@@ -787,7 +815,6 @@ namespace SistemaTienda
             this.Controls.Add(this.lblusuario);
             this.Controls.Add(this.BtnColocar);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.GBBuscarPorNombre);
             this.Controls.Add(this.dgvFacturacion);
             this.Controls.Add(this.GPDetallesdeStock);
@@ -796,15 +823,16 @@ namespace SistemaTienda
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnguardar);
             this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Name = "FrmPrincipal";
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmPrincipal_KeyDown);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmPrincipal_MouseDown);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.GBBuscarPorNombre.ResumeLayout(false);
             this.GBBuscarPorNombre.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturacion)).EndInit();
@@ -812,6 +840,8 @@ namespace SistemaTienda
             this.GPDetallesdeStock.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -824,7 +854,6 @@ namespace SistemaTienda
         private System.Windows.Forms.Button BtnBuscarProductos;
         private System.Windows.Forms.TextBox txtbuscarproducto;
         private System.Windows.Forms.Label lblnombreproducto;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.TextBox txtcantidaddeproductos;
         private System.Windows.Forms.Label lblproductosfacturados;
@@ -854,7 +883,6 @@ namespace SistemaTienda
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inventarioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem verYEditarProductosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editarInventarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem historialToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
@@ -885,6 +913,8 @@ namespace SistemaTienda
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolStripMenuItem historialDeudasToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

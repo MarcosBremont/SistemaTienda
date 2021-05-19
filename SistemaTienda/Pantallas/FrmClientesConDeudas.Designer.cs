@@ -36,6 +36,13 @@ namespace SistemaTienda.Pantallas
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgv_clientes_con_deudas = new System.Windows.Forms.DataGridView();
+            this.cod_prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombrecompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total_calculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
@@ -54,13 +61,6 @@ namespace SistemaTienda.Pantallas
             this.label2 = new System.Windows.Forms.Label();
             this.lblidhistorialfactura = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.cod_prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombrecompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total_calculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_clientes_con_deudas)).BeginInit();
             this.GroupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -155,6 +155,57 @@ namespace SistemaTienda.Pantallas
             this.dgv_clientes_con_deudas.Size = new System.Drawing.Size(899, 322);
             this.dgv_clientes_con_deudas.TabIndex = 143;
             this.dgv_clientes_con_deudas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistorialFactura_CellClick);
+            // 
+            // cod_prod
+            // 
+            this.cod_prod.DataPropertyName = "cod_prod";
+            this.cod_prod.HeaderText = "Codigo";
+            this.cod_prod.Name = "cod_prod";
+            this.cod_prod.ReadOnly = true;
+            // 
+            // nombre_pro
+            // 
+            this.nombre_pro.DataPropertyName = "nombre_pro";
+            this.nombre_pro.FillWeight = 119.1544F;
+            this.nombre_pro.HeaderText = "Nombre Producto";
+            this.nombre_pro.Name = "nombre_pro";
+            this.nombre_pro.ReadOnly = true;
+            // 
+            // precio_pro
+            // 
+            this.precio_pro.DataPropertyName = "precio_pro";
+            this.precio_pro.FillWeight = 106.4554F;
+            this.precio_pro.HeaderText = "Precio Producto";
+            this.precio_pro.Name = "precio_pro";
+            this.precio_pro.ReadOnly = true;
+            // 
+            // nombrecompleto
+            // 
+            this.nombrecompleto.DataPropertyName = "nombrecompleto";
+            this.nombrecompleto.HeaderText = "Nombre Cliente";
+            this.nombrecompleto.Name = "nombrecompleto";
+            this.nombrecompleto.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.DataPropertyName = "Cantidad";
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            // 
+            // total_calculo
+            // 
+            this.total_calculo.DataPropertyName = "total_calculo";
+            this.total_calculo.HeaderText = "Total";
+            this.total_calculo.Name = "total_calculo";
+            this.total_calculo.ReadOnly = true;
+            // 
+            // fechaFactura
+            // 
+            this.fechaFactura.DataPropertyName = "fechaFactura";
+            this.fechaFactura.HeaderText = "Fecha Factura";
+            this.fechaFactura.Name = "fechaFactura";
+            this.fechaFactura.ReadOnly = true;
             // 
             // GroupBox2
             // 
@@ -321,57 +372,6 @@ namespace SistemaTienda.Pantallas
             this.txtCodigo.Size = new System.Drawing.Size(43, 20);
             this.txtCodigo.TabIndex = 151;
             // 
-            // cod_prod
-            // 
-            this.cod_prod.DataPropertyName = "cod_prod";
-            this.cod_prod.HeaderText = "Codigo";
-            this.cod_prod.Name = "cod_prod";
-            this.cod_prod.ReadOnly = true;
-            // 
-            // nombre_pro
-            // 
-            this.nombre_pro.DataPropertyName = "nombre_pro";
-            this.nombre_pro.FillWeight = 119.1544F;
-            this.nombre_pro.HeaderText = "Nombre Producto";
-            this.nombre_pro.Name = "nombre_pro";
-            this.nombre_pro.ReadOnly = true;
-            // 
-            // precio_pro
-            // 
-            this.precio_pro.DataPropertyName = "precio_pro";
-            this.precio_pro.FillWeight = 106.4554F;
-            this.precio_pro.HeaderText = "Precio Producto";
-            this.precio_pro.Name = "precio_pro";
-            this.precio_pro.ReadOnly = true;
-            // 
-            // nombrecompleto
-            // 
-            this.nombrecompleto.DataPropertyName = "nombrecompleto";
-            this.nombrecompleto.HeaderText = "Nombre Cliente";
-            this.nombrecompleto.Name = "nombrecompleto";
-            this.nombrecompleto.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.DataPropertyName = "Cantidad";
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            // 
-            // total_calculo
-            // 
-            this.total_calculo.DataPropertyName = "total_calculo";
-            this.total_calculo.HeaderText = "Total";
-            this.total_calculo.Name = "total_calculo";
-            this.total_calculo.ReadOnly = true;
-            // 
-            // fechaFactura
-            // 
-            this.fechaFactura.DataPropertyName = "fechaFactura";
-            this.fechaFactura.HeaderText = "Fecha Factura";
-            this.fechaFactura.Name = "fechaFactura";
-            this.fechaFactura.ReadOnly = true;
-            // 
             // FrmClientesConDeudas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -396,7 +396,7 @@ namespace SistemaTienda.Pantallas
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.lblidhistorialfactura);
             this.Name = "FrmClientesConDeudas";
-            this.Text = "FrmHistorialFacturas";
+            this.Text = "Clientes con Deudas";
             this.Load += new System.EventHandler(this.FrmHistorialFacturas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_clientes_con_deudas)).EndInit();
             this.GroupBox2.ResumeLayout(false);

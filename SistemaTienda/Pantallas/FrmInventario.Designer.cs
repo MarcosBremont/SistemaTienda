@@ -255,7 +255,7 @@ namespace SistemaTienda.Pantallas
             this.Controls.Add(this.GBBuscarPorCategoria);
             this.Controls.Add(this.GBBuscarPorNombre);
             this.Name = "FrmInventario";
-            this.Text = "FrmInventario";
+            this.Text = "Inventario";
             this.Load += new System.EventHandler(this.FrmInventario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventario)).EndInit();
             this.GBBuscarPorCodigo.ResumeLayout(false);

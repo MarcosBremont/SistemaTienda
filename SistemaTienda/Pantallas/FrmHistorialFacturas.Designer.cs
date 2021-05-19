@@ -29,13 +29,21 @@ namespace SistemaTienda.Pantallas
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvHistorialFactura = new System.Windows.Forms.DataGridView();
+            this.cod_prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombrecompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.facturado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total_calculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
@@ -55,14 +63,6 @@ namespace SistemaTienda.Pantallas
             this.txtcantidad = new System.Windows.Forms.TextBox();
             this.txttotal = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.id_historial_factura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombrecompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.facturado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total_calculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorialFactura)).BeginInit();
             this.GroupBox2.SuspendLayout();
@@ -104,17 +104,17 @@ namespace SistemaTienda.Pantallas
             this.dgvHistorialFactura.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvHistorialFactura.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvHistorialFactura.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(120)))), ((int)(((byte)(23)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHistorialFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(120)))), ((int)(((byte)(23)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHistorialFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvHistorialFactura.ColumnHeadersHeight = 40;
             this.dgvHistorialFactura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_historial_factura,
+            this.cod_prod,
             this.nombre_pro,
             this.precio_pro,
             this.nombrecompleto,
@@ -123,14 +123,14 @@ namespace SistemaTienda.Pantallas
             this.total_calculo,
             this.fechaFactura});
             this.dgvHistorialFactura.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(22)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvHistorialFactura.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(22)))), ((int)(((byte)(111)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHistorialFactura.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHistorialFactura.EnableHeadersVisualStyles = false;
             this.dgvHistorialFactura.GridColor = System.Drawing.SystemColors.Control;
             this.dgvHistorialFactura.Location = new System.Drawing.Point(12, 173);
@@ -138,27 +138,86 @@ namespace SistemaTienda.Pantallas
             this.dgvHistorialFactura.Name = "dgvHistorialFactura";
             this.dgvHistorialFactura.ReadOnly = true;
             this.dgvHistorialFactura.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHistorialFactura.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(173)))), ((int)(((byte)(168)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHistorialFactura.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvHistorialFactura.RowHeadersVisible = false;
             this.dgvHistorialFactura.RowHeadersWidth = 10;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Bahnschrift SemiLight", 10F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(22)))), ((int)(((byte)(111)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvHistorialFactura.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Bahnschrift SemiLight", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(22)))), ((int)(((byte)(111)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvHistorialFactura.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvHistorialFactura.RowTemplate.Height = 30;
             this.dgvHistorialFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHistorialFactura.Size = new System.Drawing.Size(899, 322);
             this.dgvHistorialFactura.TabIndex = 143;
             this.dgvHistorialFactura.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistorialFactura_CellClick);
+            // 
+            // cod_prod
+            // 
+            this.cod_prod.DataPropertyName = "cod_prod";
+            this.cod_prod.FillWeight = 49.55036F;
+            this.cod_prod.HeaderText = "Codigo";
+            this.cod_prod.Name = "cod_prod";
+            this.cod_prod.ReadOnly = true;
+            // 
+            // nombre_pro
+            // 
+            this.nombre_pro.DataPropertyName = "nombre_pro";
+            this.nombre_pro.FillWeight = 119.1544F;
+            this.nombre_pro.HeaderText = "Nombre Producto";
+            this.nombre_pro.Name = "nombre_pro";
+            this.nombre_pro.ReadOnly = true;
+            // 
+            // precio_pro
+            // 
+            this.precio_pro.DataPropertyName = "precio_pro";
+            this.precio_pro.FillWeight = 106.4554F;
+            this.precio_pro.HeaderText = "Precio Producto";
+            this.precio_pro.Name = "precio_pro";
+            this.precio_pro.ReadOnly = true;
+            // 
+            // nombrecompleto
+            // 
+            this.nombrecompleto.DataPropertyName = "nombrecompleto";
+            this.nombrecompleto.HeaderText = "Nombre Cliente";
+            this.nombrecompleto.Name = "nombrecompleto";
+            this.nombrecompleto.ReadOnly = true;
+            // 
+            // facturado
+            // 
+            this.facturado.DataPropertyName = "facturado";
+            this.facturado.HeaderText = "Factura a:";
+            this.facturado.Name = "facturado";
+            this.facturado.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.DataPropertyName = "Cantidad";
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            // 
+            // total_calculo
+            // 
+            this.total_calculo.DataPropertyName = "total_calculo";
+            this.total_calculo.HeaderText = "Total";
+            this.total_calculo.Name = "total_calculo";
+            this.total_calculo.ReadOnly = true;
+            // 
+            // fechaFactura
+            // 
+            this.fechaFactura.DataPropertyName = "fechaFactura";
+            this.fechaFactura.HeaderText = "Fecha Factura";
+            this.fechaFactura.Name = "fechaFactura";
+            this.fechaFactura.ReadOnly = true;
             // 
             // GroupBox2
             // 
@@ -332,65 +391,6 @@ namespace SistemaTienda.Pantallas
             this.dateTimePicker1.Size = new System.Drawing.Size(98, 20);
             this.dateTimePicker1.TabIndex = 159;
             // 
-            // id_historial_factura
-            // 
-            this.id_historial_factura.DataPropertyName = "id_historial_factura";
-            this.id_historial_factura.FillWeight = 49.55036F;
-            this.id_historial_factura.HeaderText = "Codigo Factura";
-            this.id_historial_factura.Name = "id_historial_factura";
-            this.id_historial_factura.ReadOnly = true;
-            // 
-            // nombre_pro
-            // 
-            this.nombre_pro.DataPropertyName = "nombre_pro";
-            this.nombre_pro.FillWeight = 119.1544F;
-            this.nombre_pro.HeaderText = "Nombre Producto";
-            this.nombre_pro.Name = "nombre_pro";
-            this.nombre_pro.ReadOnly = true;
-            // 
-            // precio_pro
-            // 
-            this.precio_pro.DataPropertyName = "precio_pro";
-            this.precio_pro.FillWeight = 106.4554F;
-            this.precio_pro.HeaderText = "Precio Producto";
-            this.precio_pro.Name = "precio_pro";
-            this.precio_pro.ReadOnly = true;
-            // 
-            // nombrecompleto
-            // 
-            this.nombrecompleto.DataPropertyName = "nombrecompleto";
-            this.nombrecompleto.HeaderText = "Nombre Cliente";
-            this.nombrecompleto.Name = "nombrecompleto";
-            this.nombrecompleto.ReadOnly = true;
-            // 
-            // facturado
-            // 
-            this.facturado.DataPropertyName = "facturado";
-            this.facturado.HeaderText = "Factura a:";
-            this.facturado.Name = "facturado";
-            this.facturado.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.DataPropertyName = "Cantidad";
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            // 
-            // total_calculo
-            // 
-            this.total_calculo.DataPropertyName = "total_calculo";
-            this.total_calculo.HeaderText = "Total";
-            this.total_calculo.Name = "total_calculo";
-            this.total_calculo.ReadOnly = true;
-            // 
-            // fechaFactura
-            // 
-            this.fechaFactura.DataPropertyName = "fechaFactura";
-            this.fechaFactura.HeaderText = "Fecha Factura";
-            this.fechaFactura.Name = "fechaFactura";
-            this.fechaFactura.ReadOnly = true;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -427,7 +427,7 @@ namespace SistemaTienda.Pantallas
             this.Controls.Add(this.txtIDhistorialfactura);
             this.Controls.Add(this.lblidhistorialfactura);
             this.Name = "FrmHistorialFacturas";
-            this.Text = "FrmHistorialFacturas";
+            this.Text = "Historial Facturas";
             this.Load += new System.EventHandler(this.FrmHistorialFacturas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorialFactura)).EndInit();
             this.GroupBox2.ResumeLayout(false);
@@ -459,7 +459,8 @@ namespace SistemaTienda.Pantallas
         internal System.Windows.Forms.TextBox txtcantidad;
         internal System.Windows.Forms.TextBox txttotal;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_historial_factura;
+        internal System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cod_prod;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre_pro;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio_pro;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombrecompleto;
@@ -467,6 +468,5 @@ namespace SistemaTienda.Pantallas
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn total_calculo;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaFactura;
-        internal System.Windows.Forms.Label label2;
     }
 }

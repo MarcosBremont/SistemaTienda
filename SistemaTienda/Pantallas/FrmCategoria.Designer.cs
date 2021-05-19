@@ -35,6 +35,7 @@ namespace SistemaTienda.Pantallas
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblnombrecategor = new System.Windows.Forms.Label();
             this.lblidcategoria = new System.Windows.Forms.Label();
             this.CMBCategorias = new System.Windows.Forms.ComboBox();
             this.txtCategoria = new System.Windows.Forms.TextBox();
@@ -97,6 +98,7 @@ namespace SistemaTienda.Pantallas
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblnombrecategor);
             this.groupBox1.Controls.Add(this.lblidcategoria);
             this.groupBox1.Controls.Add(this.CMBCategorias);
             this.groupBox1.Controls.Add(this.txtCategoria);
@@ -110,6 +112,15 @@ namespace SistemaTienda.Pantallas
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Categoria";
             // 
+            // lblnombrecategor
+            // 
+            this.lblnombrecategor.AutoSize = true;
+            this.lblnombrecategor.Location = new System.Drawing.Point(18, 20);
+            this.lblnombrecategor.Name = "lblnombrecategor";
+            this.lblnombrecategor.Size = new System.Drawing.Size(55, 16);
+            this.lblnombrecategor.TabIndex = 3;
+            this.lblnombrecategor.Text = "Nombre";
+            // 
             // lblidcategoria
             // 
             this.lblidcategoria.AutoSize = true;
@@ -121,6 +132,7 @@ namespace SistemaTienda.Pantallas
             // 
             // CMBCategorias
             // 
+            this.CMBCategorias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CMBCategorias.FormattingEnabled = true;
             this.CMBCategorias.Location = new System.Drawing.Point(45, 53);
             this.CMBCategorias.Name = "CMBCategorias";
@@ -130,9 +142,9 @@ namespace SistemaTienda.Pantallas
             // 
             // txtCategoria
             // 
-            this.txtCategoria.Location = new System.Drawing.Point(21, 20);
+            this.txtCategoria.Location = new System.Drawing.Point(79, 20);
             this.txtCategoria.Name = "txtCategoria";
-            this.txtCategoria.Size = new System.Drawing.Size(356, 23);
+            this.txtCategoria.Size = new System.Drawing.Size(280, 23);
             this.txtCategoria.TabIndex = 0;
             // 
             // FrmCategoria
@@ -143,7 +155,7 @@ namespace SistemaTienda.Pantallas
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmCategoria";
-            this.Text = "FrmCategoria";
+            this.Text = "Mantenimiento Categoria";
             this.Load += new System.EventHandler(this.FrmCategoria_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -163,5 +175,6 @@ namespace SistemaTienda.Pantallas
         private System.Windows.Forms.Label lblidcategoria;
         private System.Windows.Forms.ComboBox CMBCategorias;
         public System.Windows.Forms.TextBox txtCategoria;
+        private System.Windows.Forms.Label lblnombrecategor;
     }
 }

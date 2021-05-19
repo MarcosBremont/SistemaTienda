@@ -38,11 +38,11 @@ namespace SistemaTienda.Pantallas
             this.lblLogin = new System.Windows.Forms.Label();
             this.panelLogoTic = new System.Windows.Forms.Panel();
             this.pictureBoxLogoTic = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtConfirmarContraseña = new System.Windows.Forms.TextBox();
             this.txtNuevaContraseña = new System.Windows.Forms.TextBox();
             this.txtViejaContraseña = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.lblcontrasenaactual = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -139,13 +139,25 @@ namespace SistemaTienda.Pantallas
             // 
             // pictureBoxLogoTic
             // 
-            this.pictureBoxLogoTic.Image = global::SistemaTienda.Properties.Resources.rompecabezas;
+            this.pictureBoxLogoTic.Image = global::SistemaTienda.Properties.Resources.boutique;
             this.pictureBoxLogoTic.Location = new System.Drawing.Point(13, 37);
             this.pictureBoxLogoTic.Name = "pictureBoxLogoTic";
             this.pictureBoxLogoTic.Size = new System.Drawing.Size(218, 250);
             this.pictureBoxLogoTic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxLogoTic.TabIndex = 1;
             this.pictureBoxLogoTic.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(50, 307);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(148, 25);
+            this.label1.TabIndex = 40;
+            this.label1.Text = "Lucas Fashion";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtUsuario
             // 
@@ -193,17 +205,6 @@ namespace SistemaTienda.Pantallas
             this.txtViejaContraseña.TabIndex = 35;
             this.txtViejaContraseña.TextChanged += new System.EventHandler(this.txtViejaContraseña_TextChanged);
             this.txtViejaContraseña.Leave += new System.EventHandler(this.txtViejaContraseña_Leave);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(50, 307);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 25);
-            this.label1.TabIndex = 40;
-            this.label1.Text = "X Compañia";
             // 
             // lblUsuario
             // 
