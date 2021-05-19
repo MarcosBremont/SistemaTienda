@@ -56,11 +56,9 @@ namespace SistemaTienda.Pantallas
             this.label2 = new System.Windows.Forms.Label();
             this.lblidhistorialfactura = new System.Windows.Forms.Label();
             this.txtIDhistorialfactura = new System.Windows.Forms.TextBox();
-            this.cod_prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precio_pro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombrecompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.facturado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total_calculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -114,11 +112,9 @@ namespace SistemaTienda.Pantallas
             this.dgv_clientes_con_deudas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_clientes_con_deudas.ColumnHeadersHeight = 40;
             this.dgv_clientes_con_deudas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cod_prod,
             this.nombre_pro,
             this.precio_pro,
             this.nombrecompleto,
-            this.facturado,
             this.Cantidad,
             this.total_calculo,
             this.fechaFactura});
@@ -342,14 +338,6 @@ namespace SistemaTienda.Pantallas
             this.txtIDhistorialfactura.Size = new System.Drawing.Size(43, 20);
             this.txtIDhistorialfactura.TabIndex = 151;
             // 
-            // cod_prod
-            // 
-            this.cod_prod.DataPropertyName = "cod_prod";
-            this.cod_prod.FillWeight = 49.55036F;
-            this.cod_prod.HeaderText = "Codigo Producto";
-            this.cod_prod.Name = "cod_prod";
-            this.cod_prod.ReadOnly = true;
-            // 
             // nombre_pro
             // 
             this.nombre_pro.DataPropertyName = "nombre_pro";
@@ -372,13 +360,6 @@ namespace SistemaTienda.Pantallas
             this.nombrecompleto.HeaderText = "Nombre Cliente";
             this.nombrecompleto.Name = "nombrecompleto";
             this.nombrecompleto.ReadOnly = true;
-            // 
-            // facturado
-            // 
-            this.facturado.DataPropertyName = "facturado";
-            this.facturado.HeaderText = "Factura a:";
-            this.facturado.Name = "facturado";
-            this.facturado.ReadOnly = true;
             // 
             // Cantidad
             // 
@@ -460,11 +441,9 @@ namespace SistemaTienda.Pantallas
         internal System.Windows.Forms.Label label2;
         internal System.Windows.Forms.Label lblidhistorialfactura;
         internal System.Windows.Forms.TextBox txtIDhistorialfactura;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cod_prod;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre_pro;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio_pro;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombrecompleto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn facturado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn total_calculo;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaFactura;
