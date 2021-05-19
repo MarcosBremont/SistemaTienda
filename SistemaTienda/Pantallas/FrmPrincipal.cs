@@ -17,6 +17,7 @@ namespace SistemaTienda
 {
     public partial class FrmPrincipal : Form
     {
+        Conexion conexion = new Conexion();
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
@@ -62,7 +63,7 @@ namespace SistemaTienda
                     MySqlCommand cmd = new MySqlCommand(" SELECT * FROM producto where id_producto = @id_producto", con);
                     cmd.Parameters.AddWithValue("id_producto", txtbuscarproducto.Text);
 
-                    con.Open();
+                    conexion.
                     MySqlDataReader registro = cmd.ExecuteReader();
                     if (registro.Read())
                     {
@@ -169,7 +170,7 @@ namespace SistemaTienda
                     DateTime fechaFactura = Convert.ToDateTime(row.Cells["fechaFactura"].Value);
                     int codigoproducto = Convert.ToInt32(row.Cells["id_historial_factura"].Value);
 
-                    MySqlCommand cmd = new MySqlCommand("IHistorial_Factura", con);
+                    MySqlCommand cmd = new MySqlCommand("IHistorial_Factura", conexion.conectar());
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("prm_nombre_pro", MySqlDbType.Text).Value = nombrepro1;
                     cmd.Parameters.Add("prm_precio_pro", MySqlDbType.Double).Value = precio_pro;

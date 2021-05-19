@@ -120,6 +120,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conexion.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="Pantallas\FrmAcercaDe.cs">
       <SubType>Form</SubType>

@@ -13,6 +13,7 @@ namespace SistemaTienda.Pantallas
 {
     public partial class FrmLogin : Form
     {
+        Conexion conexion = new Conexion();
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
