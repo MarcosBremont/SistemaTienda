@@ -32,8 +32,6 @@ namespace SistemaTienda.Pantallas
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.ProgressBar1 = new System.Windows.Forms.ProgressBar();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-            this.cbRol = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btnIniciar = new System.Windows.Forms.Button();
             this.panelContrasena = new System.Windows.Forms.Panel();
@@ -44,19 +42,19 @@ namespace SistemaTienda.Pantallas
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // ProgressBar1
@@ -80,30 +78,6 @@ namespace SistemaTienda.Pantallas
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "Recuperar Contraseña";
             this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
-            // 
-            // cbRol
-            // 
-            this.cbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbRol.FormattingEnabled = true;
-            this.cbRol.Items.AddRange(new object[] {
-            "Admin",
-            "Empleado"});
-            this.cbRol.Location = new System.Drawing.Point(151, 67);
-            this.cbRol.Name = "cbRol";
-            this.cbRol.Size = new System.Drawing.Size(167, 21);
-            this.cbRol.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Font = new System.Drawing.Font("Bahnschrift", 9.75F);
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(29, 67);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 23);
-            this.label2.TabIndex = 71;
-            this.label2.Text = "Rol de Usuario";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // linkLabel1
             // 
@@ -213,7 +187,6 @@ namespace SistemaTienda.Pantallas
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.txtUsuario);
             this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.cbRol);
             this.panel1.Controls.Add(this.txtContraseña);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.lblLogin);
@@ -222,7 +195,6 @@ namespace SistemaTienda.Pantallas
             this.panel1.Controls.Add(this.linkLabel3);
             this.panel1.Controls.Add(this.panelContrasena);
             this.panel1.Controls.Add(this.btnIniciar);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.linkLabel1);
             this.panel1.Location = new System.Drawing.Point(345, -3);
             this.panel1.Name = "panel1";
@@ -241,6 +213,18 @@ namespace SistemaTienda.Pantallas
             this.txtUsuario.Text = "Usuario";
             this.txtUsuario.Enter += new System.EventHandler(this.txtUsuario_Enter_1);
             this.txtUsuario.Leave += new System.EventHandler(this.txtUsuario_Leave_1);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
+            this.pictureBox2.Image = global::SistemaTienda.Properties.Resources.Circle1;
+            this.pictureBox2.Location = new System.Drawing.Point(316, -35);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(75, 73);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 76;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseDown);
             // 
             // pictureBox6
             // 
@@ -297,18 +281,6 @@ namespace SistemaTienda.Pantallas
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.White;
-            this.pictureBox2.Image = global::SistemaTienda.Properties.Resources.Circle1;
-            this.pictureBox2.Location = new System.Drawing.Point(316, -35);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(75, 73);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 76;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseDown);
-            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -331,12 +303,12 @@ namespace SistemaTienda.Pantallas
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmLogin_MouseDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,8 +318,6 @@ namespace SistemaTienda.Pantallas
 
         internal System.Windows.Forms.ProgressBar ProgressBar1;
         private System.Windows.Forms.LinkLabel linkLabel3;
-        private System.Windows.Forms.ComboBox cbRol;
-        internal System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button btnIniciar;
         private System.Windows.Forms.Panel panelContrasena;

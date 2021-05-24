@@ -16,6 +16,9 @@ namespace SistemaTienda.Pantallas
         Conexion conexion = new Conexion();
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
+        string Role = "";
+        string Usuario = "";
+        string Contrasena = "";
 
         [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -25,7 +28,6 @@ namespace SistemaTienda.Pantallas
         MySqlCommand cmd;
         MySqlDataReader dr;
 
-        String cs = ("Server=localhost; database=SistemaTienda; user=root; password=1234");
         public FrmLogin()
         {
             InitializeComponent();
@@ -34,9 +36,7 @@ namespace SistemaTienda.Pantallas
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-            cbRol.Focus();
-            cbRol.Text = "Seleccione un rol";
-           
+
         }
 
         private void btnIniciar_Click(object sender, EventArgs e)
@@ -46,13 +46,6 @@ namespace SistemaTienda.Pantallas
 
         public void Ingresar()
         {
-
-            if (cbRol.Text == "")
-            {
-                MessageBox.Show("Por favor seleccione un Rol", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cbRol.Focus();
-                return;
-            }
 
 
             if (txtUsuario.Text == "")
@@ -71,32 +64,26 @@ namespace SistemaTienda.Pantallas
 
             try
             {
-                MySqlConnection myConnection = default(MySqlConnection);
-                myConnection = new MySqlConnection(cs);
 
-                MySqlCommand myCommand = default(MySqlCommand);
-
-                myCommand = new MySqlCommand("SELECT Role, Usuario,Contrasena FROM usuario WHERE Role = @Role AND Usuario = @Usuario AND Contrasena = @Contrasena", conexion.GetCon());
-                MySqlParameter uRole = new MySqlParameter("@Role", MySqlDbType.VarChar);
-                MySqlParameter uName = new MySqlParameter("@Usuario", MySqlDbType.VarChar);
-                MySqlParameter uPassword = new MySqlParameter("@Contrasena", MySqlDbType.VarChar);
-
-                uRole.Value = cbRol.Text;
-                uName.Value = txtUsuario.Text;
-                uPassword.Value = txtContraseña.Text;
-                myCommand.Parameters.Add(uRole);
-                myCommand.Parameters.Add(uName);
-                myCommand.Parameters.Add(uPassword);
-
-
-                myCommand.Connection.Open();
-
-                MySqlDataReader myReader = myCommand.ExecuteReader(CommandBehavior.CloseConnection);
-
-
-                #region
-                if (myReader.Read() == true)
+                try
                 {
+                    DataTable dt = new DataTable();
+                    MySqlCommand cmd = new MySqlCommand("SUsuario", conexion.GetCon());
+                    cmd.Parameters.Add("prm_Usuario", MySqlDbType.Text).Value = txtUsuario.Text;
+                    cmd.Parameters.Add("prm_Contrasena", MySqlDbType.Text).Value = txtContraseña.Text;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
+
+                    
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        Role = row["Role"].ToString();
+                        Usuario = row["Usuario"].ToString();
+                        Contrasena = row["Contrasena"].ToString();
+                    }
+
                     int i;
 
                     ProgressBar1.Visible = true;
@@ -114,37 +101,21 @@ namespace SistemaTienda.Pantallas
                     FrmPrincipal frm = new FrmPrincipal();
                     //Logged in as (Role)
                     frm.Show();
-                    frm.lblusuario.Text = cbRol.Text;
-                    frm.txtFacturadoPor.Text = cbRol.Text;
+                    frm.lblusuario.Text = Role;
+                    frm.txtFacturadoPor.Text = Role;
 
-                    if (cbRol.SelectedItem == "Empleado") frm.usuariosToolStripMenuItem.Visible = false;
-
-
+                    if (Role == "Empleado")
+                    {
+                        frm.usuariosToolStripMenuItem.Visible = false;
+                    }
                 }
-
-
-
-                #endregion
-
-
-                else
+                catch (Exception ex)
                 {
-
                     MessageBox.Show("El inicio de sesion fallo, por favor verifique los datos correctamente!", "Inicio de sesion fallido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    //txtUsuario.Clear();
-                    //txtContraseña.Clear();
-
-                    cbRol.Enabled = true;
                     txtUsuario.Focus();
-
-                }
-                if (myConnection.State == ConnectionState.Open)
-                {
-                    myConnection.Dispose();
                 }
 
-
+                
 
             }
             catch (Exception ex)
