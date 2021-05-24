@@ -13,7 +13,7 @@ namespace SistemaTienda.Pantallas
 {
     public partial class FrmEditarProductos : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost; database=SistemaTienda; user=root; password=1234");
+        Conexion conexion = new Conexion();
         public FrmEditarProductos()
         {
             InitializeComponent();
@@ -34,9 +34,9 @@ namespace SistemaTienda.Pantallas
         {
             try
             {
-                con.Open();
+                conexion.Conectar();
                 string query = "INSERT INTO producto (nombre_pro, categoria_pro, precio_pro, compra_pro, cantidad_pro) values (@nombre_pro, @categoria_pro, @precio_pro, @compra_pro, @cantidad_pro)";
-                MySqlCommand comando = new MySqlCommand(query, con);
+                MySqlCommand comando = new MySqlCommand(query, conexion.GetCon());
                 comando.Parameters.AddWithValue("@nombre_pro", txtnombreproducto.Text);
                 comando.Parameters.AddWithValue("@categoria_pro", cmbCategoria.Text);
                 comando.Parameters.AddWithValue("@precio_pro", txtprecio.Text);
@@ -45,7 +45,7 @@ namespace SistemaTienda.Pantallas
                 comando.ExecuteNonQuery();
                 CargarDgvStock();
                 MessageBox.Show("Producto Agregado al Stock");
-                con.Close();
+                 conexion.Desconectar();
                 clear();
                 this.txtcantidaddeproductos.Text = this.dgvStock.Rows.Count.ToString("N0");
             }
@@ -64,9 +64,9 @@ namespace SistemaTienda.Pantallas
 
         private void txtbuscarpornombredelproducto_KeyUp(object sender, KeyEventArgs e)
         {
-            con.Open();
+            conexion.Conectar();
 
-            MySqlCommand cmd = con.CreateCommand();
+            MySqlCommand cmd = conexion.GetCon().CreateCommand();
 
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "SELECT * FROM producto where nombre_pro like ('%" + txtbuscarpornombredelproducto.Text + "%')";
@@ -79,14 +79,14 @@ namespace SistemaTienda.Pantallas
 
             dgvStock.DataSource = dt;
 
-            con.Close();
+             conexion.Desconectar();
         }
 
         public void CargarDgvStock()
         {
             try
             {
-                MySqlDataAdapter adaptador = new MySqlDataAdapter("Select * from producto", con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter("Select * from producto", conexion.GetCon());
                 DataTable tabla = new DataTable();
                 adaptador.Fill(tabla);
                 dgvStock.DataSource = tabla;
@@ -118,18 +118,18 @@ namespace SistemaTienda.Pantallas
         {
             try
             {
-                con.Open();
+                conexion.Conectar();
                 DialogResult result = MessageBox.Show("¿Estas seguro que quiere eliminar este producto?.", "ATENCION", MessageBoxButtons.YesNo);
 
                 if (result == DialogResult.Yes)
                 {
                     string query = "DELETE FROM producto Where id_producto = @id_producto";
-                    MySqlCommand comando = new MySqlCommand(query, con);
+                    MySqlCommand comando = new MySqlCommand(query, conexion.GetCon());
                     comando.Parameters.AddWithValue("@id_producto", txtidproducto.Text);
                     comando.ExecuteNonQuery();
                     CargarDgvStock();
                     MessageBox.Show("Producto Eliminado");
-                    con.Close();
+                     conexion.Desconectar();
                     clear();
                 }
                 else
@@ -149,9 +149,9 @@ namespace SistemaTienda.Pantallas
         {
             try
             {
-                con.Open();
+                conexion.Conectar();
                 string query = "UPDATE producto SET nombre_pro = @nombre_pro, categoria_pro = @categoria_pro, precio_pro = @precio_pro, compra_pro = @compra_pro, cantidad_pro = @cantidad_pro where id_producto=@id_producto";
-                MySqlCommand comando = new MySqlCommand(query, con);
+                MySqlCommand comando = new MySqlCommand(query, conexion.GetCon());
                 comando.Parameters.AddWithValue("@id_producto", txtidproducto.Text);
                 comando.Parameters.AddWithValue("@nombre_pro", txtnombreproducto.Text);
                 comando.Parameters.AddWithValue("@categoria_pro", cmbCategoria.Text);
@@ -161,7 +161,7 @@ namespace SistemaTienda.Pantallas
                 comando.ExecuteNonQuery();
                 CargarDgvStock();
                 MessageBox.Show("Producto Actualizado");
-                con.Close();
+                 conexion.Desconectar();
                 clear();
             }
             catch (Exception ex)
@@ -173,7 +173,7 @@ namespace SistemaTienda.Pantallas
 
         public void CARGARCOMBOBOXCATEGORIA()
         {
-            MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM categoria", con);
+            MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM categoria", conexion.GetCon());
             DataTable dt = new DataTable();
             da.Fill(dt);
             cmbCategoria.ValueMember = "IDCategoria";

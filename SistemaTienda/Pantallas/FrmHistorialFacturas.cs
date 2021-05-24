@@ -13,7 +13,7 @@ namespace SistemaTienda.Pantallas
 {
     public partial class FrmHistorialFacturas : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost; database=SistemaTienda; user=root; password=1234");
+        Conexion conexion = new Conexion();
         public FrmHistorialFacturas()
         {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace SistemaTienda.Pantallas
         {
             try
             {
-                MySqlDataAdapter adaptador = new MySqlDataAdapter("Select * from historial_factura", con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter("Select * from historial_factura", conexion.GetCon());
                 DataTable tabla = new DataTable();
                 adaptador.Fill(tabla);
                 dgvHistorialFactura.DataSource = tabla;
@@ -63,9 +63,9 @@ namespace SistemaTienda.Pantallas
         {
             try
             {
-                con.Open();
+                conexion.Conectar();
                 string query = "UPDATE historial_factura SET nombre_pro = @nombre_pro, precio_pro = @precio_pro, nombrecompleto = @nombrecompleto, facturado = @facturado, Cantidad = @Cantidad, total_calculo = @total_calculo, fechaFactura = @fechaFactura  where id_historial_factura=@id_historial_factura";
-                MySqlCommand comando = new MySqlCommand(query, con);
+                MySqlCommand comando = new MySqlCommand(query, conexion.GetCon());
                 comando.Parameters.AddWithValue("@id_historial_factura", txtIDhistorialfactura.Text);
                 comando.Parameters.AddWithValue("@nombre_pro", txtNombreproducto.Text);
                 comando.Parameters.AddWithValue("@precio_pro", txtprecioproducto.Text);
@@ -77,7 +77,7 @@ namespace SistemaTienda.Pantallas
                 comando.ExecuteNonQuery();
                 MessageBox.Show("Factura Actualizada");
                 CargarDgvHistorialFactura();
-                con.Close();
+                 conexion.Desconectar();
                 Clear();
             }
             catch (Exception ex)
@@ -101,18 +101,18 @@ namespace SistemaTienda.Pantallas
         {
             try
             {
-                con.Open();
+                conexion.Conectar();
                 DialogResult result = MessageBox.Show("¿Estas seguro que quiere eliminar esta factura?", "ATENCION", MessageBoxButtons.YesNo);
 
                 if (result == DialogResult.Yes)
                 {
                     string query = "DELETE FROM historial_factura Where id_historial_factura = @id_historial_factura";
-                    MySqlCommand comando = new MySqlCommand(query, con);
+                    MySqlCommand comando = new MySqlCommand(query, conexion.GetCon());
                     comando.Parameters.AddWithValue("@id_historial_factura", txtIDhistorialfactura.Text);
                     comando.ExecuteNonQuery();
                     CargarDgvHistorialFactura();
                     MessageBox.Show("Factura Eliminada");
-                    con.Close();
+                     conexion.Desconectar();
                     Clear();
                 }
                 else

@@ -19,7 +19,8 @@ namespace SistemaTienda.Pantallas
             InitializeComponent();
         }
 
-        String cs = ("Server=localhost; database=SistemaTienda; user=root; password=1234");
+        Conexion conexion = new Conexion();
+
         private void BtnEnviar_Click(object sender, EventArgs e)
         {
             EnviarCorreo();
@@ -38,13 +39,12 @@ namespace SistemaTienda.Pantallas
                 Cursor = Cursors.WaitCursor;
                 timer1.Enabled = true;
                 DataSet ds = new DataSet();
-                MySqlConnection con = new MySqlConnection(cs);
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT Contrasena FROM usuario Where Email = '" + txtEmail.Text + "'", con);
+                conexion.Conectar();
+                MySqlCommand cmd = new MySqlCommand("SELECT Contrasena FROM usuario Where Email = '" + txtEmail.Text + "'", conexion.GetCon());
 
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 da.Fill(ds);
-                con.Close();
+                 conexion.Desconectar();
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     MailMessage Msg = new MailMessage();

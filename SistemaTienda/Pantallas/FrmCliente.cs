@@ -13,7 +13,7 @@ namespace SistemaTienda.Pantallas
 {
     public partial class FrmCliente : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost; database=sistematienda; user=root; password=1234");
+        Conexion conexion = new Conexion();
         public FrmCliente()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace SistemaTienda.Pantallas
             try
             {
                 DataTable dt = new DataTable();
-                MySqlCommand cmd = new MySqlCommand("SCliente", con);
+                MySqlCommand cmd = new MySqlCommand("SCliente", conexion.GetCon());
                 cmd.Parameters.Add("prm_EstadoCliente", MySqlDbType.Text).Value = "A";
                 cmd.CommandType = CommandType.StoredProcedure;
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
@@ -70,19 +70,19 @@ namespace SistemaTienda.Pantallas
         {
             try
             {
-                con.Open();
+                conexion.Conectar();
                 DialogResult result = MessageBox.Show("¿Estas seguro que quiere deshabilitar este Cliente?", "ATENCIÓN", MessageBoxButtons.YesNo);
 
                 if (result == DialogResult.Yes)
                 {
-                    con.Open();
-                    MySqlCommand cmd = new MySqlCommand("DCliente", con);
+                    conexion.Conectar();
+                    MySqlCommand cmd = new MySqlCommand("DCliente", conexion.GetCon());
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("prm_IDCliente", MySqlDbType.Text).Value = txtIDCliente.Text;
                     cmd.Parameters.Add("prm_EstadoCliente", MySqlDbType.Text).Value = CmbEstado.Text;
                     cmd.ExecuteReader();
                     MessageBox.Show("Cliente Deshabilitado");
-                    con.Close();
+                    conexion.Desconectar();
                 }
                 else
                 {
@@ -103,8 +103,8 @@ namespace SistemaTienda.Pantallas
         {
             try
             {
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand("ICliente", con);
+                conexion.Conectar();
+                MySqlCommand cmd = new MySqlCommand("ICliente", conexion.GetCon());
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("prm_NombreCompleto", MySqlDbType.Text).Value = txtNombreCompleto.Text;
                 cmd.Parameters.Add("prm_Direccion", MySqlDbType.Text).Value = txtDireccion.Text;
@@ -113,7 +113,7 @@ namespace SistemaTienda.Pantallas
                 cmd.Parameters.Add("prm_EstadoCliente", MySqlDbType.Text).Value = CmbEstado.Text;
                 cmd.ExecuteReader();
                 MessageBox.Show("Cliente Agregado");
-                con.Close();
+                 conexion.Desconectar();
                 this.txtcantidaddeproductos.Text = this.dgvCliente.Rows.Count.ToString("N0");
 
             }
@@ -134,10 +134,10 @@ namespace SistemaTienda.Pantallas
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            con.Open();
+            conexion.Conectar();
             try
             {
-                MySqlCommand cmd = new MySqlCommand("UCliente", con);
+                MySqlCommand cmd = new MySqlCommand("UCliente", conexion.GetCon());
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@prm_IDCliente", MySqlDbType.Text).Value = txtIDCliente.Text;
                 cmd.Parameters.Add("@prm_NombreCompleto", MySqlDbType.Text).Value = txtNombreCompleto.Text;
@@ -155,7 +155,7 @@ namespace SistemaTienda.Pantallas
                 MessageBox.Show("Ha ocurrido un problema a la hora de actualizar los datos, comuniquese con soporte");
             }
 
-            con.Close();
+             conexion.Desconectar();
         }
 
         private void BtnSeleccionar_Click(object sender, EventArgs e)
@@ -209,7 +209,7 @@ namespace SistemaTienda.Pantallas
             try
             {
                 DataTable dt = new DataTable();
-                MySqlCommand cmd = new MySqlCommand("SCliente", con);
+                MySqlCommand cmd = new MySqlCommand("SCliente", conexion.GetCon());
                 cmd.Parameters.Add("prm_EstadoCliente", MySqlDbType.Text).Value = comboBox1.Text;
                 cmd.CommandType = CommandType.StoredProcedure;
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);

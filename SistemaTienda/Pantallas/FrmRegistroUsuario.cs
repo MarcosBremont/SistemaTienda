@@ -16,9 +16,9 @@ namespace SistemaTienda.Pantallas
         MySqlDataReader rdr = null;
         DataTable dt = new DataTable();
 
-        MySqlConnection con = null;
         MySqlCommand cmd = null;
-        String cs = ("Server=localhost; database=SistemaTienda; user=root; password=1234");
+
+        Conexion conexion = new Conexion();
         public FrmRegistroUsuario()
         {
             InitializeComponent();
@@ -39,12 +39,11 @@ namespace SistemaTienda.Pantallas
                     txtUsuario.Focus();
                     return;
                 }
-                con = new MySqlConnection(cs);
-                con.Open();
+                conexion.Conectar();
                 string ct = "select Usuario from usuario where Usuario='" + txtUsuario.Text + "'";
 
                 cmd = new MySqlCommand(ct);
-                cmd.Connection = con;
+                cmd.Connection = conexion.GetCon();
                 rdr = cmd.ExecuteReader();
 
                 if (rdr.Read())
@@ -67,7 +66,7 @@ namespace SistemaTienda.Pantallas
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            con.Close();
+             conexion.Desconectar();
         }
         public void clear()
         {
@@ -89,9 +88,9 @@ namespace SistemaTienda.Pantallas
         {
             try
             {
-                con.Open();
+                conexion.Conectar();
                 string query = "INSERT INTO usuario (Nombre, Role, Usuario, Contrasena, NDeContacto, Email) values (@Nombre, @Role, @Usuario, @Contrasena, @NDeContacto, @Email)";
-                MySqlCommand comando = new MySqlCommand(query, con);
+                MySqlCommand comando = new MySqlCommand(query, conexion.GetCon());
                 comando.Parameters.AddWithValue("@Nombre", txtNombre.Text);
                 comando.Parameters.AddWithValue("@Role", comboRoles.Text);
                 comando.Parameters.AddWithValue("@Usuario", txtUsuario.Text);
@@ -99,7 +98,7 @@ namespace SistemaTienda.Pantallas
                 comando.Parameters.AddWithValue("@NDeContacto", txtNumeroDeContacto.Text);
                 comando.Parameters.AddWithValue("@Email", txtEmail.Text);
                 comando.ExecuteNonQuery();
-                con.Close();
+                 conexion.Desconectar();
                 CargarDgvUsuariosRegistrados();
                 MessageBox.Show("Usuario Agregado exitosamente");
 
@@ -114,8 +113,7 @@ namespace SistemaTienda.Pantallas
 
         public void CargarDgvUsuariosRegistrados()
         {
-            con = new MySqlConnection(cs);
-            MySqlCommand cmd = new MySqlCommand("Select * from usuario", con);
+            MySqlCommand cmd = new MySqlCommand("Select * from usuario", conexion.GetCon());
             MySqlDataAdapter adaptador = new MySqlDataAdapter();
             adaptador.SelectCommand = cmd;
             DataTable tabla = new DataTable();
@@ -139,9 +137,9 @@ namespace SistemaTienda.Pantallas
         {
             try
             {
-                con.Open();
+                conexion.Conectar();
                 string query = "UPDATE usuario SET Nombre = @Nombre, Role = @Role, Usuario = @Usuario, Contrasena = @Contrasena, NDeContacto = @NDeContacto, Email = @Email where idusuario=@idusuario";
-                MySqlCommand comando = new MySqlCommand(query, con);
+                MySqlCommand comando = new MySqlCommand(query, conexion.GetCon());
                 comando.Parameters.AddWithValue("@idusuario", TXTID.Text);
                 comando.Parameters.AddWithValue("@Nombre", txtNombre.Text);
                 comando.Parameters.AddWithValue("@Role", comboRoles.Text);
@@ -152,7 +150,7 @@ namespace SistemaTienda.Pantallas
                 comando.ExecuteNonQuery();
                 CargarDgvUsuariosRegistrados();
                 MessageBox.Show("Usuario Actualizado");
-                con.Close();
+                 conexion.Desconectar();
                 clear();
 
             }
@@ -167,18 +165,18 @@ namespace SistemaTienda.Pantallas
         {
             try
             {
-                con.Open();
+                conexion.Conectar();
                 DialogResult result = MessageBox.Show("¿Estas seguro que quiere eliminar este Usuario?.", "ATENCION", MessageBoxButtons.YesNo);
 
                 if (result == DialogResult.Yes)
                 {
                     string query = "DELETE FROM usuario Where idusuario = @idusuario";
-                    MySqlCommand comando = new MySqlCommand(query, con);
+                    MySqlCommand comando = new MySqlCommand(query, conexion.GetCon());
                     comando.Parameters.AddWithValue("@idusuario", TXTID.Text);
                     comando.ExecuteNonQuery();
                     CargarDgvUsuariosRegistrados();
                     MessageBox.Show("Usuario Eliminado");
-                    con.Close();
+                     conexion.Desconectar();
                     clear();
                 }
                 else

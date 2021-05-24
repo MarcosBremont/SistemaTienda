@@ -21,7 +21,8 @@ namespace SistemaTienda.Pantallas
         MySqlConnection con = null;
         MySqlCommand cmd = null;
 
-        String cs = ("Server=localhost; database=SistemaTienda; user=root; password=1234");
+        Conexion conexion = new Conexion();
+
 
         private void FrmCambiarContraseña_Load(object sender, EventArgs e)
         {
@@ -83,8 +84,7 @@ namespace SistemaTienda.Pantallas
                     return;
                 }
 
-                con = new MySqlConnection(cs);
-                con.Open();
+                conexion.Conectar();
                 string co = "Update usuario set Contrasena = '" + txtNuevaContraseña.Text + "'where Usuario='" + txtUsuario.Text + "' and Contrasena = '" + txtViejaContraseña.Text + "'";
 
                 cmd = new MySqlCommand(co);
@@ -113,9 +113,9 @@ namespace SistemaTienda.Pantallas
                 }
                 if ((con.State == ConnectionState.Open))
                 {
-                    con.Close();
+                     conexion.Desconectar();
                 }
-                con.Close();
+                 conexion.Desconectar();
             }
             catch (Exception ex)
             {

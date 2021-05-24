@@ -13,7 +13,7 @@ namespace SistemaTienda.Pantallas
 {
     public partial class FrmInventario : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost; database=SistemaTienda; user=root; password=1234");
+        Conexion conexion = new Conexion();
         public FrmInventario()
         {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace SistemaTienda.Pantallas
         {
             try
             {
-                MySqlDataAdapter adaptador = new MySqlDataAdapter("Select * from producto", con);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter("Select * from producto", conexion.GetCon());
                 DataTable tabla = new DataTable();
                 adaptador.Fill(tabla);
                 dgvInventario.DataSource = tabla;
@@ -41,9 +41,9 @@ namespace SistemaTienda.Pantallas
 
         private void txtbuscarpornombredelproducto_KeyUp(object sender, KeyEventArgs e)
         {
-            con.Open();
+            conexion.Conectar();
 
-            MySqlCommand cmd = con.CreateCommand();
+            MySqlCommand cmd = conexion.GetCon().CreateCommand();
 
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "SELECT * FROM producto where nombre_pro like ('" + txtbuscarpornombredelproducto.Text + "%')";
@@ -56,16 +56,16 @@ namespace SistemaTienda.Pantallas
 
             dgvInventario.DataSource = dt;
 
-            con.Close();
+             conexion.Desconectar();
         }
 
         private void txtbuscarporcategoria_KeyUp(object sender, KeyEventArgs e)
         {
             try
             {
-                con.Open();
+                conexion.Conectar();
 
-                MySqlCommand cmd = con.CreateCommand();
+                MySqlCommand cmd = conexion.GetCon().CreateCommand();
 
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "SELECT * FROM producto where categoria_pro like ('" + txtbuscarporcategoria.Text + "%')";
@@ -78,7 +78,7 @@ namespace SistemaTienda.Pantallas
 
                 dgvInventario.DataSource = dt;
 
-                con.Close();
+                 conexion.Desconectar();
             }
             catch (Exception ex)
             {
@@ -91,9 +91,9 @@ namespace SistemaTienda.Pantallas
         {
             try
             {
-                con.Open();
+                conexion.Conectar();
 
-                MySqlCommand cmd = con.CreateCommand();
+                MySqlCommand cmd = conexion.GetCon().CreateCommand();
 
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "SELECT * FROM producto where id_producto like ('" + txtbuscarporcodigo.Text + "%')";
@@ -106,7 +106,7 @@ namespace SistemaTienda.Pantallas
 
                 dgvInventario.DataSource = dt;
 
-                con.Close();
+                 conexion.Desconectar();
 
             }
             catch (Exception ex)

@@ -26,7 +26,6 @@ namespace SistemaTienda
         [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        MySqlConnection con = new MySqlConnection("Server=localhost; database=SistemaTienda; user=root; password=1234");
         public static int cont_fila = 0;
         public static double total;
         public static double cambio;
@@ -52,7 +51,7 @@ namespace SistemaTienda
                         txtnombre.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[1].Value.ToString();
                         txtPrecio.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[4].Value.ToString();
                         txtCantidad.Focus();
-                        con.Close();
+                        conexion.Desconectar();
                     }
                     this.txtcantidaddeproductos.Text = this.dgvFacturacion.Rows.Count.ToString("N0");
 
@@ -60,10 +59,9 @@ namespace SistemaTienda
 
                 else
                 {
-                    MySqlCommand cmd = new MySqlCommand(" SELECT * FROM producto where id_producto = @id_producto", con);
+                    MySqlCommand cmd = new MySqlCommand(" SELECT * FROM producto where id_producto = @id_producto", conexion.GetCon());
                     cmd.Parameters.AddWithValue("id_producto", txtbuscarproducto.Text);
 
-                    conexion.
                     MySqlDataReader registro = cmd.ExecuteReader();
                     if (registro.Read())
                     {
@@ -73,7 +71,7 @@ namespace SistemaTienda
                         txtCantidad.Focus();
 
                     }
-                    con.Close();
+                     conexion.Desconectar();
 
                 }
             }
@@ -123,15 +121,15 @@ namespace SistemaTienda
                     {
                         //txtSeleccionarCLiente.Text = FrmC.dgvCliente.Rows[FrmC.dgvCliente.CurrentRow.Cells].Cells[1].Value.ToString();
                         txtSeleccionarCLiente.Text = FrmC.dgvCliente.CurrentRow.Cells[1].Value.ToString();
-                        con.Close();
+                         conexion.Desconectar();
                     }
                 }
 
                 else
                 {
-                    MySqlCommand cmd = new MySqlCommand(" SELECT * FROM cliente where IDCliente = @IDCliente", con);
+                    MySqlCommand cmd = new MySqlCommand(" SELECT * FROM cliente where IDCliente = @IDCliente", conexion.GetCon());
                     cmd.Parameters.AddWithValue("IDCliente", txtSeleccionarCLiente.Text);
-                    con.Open();
+                    conexion.Conectar();
                     MySqlDataReader registro = cmd.ExecuteReader();
                     if (registro.Read())
                     {
@@ -139,7 +137,7 @@ namespace SistemaTienda
                         txtclienteTemporal.Focus();
 
                     }
-                    con.Close();
+                     conexion.Desconectar();
                 }
             }
             catch (Exception ex)
@@ -154,13 +152,11 @@ namespace SistemaTienda
         {
             try
             {
-                if (con.State != ConnectionState.Open)
-                {
-                    con.Open();
-                }
+               
 
                 foreach (DataGridViewRow row in dgvFacturacion.Rows)
                 {
+                    conexion.Conectar();
                     string nombrepro1 = row.Cells["nombre_pro"].Value.ToString();
                     int precio_pro = Convert.ToInt32(row.Cells["precio_pro"].Value);
                     string nombrecompleto = row.Cells["nombrecompleto"].Value.ToString();
@@ -170,7 +166,7 @@ namespace SistemaTienda
                     DateTime fechaFactura = Convert.ToDateTime(row.Cells["fechaFactura"].Value);
                     int codigoproducto = Convert.ToInt32(row.Cells["id_historial_factura"].Value);
 
-                    MySqlCommand cmd = new MySqlCommand("IHistorial_Factura", conexion.conectar());
+                    MySqlCommand cmd = new MySqlCommand("IHistorial_Factura", conexion.GetCon());
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("prm_nombre_pro", MySqlDbType.Text).Value = nombrepro1;
                     cmd.Parameters.Add("prm_precio_pro", MySqlDbType.Double).Value = precio_pro;
@@ -181,7 +177,7 @@ namespace SistemaTienda
                     cmd.Parameters.Add("prm_fechaFactura", MySqlDbType.DateTime).Value = fechaFactura;
                     cmd.Parameters.Add("prm_idproducto", MySqlDbType.Int32).Value = codigoproducto;
                     cmd.ExecuteReader();
-                    con.Close();
+                     conexion.Desconectar();
                 }
                 MessageBox.Show("Facturación Completa");
                 this.txtcantidaddeproductos.Text = this.dgvFacturacion.Rows.Count.ToString("N0");
@@ -276,7 +272,7 @@ namespace SistemaTienda
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            con.Open();
+            conexion.Conectar();
             DialogResult result = MessageBox.Show("¿Estas seguro que quiere eliminar este producto?.", "ATENCION", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
@@ -467,7 +463,7 @@ namespace SistemaTienda
                         txtnombre.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[1].Value.ToString();
                         txtPrecio.Text = FrmI.dgvInventario.Rows[FrmI.dgvInventario.CurrentRow.Index].Cells[4].Value.ToString();
                         txtCantidad.Focus();
-                        con.Close();
+                         conexion.Desconectar();
                     }
                     this.txtcantidaddeproductos.Text = this.dgvFacturacion.Rows.Count.ToString("N0");
 
@@ -475,10 +471,10 @@ namespace SistemaTienda
 
                 else
                 {
-                    MySqlCommand cmd = new MySqlCommand(" SELECT * FROM producto where id_producto = @id_producto", con);
+                    MySqlCommand cmd = new MySqlCommand(" SELECT * FROM producto where id_producto = @id_producto", conexion.GetCon());
                     cmd.Parameters.AddWithValue("id_producto", txtbuscarproducto.Text);
 
-                    con.Open();
+                    conexion.Conectar();
                     MySqlDataReader registro = cmd.ExecuteReader();
                     if (registro.Read())
                     {
@@ -488,7 +484,7 @@ namespace SistemaTienda
                         txtCantidad.Focus();
 
                     }
-                    con.Close();
+                     conexion.Desconectar();
 
                 }
             }

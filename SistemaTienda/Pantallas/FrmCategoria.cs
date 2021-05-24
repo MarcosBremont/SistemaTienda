@@ -13,7 +13,7 @@ namespace SistemaTienda.Pantallas
 {
     public partial class FrmCategoria : Form
     {
-        MySqlConnection con = new MySqlConnection("Server=localhost; database=SistemaTienda; user=root; password=1234");
+        Conexion conexion = new Conexion();
 
         public FrmCategoria()
         {
@@ -34,14 +34,14 @@ namespace SistemaTienda.Pantallas
         {
             try
             {
-                con.Open();
+                conexion.Conectar();
                 string query = "INSERT INTO categoria (NombreCategoria) values (@NombreCategoria)";
-                MySqlCommand comando = new MySqlCommand(query, con);
+                MySqlCommand comando = new MySqlCommand(query, conexion.GetCon());
                 comando.Parameters.AddWithValue("@NombreCategoria", txtCategoria.Text);
                 comando.ExecuteNonQuery();
                 CARGARCOMBOBOXCATEGORIA();
                 MessageBox.Show("Categoria Agregada");
-                con.Close();
+                 conexion.Desconectar();
                 txtCategoria.Clear();
             }
             catch (Exception ex)
@@ -55,7 +55,7 @@ namespace SistemaTienda.Pantallas
         {
             try
             {
-                MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM categoria", con);
+                MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM categoria", conexion.GetCon());
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 CMBCategorias.ValueMember = "IDCategoria";
@@ -73,18 +73,18 @@ namespace SistemaTienda.Pantallas
         {
             try
             {
-                con.Open();
+                conexion.Conectar();
                 DialogResult result = MessageBox.Show("¿Estas seguro que quiere eliminar esta Categoria?", "ATENCION", MessageBoxButtons.YesNo);
 
                 if (result == DialogResult.Yes)
                 {
                     string query = "DELETE FROM categoria Where IDCategoria = @IDCategoria";
-                    MySqlCommand comando = new MySqlCommand(query, con);
+                    MySqlCommand comando = new MySqlCommand(query, conexion.GetCon());
                     comando.Parameters.AddWithValue("@IDCategoria", CMBCategorias.SelectedValue);
                     comando.ExecuteNonQuery();
                     CARGARCOMBOBOXCATEGORIA();
                     MessageBox.Show("Categoria Eliminada");
-                    con.Close();
+                     conexion.Desconectar();
                     txtCategoria.Clear();
                 }
                 else
@@ -104,15 +104,15 @@ namespace SistemaTienda.Pantallas
         {
             try
             {
-                con.Open();
+                conexion.Conectar();
                 string query = "UPDATE categoria SET NombreCategoria = @NombreCategoria where IDCategoria=@IDCategoria";
-                MySqlCommand comando = new MySqlCommand(query, con);
+                MySqlCommand comando = new MySqlCommand(query, conexion.GetCon());
                 comando.Parameters.AddWithValue("@IDCategoria", lblidcategoria.Text);
                 comando.Parameters.AddWithValue("@NombreCategoria", txtCategoria.Text);
                 comando.ExecuteNonQuery();
                 CARGARCOMBOBOXCATEGORIA();
                 MessageBox.Show("Categoria Actualizada");
-                con.Close();
+                 conexion.Desconectar();
                 txtCategoria.Clear();
 
             }
