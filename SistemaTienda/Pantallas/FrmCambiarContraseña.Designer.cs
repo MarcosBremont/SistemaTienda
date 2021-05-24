@@ -47,6 +47,7 @@ namespace SistemaTienda.Pantallas
             this.lblcontrasenaactual = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelLogoTic.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoTic)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +62,7 @@ namespace SistemaTienda.Pantallas
             this.BtnVolverAtras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnVolverAtras.Location = new System.Drawing.Point(352, 353);
             this.BtnVolverAtras.Name = "BtnVolverAtras";
-            this.BtnVolverAtras.Size = new System.Drawing.Size(287, 43);
+            this.BtnVolverAtras.Size = new System.Drawing.Size(133, 43);
             this.BtnVolverAtras.TabIndex = 45;
             this.BtnVolverAtras.Text = "Volver Atras";
             this.BtnVolverAtras.UseVisualStyleBackColor = true;
@@ -69,7 +70,7 @@ namespace SistemaTienda.Pantallas
             // 
             // btnCambiarContrasena
             // 
-            this.btnCambiarContrasena.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(71)))));
+            this.btnCambiarContrasena.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(57)))), ((int)(((byte)(121)))));
             this.btnCambiarContrasena.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnCambiarContrasena.FlatAppearance.BorderSize = 2;
             this.btnCambiarContrasena.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(50)))));
@@ -161,7 +162,7 @@ namespace SistemaTienda.Pantallas
             // 
             // txtUsuario
             // 
-            this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(71)))));
+            this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(57)))), ((int)(((byte)(121)))));
             this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUsuario.Font = new System.Drawing.Font("Bahnschrift", 9.75F);
             this.txtUsuario.ForeColor = System.Drawing.Color.White;
@@ -173,7 +174,7 @@ namespace SistemaTienda.Pantallas
             // 
             // txtConfirmarContraseña
             // 
-            this.txtConfirmarContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(71)))));
+            this.txtConfirmarContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(57)))), ((int)(((byte)(121)))));
             this.txtConfirmarContraseña.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtConfirmarContraseña.Font = new System.Drawing.Font("Bahnschrift", 9.75F);
             this.txtConfirmarContraseña.ForeColor = System.Drawing.Color.White;
@@ -184,7 +185,7 @@ namespace SistemaTienda.Pantallas
             // 
             // txtNuevaContraseña
             // 
-            this.txtNuevaContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(71)))));
+            this.txtNuevaContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(57)))), ((int)(((byte)(121)))));
             this.txtNuevaContraseña.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNuevaContraseña.Font = new System.Drawing.Font("Bahnschrift", 9.75F);
             this.txtNuevaContraseña.ForeColor = System.Drawing.Color.White;
@@ -195,7 +196,7 @@ namespace SistemaTienda.Pantallas
             // 
             // txtViejaContraseña
             // 
-            this.txtViejaContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(71)))));
+            this.txtViejaContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(57)))), ((int)(((byte)(121)))));
             this.txtViejaContraseña.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtViejaContraseña.Font = new System.Drawing.Font("Bahnschrift", 9.75F);
             this.txtViejaContraseña.ForeColor = System.Drawing.Color.White;
@@ -254,12 +255,28 @@ namespace SistemaTienda.Pantallas
             this.label3.Text = "Confirmar Contraseña";
             this.label3.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderSize = 2;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Bahnschrift", 12F);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(504, 353);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(135, 43);
+            this.button1.TabIndex = 47;
+            this.button1.Text = "Salir";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // FrmCambiarContraseña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(71)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(57)))), ((int)(((byte)(121)))));
             this.ClientSize = new System.Drawing.Size(693, 417);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblcontrasenaactual);
@@ -276,6 +293,7 @@ namespace SistemaTienda.Pantallas
             this.Controls.Add(this.txtConfirmarContraseña);
             this.Controls.Add(this.txtNuevaContraseña);
             this.Controls.Add(this.txtViejaContraseña);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmCambiarContraseña";
             this.Text = "Cambiar Contraseña";
             this.Load += new System.EventHandler(this.FrmCambiarContraseña_Load);
@@ -307,5 +325,6 @@ namespace SistemaTienda.Pantallas
         private System.Windows.Forms.Label lblcontrasenaactual;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        internal System.Windows.Forms.Button button1;
     }
 }

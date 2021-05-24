@@ -35,6 +35,7 @@ namespace SistemaTienda.Pantallas
             this.BtnEnviar = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.BtnVolverAtras = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtEmail
@@ -83,7 +84,7 @@ namespace SistemaTienda.Pantallas
             this.BtnVolverAtras.ForeColor = System.Drawing.Color.White;
             this.BtnVolverAtras.Image = global::SistemaTienda.Properties.Resources.BackIcon;
             this.BtnVolverAtras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnVolverAtras.Location = new System.Drawing.Point(179, 120);
+            this.BtnVolverAtras.Location = new System.Drawing.Point(64, 111);
             this.BtnVolverAtras.Name = "BtnVolverAtras";
             this.BtnVolverAtras.Size = new System.Drawing.Size(152, 33);
             this.BtnVolverAtras.TabIndex = 22;
@@ -92,16 +93,35 @@ namespace SistemaTienda.Pantallas
             this.BtnVolverAtras.UseVisualStyleBackColor = true;
             this.BtnVolverAtras.Click += new System.EventHandler(this.BtnVolverAtras_Click);
             // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderSize = 2;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Bahnschrift", 12F);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = global::SistemaTienda.Properties.Resources.BackIcon;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(222, 111);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(102, 33);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Salir";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // FrmRecuperarContraseña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(71)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(57)))), ((int)(((byte)(121)))));
             this.ClientSize = new System.Drawing.Size(548, 176);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.BtnVolverAtras);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnEnviar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmRecuperarContraseña";
             this.Text = "Recuperar Contraseña";
             this.Load += new System.EventHandler(this.FrmRecuperarContraseña_Load);
@@ -117,5 +137,6 @@ namespace SistemaTienda.Pantallas
         private System.Windows.Forms.Label label1;
         internal System.Windows.Forms.Button BtnEnviar;
         private System.Windows.Forms.Timer timer1;
+        internal System.Windows.Forms.Button button1;
     }
 }

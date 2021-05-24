@@ -154,6 +154,7 @@ namespace SistemaTienda.Pantallas
             this.ClientSize = new System.Drawing.Size(491, 209);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmCategoria";
             this.Text = "Mantenimiento Categoria";
             this.Load += new System.EventHandler(this.FrmCategoria_Load);

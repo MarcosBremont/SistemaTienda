@@ -51,7 +51,7 @@ namespace SistemaTienda.Pantallas
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(90, 33);
             this.btnOk.TabIndex = 11;
-            this.btnOk.Text = "Ok";
+            this.btnOk.Text = "Salir";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -184,6 +184,7 @@ namespace SistemaTienda.Pantallas
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmAcercaDe";
             this.Text = "Acerca De";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
